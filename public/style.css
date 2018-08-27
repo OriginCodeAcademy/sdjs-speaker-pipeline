@@ -1,0 +1,39 @@
+#welcome{
+    background-image: url("jsmeet.png");
+    background-size: cover;
+  padding: 19%;
+} 
+
+#logo{
+padding: 0.5%;   
+}
+
+img{
+width: 50%;
+}
+
+h2{
+color: white;
+}
+
+p{
+color: white;
+}
+
+.tint {
+    position: relative;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .tint:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 153, 255, 0.5);
+  }
+  
