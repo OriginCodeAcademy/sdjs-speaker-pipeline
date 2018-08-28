@@ -2,10 +2,10 @@
     background-image: url("jsmeet.png");
     background-size: cover;
   padding: 17.5%;
-} 
+}
 
 #logo{
-padding: 0.1%;   
+padding: 0.1%;
 }
 
 img{
@@ -23,6 +23,6 @@ color: white;
 #talk{
 width: 16%;
 padding: 1.5%;
-background-color: blue;
+background-color: #3898EC;
 color:white;
 }
