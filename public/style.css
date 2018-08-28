@@ -1,39 +1,28 @@
 #welcome{
     background-image: url("jsmeet.png");
     background-size: cover;
-  padding: 19%;
+  padding: 17.5%;
 } 
 
 #logo{
-padding: 0.5%;   
+padding: 0.1%;   
 }
 
 img{
 width: 50%;
 }
 
-h2{
+h1{
 color: white;
 }
 
-p{
+h4{
 color: white;
 }
 
-.tint {
-    position: relative;
-    margin-right: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .tint:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 153, 255, 0.5);
-  }
-  
+#talk{
+width: 16%;
+padding: 1.5%;
+background-color: blue;
+color:white;
+}
