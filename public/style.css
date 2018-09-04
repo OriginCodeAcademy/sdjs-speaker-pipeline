@@ -1,3 +1,7 @@
+body{
+background-color: #1884c3;
+}
+
 #welcome{
     background-image: url("jsmeet.png");
     background-size: cover;
@@ -12,17 +16,87 @@ img{
 width: 50%;
 }
 
+
 h1{
 color: white;
+}
+
+h2{
+color: white;
+text-align: center;
+border-bottom: 1px solid #fff;
+padding: 20%;
 }
 
 h4{
 color: white;
 }
 
+h3{
+color: white;
+text-align: center;
+padding: 6%;
+}
+
 #talk{
-width: 16%;
+width: 17%;
 padding: 1.5%;
-background-color: #3898EC;
+background-color:#3898EC;
 color:white;
+}
+
+
+.signup{
+  width: 18%;
+  padding: 2.5%;
+  background-color: #f90;
+  color:white;
+}
+
+.speak{
+margin-bottom: 30px;
+padding-bottom: 30px;
+border-bottom: 1px solid #fff;
+color: white;
+text-align: center;
+}
+
+.form{
+padding: 25%;
+background-color: #3898EC;
+text-align: left;
+height: 5%;
+}
+
+#homebutton{
+  width: 12%;
+  padding: 1.5%;
+  background-color: #f90;
+  color:white;
+}
+
+.admin{
+  background-color: #f90;
+  width: 14%;
+  color: white;
+  padding: 1.5%;
+}
+
+.thankyou{
+  color: white;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid white;
+  text-align: center;
+  padding: 15%;
+  }
+
+.thankform{
+background-color: #3898EC;
+}
+
+#moreinfo{
+color: #3898EC;
+text-align: center;
+padding: 6%;
 }
