@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "build": "webpack --mode production",
     "start": "node .",
-    "test": "npm run lint && nsp check"
+    "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
     "compression": "^1.0.3",
