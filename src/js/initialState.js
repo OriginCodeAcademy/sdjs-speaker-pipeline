@@ -6,6 +6,9 @@ const initialState = {
       email: '',
       password: ''
     },
+    adminDashboard: {
+      allSpeakers: []
+    }
 
   };
   
