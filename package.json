@@ -7,8 +7,8 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "build": "webpack --mode production",
-    "start": "node .",
+    "build": "webpack --mode development",
+    "start": "npm run build && node .",
     "test": "npm run build && mocha --require ignore-styles test/**/**.spec.js --exit"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.3.0",
