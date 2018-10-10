@@ -12,6 +12,7 @@
     "test": "npm run build && mocha --require ignore-styles test/**/**.spec.js --exit"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "helmet": "^3.10.0",
@@ -21,6 +22,11 @@
     "loopback-connector-mongodb": "^3.8.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-promise-middleware": "^5.1.1",
+    "redux-thunk": "^2.3.0",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^3.0.0"
   },
