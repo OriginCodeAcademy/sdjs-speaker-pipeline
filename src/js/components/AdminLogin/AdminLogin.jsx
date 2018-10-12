@@ -45,13 +45,16 @@ export default class AdminLogin extends React.Component {
     return (
       <div
         id='admin-login-container'
-        className='container-fluid admin-login template-style col-md-6'>
-        <h1>SDJS ADMIN LOGIN</h1>
+        className='container-fluid admin-box col-md-6'>
+        <div className="logo-holder">        
+          <img src="images/logo.png" />
+        </div>
+        <h2>SAN DIEGO JAVASCRIPT ADMIN LOGIN</h2>
         <form onSubmit={this.handleSubmit}>
           <div className='form-row' >
           <div className='col-md-3' > </div>
-          <div className='form-group col-md-3'>
-            <label>Enter Email: </label>
+          <div className='form-group col-md-12'>
+            <label>ENTER EMAIL: </label>
             <input
               id='admin-email'
               type='text'
@@ -62,8 +65,8 @@ export default class AdminLogin extends React.Component {
               required='required'
             />
           </div>
-          <div className='form-group col-md-3'>
-            <label>Enter Password: </label>
+          <div className='form-group col-md-12'>
+            <label>ENTER PASSWORD: </label>
             <input
               id='admin-password'
               type='password'
@@ -75,14 +78,17 @@ export default class AdminLogin extends React.Component {
             />
           </div>
           </div>
-          <button
-            type='submit'
-            id='admin-login-button'
-            className='btn btn-info'
-            onClick={this.handleSubmit}
-          >Login</button>
+          <div className="buttonholder">
+            <button
+              type='submit'
+              id='admin-login-button'
+              className='button'
+              onClick={this.handleSubmit}
+            >LOGIN</button>
+          </div>
         </form>
       </div>
+      
     );
   }
 }
