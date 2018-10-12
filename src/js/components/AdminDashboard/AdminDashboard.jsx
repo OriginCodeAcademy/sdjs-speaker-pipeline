@@ -32,12 +32,8 @@ class AdminDashboard extends Component {
           <h3 className= 'col-lg-3'>{speaker.email} </h3>
           <h3 className= 'col-lg-3'>date </h3>
           </div>
-<<<<<<< HEAD
-        }) }
-=======
         }) 
        }
->>>>>>> b079517be8b716667fc82837939e00670fc75220
     </div>
   )}
 }
