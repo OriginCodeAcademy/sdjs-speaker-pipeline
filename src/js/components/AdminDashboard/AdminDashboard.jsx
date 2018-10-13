@@ -20,18 +20,22 @@ class AdminDashboard extends Component {
     <div className="container-fluid dashboard col-md-10">
       <h2>SAN DIEGO JAVASCRIPT<br></br> ADMIN DASHBOARD</h2>
       <div className="row" id="category">
-        <h3 className= 'col-lg-3'>FIRST NAME</h3>  
-        <h3 className= 'col-lg-3'>LAST NAME</h3> 
-        <h3 className= 'col-lg-3'>EMAIL</h3>
-        <h3 className= 'col-lg-3'>DATE</h3>
+        <h3 className= 'col-lg-12'>SPEAKER</h3>  
+
+
       </div>
         { allSpeakers.map((speaker) => {
           return <div key={speaker.id} className='row' id="list">
-          <h3 className= 'col-lg-3'>{speaker.firstName}</h3>  
-          <h3 className= 'col-lg-3'>{speaker.lastName}</h3> 
+          <br></br>
+          <h3 className= 'col-lg-2'>{speaker.firstName}</h3>  
+          <h3 className= 'col-lg-2'>{speaker.lastName}</h3> 
           <h3 className= 'col-lg-3'>{speaker.email} </h3>
-          <h3 className= 'col-lg-3'>date </h3>
+          <h3 className= 'col-lg-3'>December 12 2018</h3>
+          <div className="col-lg-2">
+           <button className="more-info">info</button>
           </div>
+              
+        </div>
         }) 
        }
     </div>

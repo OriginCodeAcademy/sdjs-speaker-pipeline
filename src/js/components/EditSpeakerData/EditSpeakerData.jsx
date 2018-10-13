@@ -78,55 +78,63 @@ export default class EditSpeakerData extends React.Component {
 
   render() {
     return (
-      <div>
-        <br />
-        <Link className="btn grey" to="/admin">
-          Back
-        </Link>
-        <h1>Edit Meetup</h1>
+    <div>
+      <Link className="btn grey" to="/admin">
+      Back
+    </Link>
+      <div className="container-fluid admin-box col-md-10">
+        <h2>Edit Meetup</h2>
         <form onSubmit={this.onSubmit.bind(this)}>
+        <label htmlFor="firstName">First Name</label>
           <div className="input-field">
             <input
               type="text"
               name="firstName"
               ref="firstName"
+              className='form-control'
               value={this.state.firstName}
               onChange={this.handleInputChange}
             />
-            <label htmlFor="firstName">First Name</label>
           </div>
+          <label htmlFor="lastName">Last Name</label>
           <div className="input-field">
             <input
               type="text"
               name="lastName"
               ref="lastName"
+              className='form-control'
               value={this.state.lastName}
               onChange={this.handleInputChange}
+              
             />
-            <label htmlFor="lastName">Last Name</label>
           </div>
+          <label htmlFor="email">Email</label>
           <div className="input-field">
             <input
               type="text"
               name="email"
               ref="email"
+              className='form-control'
               value={this.state.email}
               onChange={this.handleInputChange}
             />
-            <label htmlFor="email">Email</label>
           </div>
+          <label htmlFor="date">Date</label>
           <div className="input-field">
             <input
               type="text"
               name="date"
               ref="date"
+              className='form-control'
               value={this.state.date}
               onChange={this.handleInputChange}
             />
-            <label htmlFor="date">Date</label>
           </div>
-          <input type="submit" value="Save" className="btn" />
+          <div className="buttonholder">
+          <button type="submit" value="Save" className="button">SUBMIT</button>
+          </div>
         </form>
+      </div>
       </div>
     );
   }
