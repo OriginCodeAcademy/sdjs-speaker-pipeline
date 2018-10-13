@@ -14,7 +14,7 @@ class App extends Component {
             <Route exact path="/login" component={AdminLogin} />
             <Route exact path="/admin" component={AdminDashboardWithRouter} />
             <Route exact path="/edit" component={EditSpeakerData} />
-            <Route exact path="/speakers/:id" component={SpeakerDetails} />
+            {/* <Route exact path="/speakers/:id" component={SpeakerDetails} /> */}
           </div>
         </Router>
       </div>

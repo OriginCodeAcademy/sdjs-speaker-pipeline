@@ -22,7 +22,7 @@ class AdminDashboard extends Component {
           <br /> ADMIN DASHBOARD
         </h2>
         <div className="row" id="category">
-          <h3 className="col-lg-12">SPEAKER</h3>
+          <h3 className="col-lg-12">SPEAKERS</h3>
         </div>
         {allSpeakers.map(speaker => {
           return (
