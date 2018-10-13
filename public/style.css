@@ -104,9 +104,27 @@ header{
 }
 
 .dashboard #list{
-    text-align: center
+    text-align: center;
+    border:1px solid;
+}
+
+.more-info{
+    width: 100%;
+    background-color: orange;
+    color: white;
+    letter-spacing: .3em;
+    margin:5% 0;
+    padding: 6px 9px;
+}
+
+.contentBox{
+    width: 600px;
+    margin:20% auto;
+    background-color: #ccc;
+    min-height: 500;
 }
 
 
-
 /* ------- DASHBOARD STYLES ENDS------------*/
+
+
