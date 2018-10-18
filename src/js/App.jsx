@@ -4,10 +4,12 @@ import AdminDashboardWithRouter from './components/AdminDashboard/index';
 import AdminLogin from './components/AdminLogin/index';
 import EditSpeakerData from './components/EditSpeakerData/EditSpeakerData';
 
+
 class App extends Component {
   render() {
     return (
       <div>
+
         <Router>
           <div>
             <Route exact path="/" />
