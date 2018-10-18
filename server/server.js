@@ -2,10 +2,18 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
-
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
+var path = require('path');
 var app = (module.exports = loopback());
+require('dotenv').config();
 
 app.use(loopback.static('public'));
+
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(loopback.token());
 
 app.start = function() {
   // start the web server
@@ -20,11 +28,16 @@ app.start = function() {
   });
 };
 
-// Bootstrap the application, configure models, datasources and middleware.
-// Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname, function(err) {
   if (err) throw err;
 
-  // start the server if `$ node server.js`
+  app.get('/logout', function(req, res, next) {
+    app.models.accessToken.remove({userId: req.user.id});
+    res.clearCookie('access_token');
+    res.clearCookie('userId');
+    req.logout();
+    res.redirect('/');
+  });
+
   if (require.main === module) app.start();
 });

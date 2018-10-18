@@ -7,19 +7,21 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "build": "webpack --mode development",
-    "start": "npm run build && node .",
+    "build": "webpack --mode production",
+    "start": " node .",
     "test": "npm run build && mocha --require ignore-styles test/**/**.spec.js --exit"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
+    "dotenv": "^6.1.0",
     "helmet": "^3.10.0",
     "loopback": "^3.19.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.0.0",
     "loopback-connector-mongodb": "^3.8.0",
+    "morgan": "^1.9.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",

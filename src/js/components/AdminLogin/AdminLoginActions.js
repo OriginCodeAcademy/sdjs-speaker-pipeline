@@ -20,7 +20,7 @@ export function submitLogin(credentials) {
     type: 'SUBMIT_LOGIN',
     payload: axios
       .post('/api/Users/login', {email, password})
-      // .post('/api/Users/login', {email: 'now@now.com', password: '1234'})
+      // .post('/api/Users/login', {email: 'test@test.com', password: '1234'})
       .then(res => res.data)
       .catch(err => {
         console.log('Post Error: ', err);
