@@ -1,35 +1,182 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900');
 
 body{
+    width: 100%;
+    height: 100%;
     font-family: 'Lato', sans-serif;
 }
 
 
-/* ------- ADMIN LOGIN STYLES STARTS------------*/
 
-.admin-box{
+.header-nav{
+    width: 100%;
+    height:auto;
     background-color:white;
-    opacity: .8;
-    border: 1px solid #ccc;
-    padding: 0 3em;
-    margin:5% auto;
-    -webkit-box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
-    -moz-box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
-    box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
+    padding:5px;
+    z-index:1;
+    -webkit-box-shadow: 0px 10px 20px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 10px 20px -7px rgba(0,0,0,0.75);
+    box-shadow: 0px 10px 20px -7px rgba(0,0,0,0.75);
 }
 
+.header-logo{
+    width: 140px;
+}
+
+.blink{
+    /* background-color: #f0db4f; */
+    border:1px solid #ccc;
+    padding: 3px 20px;
+    margin: 0px 6px 0;
+    border-radius: 1px;
+    background-color: black;
+    color: #ccc;
+    letter-spacing: .6em;
+
+}
+
+.blink:hover{
+    border:1px solid white;
+    color:white;
+}
+
+.header-link{
+   
+    width: 50px;
+    letter-spacing: .8em;
+    font-size: .8em;
+    text-align:center;
+}
+
+.rnav{
+    padding: 10px 3px;
+    float:right;
+}
+
+/* ------- ADMIN LOGIN STYLES STARTS------------*/
+.Admin-bg{
+    width: 100%;
+    height: 100vh;
+}
+
+.AdminLogin:before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    content: " ";
+    background: url('images/bg.jpg');
+    background-size: cover;
+    opacity: 0.2;
+}
+.AdminLogin{
+    padding: 2% 2%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+
+    opacity: .9;
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+  
+.admin-box{
+    /* background-color:rgba(0,0,0,0.47); */
+    background-color:white;
+    border: 1px solid white;
+    z-index: 99999;
+    position: relative;
+    padding: 0 1em;
+    margin:2% auto;
+   -webkit-box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
+    -moz-box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
+    box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
+    -webkit-animation: scale-in-hor-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: scale-in-hor-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes scale-in-hor-center {
+    0% {
+      -webkit-transform: scaleX(0);
+               transform: scaleX(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleX(1);
+              transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in-hor-center {
+    0% {
+      -webkit-transform: scaleX(0);
+              transform: scaleX(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleX(1);
+              transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+
 .logo-holder{
-    padding: 20px;
+    padding: 20px 0px ;
 }
 
 .admin-box img{
-    width:200px;
+    width:140px;
 
 }
 
+.l-input{
+    width: 50%;
+    margin:0 auto;
+}
+
 .admin-box h2{
+    font-size: 1.3em;
+    color:black;
     text-align: center;
-    letter-spacing: .3em;
+    letter-spacing: .4em;
     padding:.8em 2em 2em;
     line-height: 1.5em;
     text-shadow: 1px 2px 3px #666;
@@ -38,50 +185,75 @@ body{
 
 .admin-box label{
     letter-spacing: .4em;
-    font-size: 1.2em;
+    font-size: .7em;
+    color:#666;
 }
 
 .admin-box input{
     letter-spacing: .4em;
+    font-size: .7em;
+    height: 30px;
+    background-color:rgba(0,0,0,0.27);
+    border:1px solid #666;
+}
+
+.admin-box input:hover{
+    border:1px solid white;
+    transition: 1.8s;
+
 }
 
 .buttonholder{
     text-align: center;
-    margin: 5em;
     width: 100%;
-    margin:4em auto 5em;
+    margin:2em auto 5em;
 }
 
 .button{
-    width: 280px;
+    width: 200px;
     margin:0 auto;
     background-color:orange;
-    color:white;
-    font-size: 1.3em;
-    letter-spacing: .4em;
-    padding: 7px 8px;
+    border: 1px solid orange;
+    color:#fff;
+    font-size: .8em;
+    letter-spacing: .79em;
+    padding: 6px 5px;
+
 }
 
 .button:hover{
-    background-color:white;
-    color:orange;
-    transition: 2s;
-    -webkit-box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
+    border: 1px solid black;
+    color:white;
+    transition: 1.8s;
+    /* -webkit-box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
     -moz-box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
-    box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
+    box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27); */
 }
 
 /* ------- ADMIN LOGIN STYLES ENDS------------*/
 
-header{
-    width:100%;
-    height:auto;
-    padding: 10px 8px;
-    height:black;
-    color: white;
-}
+
 
 /* ------- DASHBOARD STYLES BEGINS------------*/
+
+.dashboard-box{
+    width: 100%;
+    height:100vh;
+    opacity: .9;
+    margin: 0 auto;
+    background-image: url('images/bg2.jpg');
+    background-size:cover;
+}
+
+ /* .dash-pad{
+     width: 80%;
+     height: 100%;
+     margin:0 auto;
+    background-color:rgba(0,0,0,0.27);
+    -webkit-box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
+    -moz-box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
+    box-shadow: 0px 1px 13px 4px rgba(0,0,0,0.27);
+}  */
 
 .dashboard h2{
     text-align: center;
@@ -98,23 +270,34 @@ header{
 }
 
 .dashboard #category{
-    background-color: gray;
+    background-color:rgba(0,0,0,0.47);
+    opacity: .8;
     color: white;
     text-align: center;
 }
 
 .dashboard #list{
     text-align: center;
-    border:1px solid;
+    color:white;
+    background-color:rgba(0,0,0,0.27);
+    margin:10px 0;
 }
 
 .more-info{
-    width: 100%;
-    background-color: orange;
-    color: white;
-    letter-spacing: .3em;
-    margin:5% 0;
-    padding: 6px 9px;
+    width: 50%;
+    background-color:rgba(0,0,0,0.27);
+    letter-spacing: .4em;
+    margin:1% 0 4%;
+    padding: 8px 3px;
+    /* border:1px solid #ccc; */
+    font-size: .7em;
+    color:white;
+}
+
+.more-info:hover{
+    background-color: white;
+    color: black;
+    border:1px solid white;
 }
 
 .contentBox{
@@ -128,3 +311,49 @@ header{
 /* ------- DASHBOARD STYLES ENDS------------*/
 
 
+@media only screen and (min-width: 600px){
+
+    .AdminLogin{
+        padding: 5% 25%;
+    }
+    
+    .admin-box{
+        margin:5% auto;
+    }
+
+}
+
+@media only screen and (min-width: 1177px){
+
+
+
+
+
+    .dashboard-box{
+        width: 100%;
+    }
+
+
+    .dash-title{
+        font-size: 1.5em;
+        padding:2em;
+        line-height: 1.5em;
+    }
+
+    .n-categories{
+        display: none;
+        text-align: center;
+    }
+
+    .d-categories{
+        display: inline-block;
+        text-align: center
+    }
+
+    .more-info{
+        width: 100%;
+        margin:5% 0;
+        padding: 6px 9px;
+    }
+
+}

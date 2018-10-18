@@ -92,10 +92,15 @@ export default class EditSpeakerData extends React.Component {
 
   render() {
     return (
-    <div>
-      <Link className="btn grey" to="/admin">
-      Back
-    </Link>
+    <div className="dashboard-box">
+    <div className="header-nav">
+    <img src ="images/logo.png" className="header-logo"></img>
+      <div className="rnav">
+    <Link to="/admin" className="header-link">
+      <button className="blink">BACK</button>
+    </Link>   
+    </div>
+  </div>
       <div className="container-fluid admin-box col-md-10">
         <h2>Edit Meetup</h2>
         <form onSubmit={this.onSubmit.bind(this)}>

@@ -47,7 +47,10 @@ export default class AdminLogin extends React.Component {
       return <Redirect to="/admin" />;
     }
     return (
+      <div className="Admin-bg">
+      <div className="AdminLogin">
       <div
+<<<<<<< Updated upstream
         id="admin-login-container"
         className="container-fluid admin-box col-md-6"
       >
@@ -82,6 +85,40 @@ export default class AdminLogin extends React.Component {
                 required="required"
               />
             </div>
+=======
+        id='admin-login-container'
+        className='admin-box col-md-12'>
+        <div className="logo-holder">        
+          <img src="images/logo.png" />
+        </div>
+        <h2>SAN DIEGO JAVASCRIPT <br></br>ADMIN LOGIN</h2>
+        <form onSubmit={this.handleSubmit}>
+          <div className='form-row l-input' >
+          <div className='form-group col-md-12'>
+            <label>ENTER EMAIL: </label>
+            <input
+              id='admin-email'
+              type='text'
+              name='admin-email'
+              className='form-control'
+              placeholder='Email'
+              onChange={this.handleEmailChange}
+              required='required'
+            />
+          </div>
+          <div className='form-group col-md-12'>
+            <label>ENTER PASSWORD: </label>
+            <input
+              id='admin-password'
+              type='password'
+              name='adminPassword'
+              className='form-control'
+              placeholder='Password'
+              onChange={this.handlePasswordChange}
+              required='required'
+            />
+          </div>
+>>>>>>> Stashed changes
           </div>
           <div className="buttonholder">
             <button
@@ -95,6 +132,11 @@ export default class AdminLogin extends React.Component {
           </div>
         </form>
       </div>
+<<<<<<< Updated upstream
+=======
+      </div>
+      </div>
+>>>>>>> Stashed changes
     );
   }
 }
