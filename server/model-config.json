@@ -1,24 +1,21 @@
 {
   "_meta": {
-    "sources": [
-      "loopback/common/models",
-      "loopback/server/models",
-      "../common/models",
-      "./models"
-    ],
-    "mixins": [
-      "loopback/common/mixins",
-      "loopback/server/mixins",
-      "../common/mixins",
-      "./mixins"
-    ]
+    "sources": ["loopback/common/models", "loopback/server/models", "../common/models", "./models"],
+    "mixins": ["loopback/common/mixins", "loopback/server/mixins", "../common/mixins", "./mixins"]
   },
   "User": {
     "dataSource": "sdjs"
   },
   "AccessToken": {
     "dataSource": "sdjs",
-    "public": false
+    "public": true,
+    "relations": {
+      "User": {
+        "type": "belongsTo",
+        "model": "User",
+        "foreignKey": "userId"
+      }
+    }
   },
   "ACL": {
     "dataSource": "sdjs",

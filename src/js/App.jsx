@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import AdminDashboardWithRouter from './components/AdminDashboard/index';
 import AdminLogin from './components/AdminLogin/index';
 import EditSpeakerData from './components/EditSpeakerData/EditSpeakerData';

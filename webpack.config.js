@@ -10,6 +10,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/dist'),
+    publicPath: '/',
   },
 
   resolve: {
@@ -31,5 +32,8 @@ module.exports = {
         loader: 'file?name=[name].[ext]',
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
 };

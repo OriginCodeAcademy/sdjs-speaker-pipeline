@@ -1,6 +1,9 @@
 import initialState from '../../initialState';
 
-export default function AdminLoginReducer(state = initialState.adminLogin, action) {
+export default function AdminLoginReducer(
+  state = initialState.adminLogin,
+  action
+) {
   const {type, payload} = action;
   switch (type) {
     case 'UPDATE_EMAIL_INPUT': {
@@ -21,12 +24,6 @@ export default function AdminLoginReducer(state = initialState.adminLogin, actio
       return {
         ...state,
         user: payload,
-      };
-    }
-
-    case 'SUBMIT_LOGIN_FAILURE': {
-      return {
-        ...state,
       };
     }
 

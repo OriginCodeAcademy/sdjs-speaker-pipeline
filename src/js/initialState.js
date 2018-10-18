@@ -1,16 +1,18 @@
 //set initial sate here
 const initialState = {
+  adminLogin: {
+    user: null,
+    email: '',
+    password: '',
+  },
+  adminDashboard: {
+    allSpeakers: [],
+    adminLogout: '',
+  },
+  speakerItem: {
+    speakerDetails: [],
+  },
+  speakerData: {editSpeakerData: []},
+};
 
-    adminLogin: {
-      user: null,
-      email: '',
-      password: ''
-    },
-    adminDashboard: {
-      allSpeakers: []
-    }
-
-  };
-  
-  export default initialState;
-  
+export default initialState;
