@@ -19,13 +19,8 @@ export function submitLogin(credentials) {
   return {
     type: 'SUBMIT_LOGIN',
     payload: axios
-<<<<<<< Updated upstream
       .post('/api/Users/login', {email, password})
       // .post('/api/Users/login', {email: 'test@test.com', password: '1234'})
-=======
-      // .post('/api/Users/login', {email, password})
-       .post('/api/Users/login', {email: 'now@now.com', password: '1234'})
->>>>>>> Stashed changes
       .then(res => res.data)
       .catch(err => {
         console.log('Post Error: ', err);

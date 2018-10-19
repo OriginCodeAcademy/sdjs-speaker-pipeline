@@ -8,6 +8,7 @@
   "scripts": {
     "lint": "eslint .",
     "build": "webpack --mode production",
+    "dev": "webpack --mode development",
     "start": " node .",
     "test": "npm run build && mocha --require ignore-styles test/**/**.spec.js --exit"
   },
