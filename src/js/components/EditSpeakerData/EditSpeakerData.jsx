@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {withRouter, Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import axios from 'axios';
-// import {getSpeakers} from './EditSpeakerDataActions';
+import { getSpeakerDetails } from './EditSpeakerDataActions';
 
 export default class EditSpeakerData extends React.Component {
   constructor(props) {
@@ -11,7 +11,12 @@ export default class EditSpeakerData extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
-      date: '',
+      phone: '',
+      organization: '',
+      github: '',
+      twitter: '',
+      website: '',
+      linkedin: '',
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -21,39 +26,8 @@ export default class EditSpeakerData extends React.Component {
     this.getSpeakerDetails();
   }
 
-  // getSpeakerDetails() {
-  //   let speakerId = this.props.match.params.id;
-  //   axios
-  //     .get(`http://localhost:3000/api/speakers/${speakerId}`)
-  //     .then(response => {
-  //       this.setState(
-  //         {
-  //           id: response.data.id,
-  //           firstName: response.data.firstName,
-  //           lastName: response.data.lastName,
-  //           email: response.data.email,
-  //           date: response.data.date,
-  //         },
-  //         () => {
-  //           console.log(this.state);
-  //         }
-  //       );
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-  getSpeakerDetails(credentials) {
-    let speakerId = this.props.match.params.id;
-    return {
-      type: 'GET_SPEAKER_DETAILS',
-      payload: axios
-        .get(`/api/Speakers/${speakerId}`, {credentials})
-        .then(res => res.data)
-        .catch(err => {
-          console.log('Post Error: ', err);
-          return err;
-        }),
-    };
+  handleGetSpeakerData(e) {
+    e.preventDefault();
   }
 
   editSpeaker(newSpeaker) {
