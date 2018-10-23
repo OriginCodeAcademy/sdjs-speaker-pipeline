@@ -27,6 +27,18 @@ export default class Landing extends React.Component {
                     </button>
                   </div>
                 </Link>
+
+                <Link to="/register" className="header-link">
+                  <div className="buttonholder">
+                    <button
+                      type="submit"
+                      id='speaker-submit-button'
+                      className="button"
+                    >
+                      TO SPEAKER REGISTER
+                    </button>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

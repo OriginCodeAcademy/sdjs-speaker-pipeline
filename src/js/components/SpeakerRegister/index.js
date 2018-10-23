@@ -1,10 +1,11 @@
 import {connect} from 'react-redux';
-import SpeakerItem from './RegisterSpeaker';
+import SpeakerRegister from './SpeakerRegister';
 
 function mapStoreToProps(store) {
   return {
-    user: store.adminLogin.user,
-    speakerDetails: store.speakerRegister.speakerDetails,
+    speakerFirstName: store.speaker.speakerFirstName,
+    speakerLastName: store.speaker.speakerLastName,
+    speakerEmail: store.speaker.speakerEmail
   };
 }
 
