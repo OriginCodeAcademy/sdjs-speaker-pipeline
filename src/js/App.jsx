@@ -4,6 +4,7 @@ import AdminDashboardWithRouter from './components/AdminDashboard/index';
 import AdminLogin from './components/AdminLogin/index';
 import EditSpeakerData from './components/EditSpeakerData/EditSpeakerData';
 import Landing from './components/Landing/Landing';
+import SpeakerRegister from './components/SpeakerRegister/SpeakerRegister';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
             <Route path="/login" component={AdminLogin} />
             <Route path="/admin" component={AdminDashboardWithRouter} />
             <Route path="/edit" component={EditSpeakerData} />
+            <Route path="/register" component={SpeakerRegister} />
           </div>
         </Router>
       </div>

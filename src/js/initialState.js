@@ -12,7 +12,19 @@ const initialState = {
   speakerItem: {
     speakerDetails: [],
   },
-  speakerData: {editSpeakerData: []},
+  editSpeakerData: {
+    editSpeakerData: [],
+  },
+  speakerRegister: {
+    speakerFirstName: '',
+    speakerLastName: '',
+    speakerEmail: '',
+    speakerPhone: '',
+    eventDate: '',
+    speakerGithub: '',
+    speakerLinkedin: '',
+    speakerWebsite: '',
+  }
 };
 
 export default initialState;

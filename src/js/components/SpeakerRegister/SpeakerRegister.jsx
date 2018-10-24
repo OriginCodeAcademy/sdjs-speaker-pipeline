@@ -1,26 +1,30 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 
 export default class SpeakerRegister extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      date: '',
+      speakerFirstName: '',
+      speakerLastName: '',
+      speakerEmail: '',
+      eventDate: '',
+      speakerGithub: '',
+      speakerLinkedin: '',
+      speakerWebsite: ''
     };
 
     // this.handleChange = this.handleChange.bind(this);
     // this.handleClick = this.handleClick.bind(this);
     // this.handleVerify = this.handleVerify.bind(this);
+    // const handleChange = () => 
   };
 
 
   render() {
-    if (this.props.user) {
-      return <Redirect push to='/register' />
-    }
+    
+    const {speakerRegister} = this.props;
     return (
       <div
         id='admin-login-container'
@@ -36,12 +40,12 @@ export default class SpeakerRegister extends React.Component {
           <div className='form-group col-md-12'>
             <label>*FIRST NAME:  </label>
             <input
-              id='speaker-firstName'
+              id='speakerFirstName'
               type='text'
-              name='speaker-firstName'
+              name='speakerFirstName'
               className='form-control'
               placeholder='first name'
-              // onChange={this.handleFirstNameChange}
+              onChange={this.handleFirstNameChange}
               required='required'
             />
           </div>
@@ -49,12 +53,12 @@ export default class SpeakerRegister extends React.Component {
           <div className='form-group col-md-12'>
             <label>*LAST NAME:  </label>
             <input
-              id='speaker-lastName'
+              id='speakerLastName'
               type='text'
-              name='speaker-lastName'
+              name='speakerLastName'
               className='form-control'
               placeholder='last name'
-              // onChange={this.handleLastNameChange}
+              onChange={this.handleLastNameChange}
               required='required'
             />
           </div>
@@ -62,12 +66,12 @@ export default class SpeakerRegister extends React.Component {
           <div className='form-group col-md-12'>
             <label>*EMAIL:  </label>
             <input
-              id='speaker-email'
+              id='speakerEmail'
               type='text'
-              name='speaker-email'
+              name='speakerEmail'
               className='form-control'
               placeholder='Email'
-              // onChange={this.handleEmailChange}
+              onChange={this.handleEmailChange}
               required='required'
             />
           </div>
@@ -75,12 +79,12 @@ export default class SpeakerRegister extends React.Component {
           <div className='form-group col-md-12'>
             <label>*PHONE:  </label>
             <input
-              id='speaker-phone'
+              id='speakerPhone'
               type='text'
-              name='speaker-phone'
+              name='speakerPhone'
               className='form-control'
               placeholder='Phone'
-              // onChange={this.handlePhoneChange}
+              onChange={this.handlePhoneChange}
               required='required'
             />
           </div>
@@ -88,9 +92,9 @@ export default class SpeakerRegister extends React.Component {
           <div className='form-group col-md-12'>
             <label>DATE REQUESTED: </label>
             <select 
-              id='event-date'
+              id='eventDate'
               type='select'
-              name='event-date'
+              name='eventDate'
               className='form-control'>
                 <option>Select</option>
                 <option>December 4, 2018</option>
@@ -102,28 +106,28 @@ export default class SpeakerRegister extends React.Component {
           <div className='form-group col-md-12'>
             <label>ADDITIONAL LINKS: </label>
             <input
-              id='speaker-github'
+              id='speakerGithub'
               type='text'
-              name='speaker-github'
+              name='speakerGithub'
               className='form-control'
               placeholder='github'
-              // onChange={this.handleGithubChange}
+              onChange={this.handleGithubChange}
             /><br />
             <input
-              id='speaker-linkedin'
+              id='speakerLinkedin'
               type='text'
-              name='speaker-linkedin'
+              name='speakerLinkedin'
               className='form-control'
               placeholder='linkedin'
-              // onChange={this.handleLinkedinChange}
+              onChange={this.handleLinkedinChange}
             /><br />
             <input
-              id='speaker-website'
+              id='speakerWebsite'
               type='text'
-              name='speaker-website'
+              name='speakerWebsite'
               className='form-control'
               placeholder='website'
-              // onChange={this.handleWebsiteChange}
+              onChange={this.handleWebsiteChange}
             />
           </div>
           
@@ -131,7 +135,7 @@ export default class SpeakerRegister extends React.Component {
           <div className="buttonholder">
             <button
               type='submit'
-              id='speaker-submit-button'
+              id='speakerSubmitButton'
               className='button'
               onClick={this.handleSubmit}
             >REGISTER</button>

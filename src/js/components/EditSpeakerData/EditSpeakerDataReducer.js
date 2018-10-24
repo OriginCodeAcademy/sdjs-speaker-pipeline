@@ -1,7 +1,7 @@
-import intialState from '../../initialState';
+import initialState from '../../initialState';
 
 export default function EditSpeakerDataReducer(
-  state = intialState.speakerData,
+  state = initialState.editSpeakerData,
   action
 ) {
   const {type, payload} = action;
