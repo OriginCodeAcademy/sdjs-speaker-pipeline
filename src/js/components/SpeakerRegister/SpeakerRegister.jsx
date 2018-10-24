@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 
 export default class SpeakerRegister extends React.Component {
   constructor(props) {
@@ -14,17 +15,16 @@ export default class SpeakerRegister extends React.Component {
       speakerWebsite: ''
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleVerify = this.handleVerify.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
+    // this.handleVerify = this.handleVerify.bind(this);
+    // const handleChange = () => 
   };
 
 
   render() {
-    if (!this.state.isLoggedIn) {
-      return <Redirect to='/register' />;
-    }
-    const {allSpeakers, user} = this.props;
+    
+    const {speakerRegister} = this.props;
     return (
       <div
         id='admin-login-container'

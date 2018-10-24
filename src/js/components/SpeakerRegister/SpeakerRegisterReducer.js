@@ -1,6 +1,6 @@
 import initialState from '../../initialState';
 
-export default function SpeakerRegisterReducer(state = initialState.speaker, action) {
+export default function SpeakerRegisterReducer(state = initialState.speakerRegister, action) {
   const { type, payload } = action;
 
     switch (type) {
