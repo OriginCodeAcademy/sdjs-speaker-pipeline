@@ -21,13 +21,18 @@ function sendEmailToSpeaker(speakerEmail, meetupTitle, meetupDate) {
             return false;
         }
 
-        // if (status) {
+        if (status && !pending) {
             var emailContent = `Congratulations! Your request to speak at ${meetupTitle} on ${meetupDate} has been approved.`
-        // }
+        }
 
-        // if (!status) {
-        //     var emailContent = `We're sorry your request to speak at ${meetupTitle} on ${meetupDate} has been denied.`
-        // }
+        if (!status && !pending) {
+            var emailContent = `We're sorry your request to speak at ${meetupTitle} on ${meetupDate} has been denied.`
+        }
+
+        if (pending) {
+            var emailContent = `Thank you for signing up to speak ${meetupTitle} on ${meetupDate}. You will be notified as soon as a SDJS admin reviews your request.`
+        }
+        
         const email = {
                 to: `${speakerEmail}`,
                 from: `seahorse8789@gmail.com`,
