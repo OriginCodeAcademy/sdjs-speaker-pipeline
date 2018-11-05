@@ -1,81 +1,95 @@
 const initialstate = {
-    speakerFirstname: '',
-    speakerLastname: '',
-    speakerEmail: '',
-    speakerPhone: '',
-    speakerDate: '', 
-    speakerCompany: '',
-    speakerGithub: '',
-    speakerWebsite: '',
-    speakerLinkedin: '',
+	speakerFirstname: '',
+	speakerLastname: '',
+	speakerEmail: '',
+	speakerPhone: '',
+	speakerDate: '',
+	speakerCompany: '',
+	talkTopic: '',
+	talkDescription: '',
+	speakerGithub: '',
+	speakerWebsite: '',
+	speakerLinkedin: '',
 }
- export default function SignUpReducer(state = initialstate, action) {
-     const { payload, type } = action;
+export default function SignUpReducer(state = initialstate, action) {
+	const { payload, type } = action;
 
-    switch (type) {
-        case 'UPDATE_FIRSTNAME': {
-            return {
-                ...state,
-                speakerFirstname: payload
-            }
+	switch (type) {
+		case 'UPDATE_FIRSTNAME': {
+			return {
+				...state,
+				speakerFirstname: payload
+			}
 		}
 		case 'UPDATE_LASTNAME': {
-            return {
-                ...state,
-                speakerLastname: payload
-            }
+			return {
+				...state,
+				speakerLastname: payload
+			}
 		}
 		case 'UPDATE_EMAIL': {
-            return {
-                ...state,
-                speakerEmail: payload
-            }
+			return {
+				...state,
+				speakerEmail: payload
+			}
 		}
 		case 'UPDATE_PHONE': {
-            return {
-                ...state,
-                speakerPhone: payload
-            }
+			return {
+				...state,
+				speakerPhone: payload
+			}
 		}
 		case 'UPDATE_COMPANY': {
-            return {
-                ...state,
-                speakerCompany: payload
-            }
+			return {
+				...state,
+				speakerCompany: payload
+			}
 		}
 		case 'UPDATE_DATE': {
-            return {
-                ...state,
-                speakerDate: payload
-            }
+			return {
+				...state,
+				speakerDate: payload
+			}
+		}
+		case 'UPDATE_TOPIC': {
+			return {
+				...state,
+				talkTopic: payload
+			}
+		}
+		case 'UPDATE_DESCRIPTION': {
+			return {
+				...state,
+				talkDescription: payload
+			}
 		}
 		case 'UPDATE_GITHUB': {
-            return {
-                ...state,
-                speakerGithub: payload
-            }
+			return {
+				...state,
+				speakerGithub: payload
+			}
 		}
 		case 'UPDATE_WEBSITE': {
-            return {
-                ...state,
-                speakerWebsite: payload
-            }
+			return {
+				...state,
+				speakerWebsite: payload
+			}
 		}
 		case 'UPDATE_LINKEDIN': {
-            return {
-                ...state,
-                speakerLinkedin: payload
-            }
-    }
-    
-    case 'ADD_SPEAKER_FULFILLED': {
-      return {
-        ...state,
-        speakerId: payload.id
-      }
-    }
+			return {
+				...state,
+				speakerLinkedin: payload
+			}
+		}
+
+		case 'ADD_SPEAKER_FULFILLED': {
+			return {
+				...state,
+				speakerId: payload.id
+			}
+		}
 		default: {
 			return state
 		}
-	}	
- }
+	}
+}

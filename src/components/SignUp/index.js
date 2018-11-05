@@ -8,6 +8,8 @@ function mapStoreToProps(store){
       email: store.SignUp.speakerEmail,
       phone: store.SignUp.speakerPhone,
       organization: store.SignUp.speakerCompany,
+      topic: store.SignUp.talkTopic,
+      comments: store.SignUp.talkTopic,
       github: store.SignUp.speakerGithub,
       website: store.SignUp.speakerWebsite,
       linkedin: store.SignUp.speakerLinkedin
