@@ -135,6 +135,14 @@ class SignUp extends Component {
 							<option>February 5, 2019</option>
 						</select>
 					</div>
+          <div>
+            <label htmlFor='topic'>Topic:</label>
+            <input name='topic' id='topic' type='text'/>
+          </div>
+          <div>
+            <label htmlFor='description'>Description: </label>
+            <textarea name='description' id='description' type='text'/>
+          </div>
 					<div>
 						<label>Additional Links: </label>
 						<br/>
