@@ -21,8 +21,9 @@ function talkSubmit(speakerInfo, talkInfo, date) {
 						//let date = response.date
 						Event.findOrCreate({date, name, details})
 							.then(response3 => {
-								//console.log('response3: ', response3)
+								console.log('response3: ', response3)
 								let eventId = response3[0].id
+								console.log('eventId: ', response3[0].id)
 								let ids = { speakerId, eventId };
 								Talk.create( { ...talkInfo, speakerId, eventId})
 									.then(response4 => {
