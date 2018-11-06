@@ -93,7 +93,3 @@ module.exports = { sendEmailToSpeaker, sendEmailToAdmin }
 
 
 
-Speak.afterRemote('nameOfTianasMethod', function(adminEmail, approved, pending, speakerEmail, speakerName, meetupTitle, meetupDate, next) {
-    sendEmailToSpeaker(adminEmail, approved, pending, speakerEmail, speakerName, meetupTitle, meetupDate)
-    next();
-});

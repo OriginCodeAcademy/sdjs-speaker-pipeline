@@ -40,27 +40,29 @@ class AdminDashboard extends Component {
                     </Link>
                     <h1>Pending Speakers</h1>
                     <table>
-                        <tr>
-                            <th>Speaker</th>
-                            <th>Topic</th>
-                            <th>Event</th>
-                            <th>Action</th>
-                        </tr>
-                        {
-                            talkInfo.map((talk, i) => (
-                                <tr key={i}>
-                                    <td> {talk.speaker} </td>
-                                    <td>{talk.topic}</td>
-                                    <td>{talk.event}</td>
-                                    <td>
-                                        <input type='radio' name={talk.talkId} value='Approve' onChange={this.handleRadioChange} />Approve
+                        <tbody>
+                            <tr>
+                                <th>Speaker</th>
+                                <th>Topic</th>
+                                <th>Event</th>
+                                <th>Action</th>
+                            </tr>
+                            {
+                                talkInfo.map((talk, i) => (
+                                    <tr key={i}>
+                                        <td> {talk.speaker} </td>
+                                        <td>{talk.topic}</td>
+                                        <td>{talk.eventName}</td>
+                                        <td>
+                                            <input type='radio' name={talk.talkId} value='Approve' onChange={this.handleRadioChange} />Approve
                                         <input type='radio' name={talk.talkId} value='Deny' onChange={this.handleRadioChange} />Deny
                                         <button name={talk.talkId} onClick={this.handleSubmit}>Submit</button>
-                                        <div>{talk.confirmationMessage ? talk.confirmationMessage : null}</div>
-                                    </td>
-                                </tr>
-                            ))
-                        }
+                                            <div>{talk.confirmationMessage ? talk.confirmationMessage : null}</div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
                     </table>
                 </div>
             )
