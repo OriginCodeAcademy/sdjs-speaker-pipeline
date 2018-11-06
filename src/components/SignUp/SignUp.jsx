@@ -12,7 +12,10 @@ import {
 	updateGithub,
 	updateWebsite,
 	updateLinkedin,
-	addSpeaker
+	talkSubmit,
+	addSpeaker,
+	addEvent,
+	addTalk
 } from './SignUpActions'
 
 class SignUp extends Component {
@@ -90,19 +93,24 @@ class SignUp extends Component {
 
 	submitSpeaker(e) {
 		e.preventDefault();
-		console.log('hello');
 		const {
 			dispatch,
 			firstName,
 			lastName,
 			email,
 			phone,
+			date,
+			details,
+			name,
 			company,
+			topic,
+			comments,
 			github,
 			website,
-			linkedin } = this.props;
+			linkedin,
+		} = this.props;
 
-		dispatch(addSpeaker({
+		dispatch(talkSubmit({
 			firstName,
 			lastName,
 			email,
@@ -111,7 +119,15 @@ class SignUp extends Component {
 			github,
 			website,
 			linkedin
-		}));
+		},
+		{
+			comments, 
+			topic,
+		},
+		date
+		));
+
+		// dispatch(getEvent(date));
 	}
 
 	render() {
@@ -123,11 +139,11 @@ class SignUp extends Component {
 				<form onSubmit={this.submitSpeaker}>
 					<h3>Speaker Registration</h3>
 					<div>
-						<label htlmFor='speaker-firstname'>First Name: </label>
+						<label htmlFor='speaker-firstname'>First Name: </label>
 						<input name='speaker-firstname' id='speaker-firstname' type='text' onChange={this.handleFirstname} />
 					</div>
 					<div>
-						<label htlFor='speaker-lastname'>Last Name: </label>
+						<label htmlFor='speaker-lastname'>Last Name: </label>
 						<input name='speaker-lastname' id='speaker-lastname' type='text' onChange={this.handleLastname} />
 					</div>
 					<div>
@@ -146,7 +162,7 @@ class SignUp extends Component {
 						<label htmlFor='event-date'>Date Requested: </label>
 						<select name='event-date' id='event-date' type='select' onChange={this.handleDate}>
 							<option>December 4, 2018</option>
-							<option>January 8, 2019</option>
+							<option>2018-11-06</option>
 							<option>February 5, 2019</option>
 						</select>
 					</div>
