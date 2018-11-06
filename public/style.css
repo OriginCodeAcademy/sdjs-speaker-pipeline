@@ -1,7 +1,52 @@
+.banner {
+  background-image: -webkit-linear-gradient(90deg, #0f5b89, #06263a), -webkit-linear-gradient(270deg, #1884c3, #1884c3);
+  background-image: linear-gradient(0deg, #0f5b89, #06263a), linear-gradient(180deg, #1884c3, #1884c3);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+  width: 100%;
+}
+.banner .btn {
+  margin-bottom: 8px;
+}
+.banner h1 {
+  font-size: 48px;
+  padding-top: 40px;
+}
+.banner p {
+  font-size: 24px;
+  padding-bottom: 15px;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: lightgray;
-  color: gray;
+}
+
+.btn {
+  background-color: #1884c3;
+  border: 3px solid transparent;
+  color: white;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 23px;
+  padding-top: 12px;
+  padding-right: 23px;
+  padding-bottom: 12px;
+  padding-left: 23px;
+  text-transform: uppercase;
+  transition: border 200ms ease, color 200ms ease, background-color 200ms ease;
+  transition-property: border, color, background-color;
+  transition-duration: 200ms, 200ms, 200ms;
+  transition-timing-function: ease, ease, ease;
+  transition-delay: 0s, 0s, 0s;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
 }
 
 /*# sourceMappingURL=style.css.map */
