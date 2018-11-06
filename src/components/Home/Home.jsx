@@ -16,7 +16,8 @@ class Home extends Component {
 					</Link>
 				</div>
 				<div className='banner'>
-					<h1>sandiego.js Speaker Pipeline</h1>
+					<h1>sandiego.js</h1>
+					<h2>Speaker Pipeline</h2>
 					<p>Share your perspective with the San Diego JavaScript community</p>
 					<Link to='/SignUp'>
 						<button className="btn">Get Started</button>
@@ -54,8 +55,8 @@ class Home extends Component {
 						First, if you aren't sure what to share,
 						<a href='https://github.com/sandiegojs/sandiegojs.github.com/wiki/Talk-Ideas'
 							target="_blank" className='inline-link'>
-							here are a few ideas.
-						</a>
+							 here are a few ideas
+						</a>.
 					</p>
 					<p>
 						Second, you will be presenting on a 800x600px projector so make sure
