@@ -10,6 +10,7 @@ const initialstate = {
 	speakerGithub: '',
 	speakerWebsite: '',
 	speakerLinkedin: '',
+	submitted: 'false'
 }
 export default function SignUpReducer(state = initialstate, action) {
 	const { payload, type } = action;
@@ -84,7 +85,8 @@ export default function SignUpReducer(state = initialstate, action) {
 		case 'TALK_SUBMIT_FULFILLED': {
 			console.log(payload);
 			return {
-				...state
+				...state,
+				submitted: true
 			}
 		}
 		case 'GET_DATES_FULFILLED': {
