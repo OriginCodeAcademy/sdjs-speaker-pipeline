@@ -83,7 +83,6 @@ export default function SignUpReducer(state = initialstate, action) {
 			}
 		}
 		case 'TALK_SUBMIT_FULFILLED': {
-			console.log(payload);
 			return {
 				...state,
 				submitted: true
@@ -95,31 +94,6 @@ export default function SignUpReducer(state = initialstate, action) {
 				events: payload
 			}
 		}
-
-		// case 'ADD_SPEAKER_FULFILLED': {
-		// 	return {
-		// 		...state,
-		// 		speakerId: payload.id
-		// 	}
-		// }
-		// case 'ADD_EVENT_FULFILLED': {
-		// 	return {
-		// 		...state,
-		// 		eventId: payload.id
-		// 	}
-		// }
-		// case 'ADD_TALK_FULFILLED': {
-		// 	return {
-		// 		...state,
-		// 		talkId: payload.id
-		// 	}
-		// }
-		// case 'ADD_EVENT_FULLFILLED': {
-		// 	return {
-		// 		...state,
-		// 		eventId: payload.id
-		// 	}
-		// }
 		default: {
 			return state
 		}

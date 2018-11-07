@@ -133,12 +133,15 @@ class SignUp extends Component {
 			date
 		));
 
-		// dispatch(getEvent(date));
 	}
 
 	render() {
+<<<<<<< HEAD
 		const { events } = this.props;
 		console.log({ events });
+=======
+		const { events, submitted } = this.props;
+>>>>>>> deletes logs and comments
 		return (
 			<div className='signUp-container'>
 				<div className='navbar'>
