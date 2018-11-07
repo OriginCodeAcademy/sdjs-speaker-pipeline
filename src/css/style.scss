@@ -55,7 +55,7 @@ $secondary-color: gray;
     }
 }
 .banner {
-    margin-top: 60px;
+    margin-top: 80px;
     align-items: center;
     background-image: linear-gradient(180deg, rgba(24, 132, 195, .64), rgba(24, 132, 195, .64)), url(https://tinyurl.com/ycn372dv);
     background-size: auto, cover;
@@ -298,6 +298,7 @@ label {
 
 .form-container{
     // background-image: linear-gradient(white, #adaaaa);
+    margin-top: 85px;
     form {
         margin: auto;
         width: 50%;
