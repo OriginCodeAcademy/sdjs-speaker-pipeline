@@ -51,8 +51,9 @@ export default function AdminDashboardReducer(state = initialstate, action) {
         case 'GET_EVENTS_FULFILLED':{
             return {
                 ...state,
-                eventInfo: payload.eventInfo
+                eventInfo: payload
             }
+        
         }
         default: {
             return state

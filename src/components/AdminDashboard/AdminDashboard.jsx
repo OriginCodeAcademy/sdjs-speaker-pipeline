@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
-import { getTalkData, handleSelect, changeTalkStatus } from './AdminDashboardActions';
-const moment = require('moment');
+import { getEvents, handleSelect, changeTalkStatus } from './AdminDashboardActions';
 
 class AdminDashboard extends Component {
   constructor(props) {
@@ -13,7 +12,7 @@ class AdminDashboard extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(getTalkData());
+    dispatch(getEvents());
   }
 
   handleSelect(e) {
@@ -35,6 +34,7 @@ class AdminDashboard extends Component {
           <Navbar />
           <div className='admin-banner'>
             <h1>Admin Dashboard</h1>
+            <p>hello</p>
           </div>
           <div className='admin-info'>
             <h3>Pending Speakers</h3>
@@ -100,6 +100,7 @@ class AdminDashboard extends Component {
           <Navbar />
           <div className='admin-banner'>
             <h1>Admin Dashboard</h1>
+            <p>hello</p>
           </div>
           <div className='admin-info'>
             <h3>Pending Speakers</h3>
