@@ -3,7 +3,8 @@ import AdminDashboard from './AdminDashboard';
 
 function mapStoreToProps(store){
     return {
-        talkInfo: store.AdminDashboard.talkInfo
+        talkInfo: store.AdminDashboard.talkInfo,
+        eventInfo: store.AdminDashboard.eventInfo
     };
 }
 

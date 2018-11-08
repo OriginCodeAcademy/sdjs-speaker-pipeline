@@ -3,7 +3,7 @@ const app = require('../server')
 function getPendingTalkDetails() {
   return new Promise((resolve, reject) => {
     const { Talk, Speaker, Event } = app.models;
-    Talk.find({ where: { or: [{status: "Pending" }, {status: "In Contact"}] }})
+    Talk.find({ where: { status: 'Pending' } })
       .then(pendingTalks => {
         const talkInformation = pendingTalks.map((talk) => {
           return Speaker.findById(talk.speakerId)

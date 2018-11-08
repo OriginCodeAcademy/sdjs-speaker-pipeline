@@ -1,17 +1,19 @@
 const axios = require('axios');
+import AdminDashboard from './AdminDashboard'
 
 export const getTalkData = () => {
-    return {
-        type: 'GET_TALK_DATA',
-        payload: axios.get('api/talks/getPendingTalkDetails')
-        .then(pendingTalkInfo => {
-            const talkIds = pendingTalkInfo.data.map(talk => talk.talkId)
-            return {
-                pendingTalkInfo: pendingTalkInfo.data,
-                talkIds: talkIds
-            }
-        })
-    }
+	return {
+		type: 'GET_TALK_DATA',
+		payload: axios.get('api/talks/getPendingTalkDetails')
+			.then(pendingTalkInfo => {
+				const talkIds = pendingTalkInfo.data.map(talk => talk.talkId)
+				console.log(pendingTalkInfo.data)
+				return {
+					pendingTalkInfo: pendingTalkInfo.data,
+					talkIds: talkIds
+				}
+			})
+	}
 }
 
 export const handleSelect = (talkId, selectedStatus) => {

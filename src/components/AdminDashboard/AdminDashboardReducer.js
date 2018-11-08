@@ -1,5 +1,6 @@
 const initialstate = {
     talkInfo: [],
+    eventInfo: [],
 }
 
 export default function AdminDashboardReducer(state = initialstate, action) {
@@ -45,6 +46,12 @@ export default function AdminDashboardReducer(state = initialstate, action) {
             return {
                 ...state,
                 talkInfo: updatedTalkInfo
+            }
+        }
+        case 'GET_EVENTS_FULFILLED':{
+            return {
+                ...state,
+                eventInfo: payload.eventInfo
             }
         }
         default: {
