@@ -28,7 +28,10 @@ function getPendingTalkDetails() {
             .catch(err => ({ error: 'could not find speaker', err }))
         })
         Promise.all(talkInformation)
-          .then((results) => resolve(results))
+          .then(results => {
+            console.log(results)
+            return resolve(results);
+          })
           .catch(err => ({ error: 'could not return results', err }))
       })
       .catch(err => ({ error: 'could not find pending talks', err }))

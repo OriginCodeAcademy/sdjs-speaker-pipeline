@@ -1,5 +1,5 @@
 const axios = require('axios');
-import AdminDashboard from './AdminDashboard'
+import Talks from './Talks'
 
 export const getTalkData = () => {
 	return {
@@ -7,7 +7,7 @@ export const getTalkData = () => {
 		payload: axios.get('api/talks/getPendingTalkDetails')
 			.then(pendingTalkInfo => {
 				const talkIds = pendingTalkInfo.data.map(talk => talk.talkId)
-				console.log(pendingTalkInfo.data)
+				console.log('pendingTalkInfo: ', pendingTalkInfo.data)
 				return {
 					pendingTalkInfo: pendingTalkInfo.data,
 					talkIds: talkIds
@@ -37,14 +37,4 @@ export const changeTalkStatus = (talkId, selectedStatus) => {
     }
 }
 
-export const getEvents = () => {
-	return {
-		type: 'GET_EVENTS',
-		payload: axios.get('api/events/getEvents')
-			.then(response => {
-				console.log(response.data)
-				return response.data
-			})
-			.catch(err => console.log(err))
-	}
-}
+

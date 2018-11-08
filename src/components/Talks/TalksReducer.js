@@ -3,11 +3,12 @@ const initialstate = {
     eventInfo: [],
 }
 
-export default function AdminDashboardReducer(state = initialstate, action) {
+export default function TalksReducer(state = initialstate, action) {
     const { payload, type } = action;
 
     switch (type) {
         case 'GET_TALK_DATA_FULFILLED': {
+            console.log(payload);
             return {
                 ...state,
                 talkInfo: payload.pendingTalkInfo
@@ -48,13 +49,7 @@ export default function AdminDashboardReducer(state = initialstate, action) {
                 talkInfo: updatedTalkInfo
             }
         }
-        case 'GET_EVENTS_FULFILLED':{
-            return {
-                ...state,
-                eventInfo: payload
-            }
         
-        }
         default: {
             return state
           }
