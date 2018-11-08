@@ -80,33 +80,6 @@ describe('server/server.js', function() {
       })
       .catch(err => console.log(err))
   })
-//not sure if this test will work. need austins help to test the full functionality of a user logging in then submitting a new talk
-  it('Should allow a returning speaker to login and submit a new talk', (done) => {
-    nightmare
-      .goto('http://localhost:4444/')
-      .wait(1000)
-//this block of code is selecting austins login page and then will be redirected to #/SignUp
-      .select('#user-email', 'john@email.com')
-      .select('#user-password', 'password')
-      .wait(1000)
-      .click('#login')
-
-      .select('#event-date', '2018-11-15')
-      .type('#topic', 'topic 2')
-      .wait(1000)
-      .type('#description', 'description 2')
-      .wait(1000)
-      .click('#speaker-submit')
-      .wait(1000)
-      .goto('http://localhost:4444/#/AdminDashboard')
-      .evaluate(() => document.querySelector('td').innerText)
-      .end()
-      .then(text => {
-        expect(text).to.contain('John Smith')
-        done();
-      })
-      .catch(err => console.log(err))
-  })
 
   it('Speaker signup should have in input tag with the id of speaker-lastname', (done) => {
     nightmare
