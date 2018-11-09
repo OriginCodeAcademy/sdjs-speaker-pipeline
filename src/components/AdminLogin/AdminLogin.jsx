@@ -33,7 +33,7 @@ class AdminLogin extends Component {
 		if (token) return <Redirect push to= '/Admin/Meetups' />
 		return (
 			<div>
-				<Navbar />
+				<AdminNav />
 				<div className='signUp-container'>
 					<div className='form-container login'>
 						<form onSubmit={this.submitLogin}>

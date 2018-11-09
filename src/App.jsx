@@ -3,7 +3,6 @@ import {
   HashRouter as Router,
   Route
 } from 'react-router-dom';
-import AdminLogin from './components/AdminLogin';
 import Home       from './components/Home';
 import Meetups    from './components/Meetups';
 import TalksPage  from './components/TalksPage/TalksPage';
