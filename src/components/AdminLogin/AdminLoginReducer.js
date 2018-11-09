@@ -1,6 +1,8 @@
 const initialstate = {
 	username: '',
 	password: '',
+	token: '',
+	userId: '',
 }
 
 export default function AdminLoginReducer(state = initialstate, action) {
@@ -21,9 +23,11 @@ export default function AdminLoginReducer(state = initialstate, action) {
 			}
 		}
 		case 'POST_LOGIN_REJECTED': {
+			alert('Login failed')
 			return {
 				...state,
-				error: payload
+				username: '',
+				password: '',
 			}
 		}
 

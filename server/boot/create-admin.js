@@ -1,43 +1,43 @@
-module.exports = function(app) {
-  const User = app.models.User;
-  const Role = app.models.Role;
-  const RoleMapping = app.models.RoleMapping;
-
-  const email = process.env.ADMIN_EMAIL || 'test@test.com';
-  const password = process.env.ADMIN_PASSWORD;
-  const roleType = process.env.ADMIN_ROLETYPE || '1234';
-
-  const adminObj = {
-    email,
-    password,
-    roleType,
-  };
+module.exports = app => {
+  const {User, Role, RoleMapping} = app.models;
 
   User.findOrCreate(
     {
-      email,
-      password,
-      roleType,
+      where: {
+        'username': process.env.ADMIN_USERNAME,
+      },
     },
-    adminObj,
-    function(err, user) {
-      if (err) return err.message;
-
-      Role.find(
+    {
+      'username': process.env.ADMIN_USERNAME,
+      'email': process.env.ADMIN_EMAIL,
+      'password': process.env.ADMIN_PASSWORD,
+    },
+    (err, user) => {
+      if (err) console.log(err);
+      Role.findOrCreate(
         {
-          name: user.roleType,
+          where: {
+            'name': 'admin',
+          },
         },
-        function(err, role) {
-          if (err) return err.message;
-
-          RoleMapping.create(
+        {
+          'name': 'admin',
+        },
+        (err) => {
+          if (err) console.log(err);
+          RoleMapping.findOrCreate(
             {
-              principalType: role[0].name,
-              principalId: user.id,
-              roleId: role[0].id,
+              where: {
+                principalType: 'admin',
+                principalId: user.id,
+              },
             },
-            function(err, principal) {
-              if (err) return err.message;
+            {
+              principalType: 'admin',
+              principalId: user.id,
+            },
+            (err) => {
+              if (err) console.log(err);
             }
           );
         }

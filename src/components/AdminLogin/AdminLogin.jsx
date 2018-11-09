@@ -29,7 +29,8 @@ class AdminLogin extends Component {
   }
 
 	render() {
-		if (this.props.token) return <Redirect push to='/admin/talks' />
+		if (this.props.token) return <Redirect push to='/admin/talks' />;
+		const { username, password } = this.props;
 		return (
 			<div>
 				<Navbar />
@@ -39,9 +40,9 @@ class AdminLogin extends Component {
 							<h3>SDJS Admin Login</h3>
 							<div className="container">
 								<label for="username"><b>Username</b></label>
-								<input type="text" placeholder="Username" name="username" onChange={this.handleUsername} required/>
+								<input type="text" placeholder="Username" name="username" value={username} onChange={this.handleUsername} required/>
 								<label for="password"><b>Password</b></label>
-								<input type="password" placeholder="Password" name="password" onChange={this.handlePassword} required/>
+								<input type="password" placeholder="Password" name="password" value={password} onChange={this.handlePassword} required/>
 								<button type="submit" className='btn'>Login</button>
 								<label id='remember'>
 									<input type="checkbox" name="remember"/> Remember me
