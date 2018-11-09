@@ -33,7 +33,7 @@ class AdminLogin extends Component {
 		const { username, password } = this.props;
 		return (
 			<div>
-				<Navbar />
+				<AdminNav />
 				<div className='signUp-container'>
 					<div className='form-container login'>
 						<form onSubmit={this.submitLogin}>

@@ -101,6 +101,7 @@ class SignUp extends Component {
 								<div>
 									<label htmlFor='event-date'>Date Requested: </label>
 									<select name='event-date' id='event-date' type='select' required onChange={this.handleDate}>
+										<option>Select a Date</option>
 										{events && events.map(event => (
 											<option key={event.date}>{event.date}</option>
 										))}
