@@ -11,8 +11,8 @@ function getTalkDetails() {
               return Event.findById(talk.eventId)
                 .then(selectedEvent => {
                   return {
-                    speaker: speaker.firstName + ' ' + speaker.lastName,
-                    speakerEmail: speaker.email,
+                    speaker: speaker.speakerName,
+                    speakerEmail: speaker.speakerEmail,
                     topic: talk.topic,
                     description: talk.description,
                     talkId: talk.id,

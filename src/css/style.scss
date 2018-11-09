@@ -6,6 +6,7 @@ $secondary-color: gray;
 @import 'navbar';
 @import 'talk-signup';
 @import 'talk';
+@import 'admin-login';
 
 html{
     -webkit-font-smoothing: antialiased;
@@ -37,107 +38,5 @@ body {
     transition-delay: 0s, 0s, 0s;
 }
 
-.signUp-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0
-    h1 {
-        text-align: center;
-    }
-    h3 {
-        text-align: center;
-        font-size: 32px;
-        margin: 0;
-        padding: 30px;
-    }
-    hr {
-        width: 80%;
-    }
-}
 
-.form-container{
-    // background-image: linear-gradient(white, #adaaaa);
-    margin-top: 85px;
-    form {
-        margin: auto;
-        width: 50%;
-        background:#1884c3;
-        color: white;
-        div{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            label{
-                justify-content: right;
-                width: 80%;
-                margin: 10px 0;
-                font-weight: bold;
-            }
-            input{
-                width: 80%;
-                height: 30px;
-                font-size: 20px;
-            }
-            textarea{
-                width: 80%;
-                height: 90px;
-                font-size: 20px;
-            }
-            select {
-                width: 80%;
-                height: 40px;
-                font-size: 25px;
-            }
-            button{
-                background-color: #ff5041;
-                margin: 30px;
-            }
-        }
-    }
-}
-// meetups 
-.header{
-    border: 3px solid black;
-    width: 50vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    margin-bottom: 50px;
-    padding: 20px;
-    font-size: 15pt;
-}
-.meetups{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-.meetup-link{
-    background: #f13a59;
-    color: white;
-    font-size: 20pt;
-    border: 1px solid black;
-    text-decoration: none;
-    padding: 5px;
-}
 
-// Admin Login 
-
-.login {
-    margin-top: 85px;
-    background-image: linear-gradient(180deg, rgba(24, 132, 195, .64), rgba(24, 132, 195, .64)), url(https://tinyurl.com/ycn372dv);
-    background-size: auto, cover;
-    background-repeat: no-repeat;
-}
-#remember {
-    margin-bottom: 30px;
-    width: 155px;
-}
-#remember input {
-    width: 15px;
-    height: 16px;
-}
-.login .btn {
-    margin-bottom: 5px;
-}
