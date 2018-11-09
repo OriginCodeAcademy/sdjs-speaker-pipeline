@@ -5,6 +5,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
             
 function sendEmailToSpeaker(adminEmail, approved, pending, speakerEmail, speakerName, meetupTitle, meetupDate) {
+    console.log('this is meetupDate', meetupDate)
     return new Promise((resolve, reject) => {
 
         if (speakerEmail == undefined) {
@@ -36,14 +37,30 @@ function sendEmailToSpeaker(adminEmail, approved, pending, speakerEmail, speaker
         }
         
         const email = {
-                to: `${speakerEmail}`,
-                from: adminEmail,
-                subject: 'SDJS Meetup Speaker Request',
-                text: `${emailContent}`
+            to: `${speakerEmail}`,
+            from: adminEmail,
+            subject: 'SDJS Meetup Speaker Request',
+            templateId: 'd-b593d56913f7494cb1faf97354fb475c',
+            dynamic_template_data: {
+                emailContent: `${emailContent}`,
+            }
+        }
+        let currentDate = meetupDate;
+		currentDate.setDay(currentDate.getDay() - 3);
+        const emailReminder = {
+            to: `${speakerEmail}`,
+            from: adminEmail,
+            subject: 'SDJS Meetup Speaker Request',
+            send_at: `${reminderDate}`,
+            templateId: 'd-f43daeeaef504760851f727007e0b5d0',
+            dynamic_template_data: {
+                meetupTitle: `${meetupTitle}`,
+                meetupDate: `${meetupDate}`,
+            }
         }
             sgMail.send(email);
 
-            resolve(email);
+            resolve({ email, emailReminder });
     })
 }
 
@@ -87,3 +104,9 @@ function sendEmailToAdmin(adminEmail, meetupDate, meetupTitle, speakerEmail, spe
 }
 
 module.exports = { sendEmailToSpeaker, sendEmailToAdmin } 
+
+//teplate
+//ID: d-227d9b43edf14c92964db9bd00fdf002
+
+
+

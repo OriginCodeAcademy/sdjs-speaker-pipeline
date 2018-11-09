@@ -9,5 +9,4 @@ export default function OrganizersReducer(state = initialstate, action) {
             return state
           }
     }
-
 }
