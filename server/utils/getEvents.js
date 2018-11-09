@@ -1,6 +1,5 @@
 const app = require('../server');
 const { getMeetups } = require('./getMeetups')
-const { getPendingTalkDetails } = require('./getPendingTalkDetails')
 const moment = require('moment');
 moment().format()
 
