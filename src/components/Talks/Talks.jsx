@@ -66,6 +66,7 @@ const ShowMore = ({ topic, description, adminNotes, talkId, toggleShowMoreFuncti
   )
 }
 
+
 class Talks extends Component {
   constructor(props) {
     super(props);
