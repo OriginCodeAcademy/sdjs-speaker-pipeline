@@ -18,12 +18,15 @@ function getTalkDetails() {
                     talkId: talk.id,
                     currentStatus: talk.status,
                     owner: talk.owner,
+                    adminNotes: talk.adminNotes,
                     eventName: selectedEvent.name,
                     eventDate: selectedEvent.date,
                     meetupId: selectedEvent.meetupId,
                     selectedStatus: undefined,
                     toggleStatusEdit: false,
-                    toggleOwnerEdit: false 
+                    toggleOwnerEdit: false,
+                    toggleShowMore: false,
+                    toggleTalkEdit: false
                   }
                 })
                 .catch(err => ({ error: 'could not find event', err }))

@@ -106,3 +106,34 @@ export const toggleOwnerEdit = (talkId, toggle) => {
         }
     }
 }
+
+export const toggleShowMore = (talkId, toggle) => {
+    return {
+        type: 'TOGGLE_SHOWMORE',
+        payload: {
+            talkId,
+            toggle: !toggle
+        }
+    }
+}
+
+export const toggleTalkEdit = (talkId, toggle) => {
+    return {
+        type: 'TOGGLE_TALK_EDIT',
+        payload: {
+            talkId,
+            toggle: !toggle
+        }
+    }
+}
+
+
+export const deleteTalk = (talkId) => {
+    return {
+        type: 'DELETE_TALK',
+        payload: axios.delete(`/api/talks/${talkId}`)
+        .then(() => talkId)
+    }
+}
+
+

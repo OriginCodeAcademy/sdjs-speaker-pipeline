@@ -1,0 +1,452 @@
+.admin-banner {
+  margin-top: 60px;
+  align-items: center;
+  background-image: linear-gradient(180deg, rgba(24, 132, 195, 0.64), rgba(24, 132, 195, 0.64)), url(https://tinyurl.com/ycn372dv);
+  background-size: auto, cover;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+  margin-right: 0;
+  background-position: 0px 0px, 0px 40%;
+}
+.admin-banner .btn {
+  background-color: #ff5041;
+  margin-bottom: 40px;
+}
+.admin-banner h1 {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+.admin-banner h2 {
+  font-size: 40px;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.admin-banner p {
+  font-size: 24px;
+  padding-bottom: 15px;
+}
+
+.admin-info {
+  margin-left: 50px;
+  margin-right: 50px;
+  text-align: center;
+}
+.admin-info h3 {
+  color: #1884c3;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 36px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 20px;
+}
+.admin-info p {
+  color: #777;
+  font-size: 20;
+}
+.admin-info .btn {
+  margin-left: 20px;
+}
+
+.dos-and-donts {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+}
+
+.dos {
+  margin: 15px;
+  padding: 15px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 auto;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+  border: 1px solid silver;
+  border-radius: 3px;
+  width: 25%;
+  box-shadow: 5px 5px #888888;
+}
+.dos h5 {
+  font-size: 30px;
+  color: green;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.donts {
+  margin: 15px;
+  padding: 15px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 auto;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+  border: 1px solid silver;
+  border-radius: 3px;
+  width: 25%;
+  flex: 0 auto;
+  border: 1px solid silver;
+  border-radius: 3px;
+  box-shadow: 5px 5px #888888;
+}
+.donts h5 {
+  font-size: 30px;
+  color: red;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.border {
+  width: 50%;
+}
+
+.info {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.info h3 {
+  color: #1884c3;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 36px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.info p {
+  color: #777;
+  font-size: 20;
+}
+
+.inline-link {
+  color: #1884c3;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.banner {
+  margin-top: 80px;
+  align-items: center;
+  background-image: linear-gradient(180deg, rgba(24, 132, 195, 0.64), rgba(24, 132, 195, 0.64)), url(https://tinyurl.com/ycn372dv);
+  background-size: auto, cover;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+  margin-right: 0;
+}
+.banner .btn {
+  background-color: #ff5041;
+  margin-bottom: 40px;
+}
+.banner h1 {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+.banner h2 {
+  font-size: 40px;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.banner p {
+  font-size: 24px;
+  padding-bottom: 15px;
+}
+
+.navbar {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  z-index: 100;
+  width: 100%;
+  padding: 15px 25px 10px;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.55);
+  height: 60px;
+}
+
+.nav-items {
+  top: 10px;
+  float: right;
+  margin-right: 35px;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-left: 25px;
+  border-bottom: 1px dotted transparent;
+  -webkit-transition: color 200ms ease, border 200ms ease;
+  transition: color 200ms ease, border 200ms ease;
+  color: silver;
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding-top: 16px;
+  padding-right: 16px;
+}
+
+.nav-item.w--current {
+  color: #1884c3;
+  font-weight: 700;
+}
+
+.nav-item:hover {
+  color: #1884c3;
+  border-bottom-color: #1884c3;
+}
+
+.signUp-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+}
+.signUp-container h1 {
+  text-align: center;
+}
+.signUp-container h3 {
+  text-align: center;
+  font-size: 32px;
+  margin: 0;
+  padding: 30px;
+}
+.signUp-container hr {
+  width: 80%;
+}
+
+.form-container {
+  margin-top: 85px;
+}
+.form-container form {
+  margin: auto;
+  width: 50%;
+  background: #1884c3;
+  color: white;
+}
+.form-container form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-container form div label {
+  justify-content: right;
+  width: 80%;
+  margin: 10px 0;
+  font-weight: bold;
+}
+.form-container form div input {
+  width: 80%;
+  height: 30px;
+  font-size: 20px;
+}
+.form-container form div textarea {
+  width: 80%;
+  height: 90px;
+  font-size: 20px;
+}
+.form-container form div select {
+  width: 80%;
+  height: 40px;
+  font-size: 25px;
+}
+.form-container form div button {
+  background-color: #ff5041;
+  margin: 30px;
+}
+
+.form-title {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #fff;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #efefef;
+  margin-bottom: 50px;
+}
+.table tr:first-child {
+  color: #1884c3;
+  font-size: 24px;
+  background-color: #daf1ff;
+  margin: 0;
+  border: 1px solid lightblue;
+}
+.table tr {
+  color: #3b3b3b;
+  font-size: 20px;
+  border: 1px solid #efefef;
+}
+.table td {
+  padding: 20px;
+  height: 100px;
+}
+.table td:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.table select {
+  height: 50px;
+  width: 120px;
+  margin-bottom: 10px;
+}
+.table .btn {
+  width: 60px;
+  border-radius: 5%;
+  font-size: 10px;
+  padding: 2px;
+  margin-left: initial;
+  margin: 5px;
+}
+.table .btn:hover {
+  background-color: #146fa5;
+}
+.table .table-speakerEmail {
+  font-size: 15px;
+  margin: 10px 0;
+}
+.table a {
+  color: #1884c3;
+}
+.table i {
+  margin-right: 5px;
+  color: #3b3b3b;
+}
+.table .table-description {
+  font-size: 15px;
+  margin-top: 5px;
+}
+.table .table-eventDate {
+  font-size: 15px;
+  margin-top: 5px;
+}
+.table .table-tableAction {
+  display: flex;
+  flex-direction: column;
+}
+.table .table-tableStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.table .table-tableConfirmation {
+  font-size: 15px;
+  margin-top: 5px;
+}
+.table .table-flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.table .side-by-side-btns {
+  margin: 5px;
+}
+.table .options i {
+  margin-left: 10px;
+}
+
+.login {
+  margin-top: 85px;
+  background-image: linear-gradient(180deg, rgba(24, 132, 195, 0.64), rgba(24, 132, 195, 0.64)), url(https://tinyurl.com/ycn372dv);
+  background-size: auto, cover;
+  background-repeat: no-repeat;
+}
+
+#remember {
+  margin-bottom: 30px;
+  width: 155px;
+}
+
+#remember input {
+  width: 15px;
+  height: 16px;
+}
+
+.login .btn {
+  margin-bottom: 5px;
+}
+
+.header {
+  border: 3px solid black;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  margin-bottom: 50px;
+  padding: 20px;
+  font-size: 15pt;
+}
+
+.meetups {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.meetup-link {
+  background: #f13a59;
+  color: white;
+  font-size: 20pt;
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 5px;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-size: cover;
+  margin: 0;
+}
+
+.btn {
+  background-color: #1884c3;
+  border: 3px solid transparent;
+  color: white;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 23px;
+  padding-top: 12px;
+  padding-right: 23px;
+  padding-bottom: 12px;
+  padding-left: 23px;
+  text-transform: uppercase;
+  transition: border 200ms ease, color 200ms ease, background-color 200ms ease;
+  transition-property: border, color, background-color;
+  transition-duration: 200ms, 200ms, 200ms;
+  transition-timing-function: ease, ease, ease;
+  transition-delay: 0s, 0s, 0s;
+}
+
+/*# sourceMappingURL=style.css.map */

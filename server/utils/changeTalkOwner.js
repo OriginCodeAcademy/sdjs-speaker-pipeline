@@ -13,7 +13,8 @@ function changeTalkOwner(talkId, selectedOwner) {
 								"id": talk.id,
 								"speakerId": talk.speakerId,
                                 "eventId": talk.eventId,
-                                "owner": selectedOwner
+								"owner": selectedOwner,
+								"adminNotes": talk.adminNotes
 							}
 						Talk.replaceOrCreate(newTalk)
 						return resolve(newTalk)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getTalkData, handleSelectStatus, handleSelectOwner, changeTalkStatus, changeTalkOwner, toggleStatusEdit, toggleOwnerEdit } from './TalksActions';
+import { getTalkData, handleSelectStatus, handleSelectOwner, changeTalkStatus, changeTalkOwner, toggleStatusEdit, toggleOwnerEdit, toggleShowMore, deleteTalk, toggleTalkEdit } from './TalksActions';
 import AdminNav from '../AdminNav/AdminNav';
 const moment = require('moment');
 
@@ -14,44 +14,48 @@ const TableRow = ({ data, children }) => {
   </td>
 }
 
-const EditStatusOptions = ({ talkId, handleSelectStatus, handleSubmitStatus, toggleStatusEditFunction, toggleStatusEditProp }) => {
+const EditOptions = ({ talkId, handleSelect, name, children, toggleEditProp, handleSubmit, toggleEditFunction }) => {
   return (
     <div className='table-tableAction'>
       <div className='table-tableStatus'>
-        <select name={talkId} onChange={handleSelectStatus}>
-          <option value=''>Change Status</option>
-          <option value='In Contact'>In Contact</option>
-          <option value='Approve'>Approve</option>
-          <option value='Deny'>Deny</option>
-          <option value='Disengaged'>Disengaged</option>
+        <select data-type={name} name={talkId} onChange={handleSelect}>
+          <option value=''>Change {name}</option>
+          {children}
         </select>
         <div className='side-by-side-btns'>
-        <button className='btn' name={talkId} value={toggleStatusEditProp} onClick={handleSubmitStatus}>Save</button>
-        <button className='btn' name={talkId} onClick={toggleStatusEditFunction}>Cancel</button>
+          <button className='btn' name={talkId} value={toggleEditProp} onClick={handleSubmit}>Save</button>
+          <button className='btn' name={talkId} onClick={toggleEditFunction}>Cancel</button>
         </div>
       </div>
     </div>
   )
 }
 
-const EditOwnerOptions = ({ talkId, handleSelectOwner, handleSubmitOwner, toggleOwnerEditFunction, toggleOwnerEditProp }) => {
+const ShowMore = ({ topic, description, adminNotes, talkId, toggleShowMoreFunction, deleteTalk, toggleTalkEditFunction, toggleTalkEditProp }) => {
   return (
-    <div className='table-tableAction'>
-      <div className='table-tableStatus'>
-        <select name={talkId} onChange={handleSelectOwner}>
-          <option value=''>Change Owner</option>
-          <option value='Owner 1'>Owner 1</option>
-          <option value='Owner 2'>Owner 2</option>
-          <option value='Owner 3'>Owner 3</option>
-        </select>
-        <div className='side-by-side-btns'>
-        <button className='btn' name={talkId} value={toggleOwnerEditProp} onClick={handleSubmitOwner}>Save</button>
-        <button className='btn' name={talkId} onClick={toggleOwnerEditFunction}>Cancel</button>
+    <div>
+      {toggleTalkEditProp ?
+        <div>
+          <i className="fas fa-chevron-left" name={talkId} value={toggleTalkEditProp} onClick={toggleTalkEditFunction}></i>
+          <EditTalk 
+          />
         </div>
-      </div>
+        :
+        <div>
+          <i className="fas fa-chevron-left" name={talkId} onClick={toggleShowMoreFunction}></i>
+          <div>
+            <div> Topic: {topic} </div>
+            <div> Description: {description} </div>
+            <div> Notes: {adminNotes}</div>
+            <i className="far fa-edit" name={talkId} value={toggleTalkEditProp} onClick={toggleTalkEditFunction}></i>
+            <i className="fas fa-trash-alt" name={talkId} onClick={deleteTalk}></i>
+          </div>
+        </div>
+      }
     </div>
   )
 }
+
 
 class Talks extends Component {
   constructor(props) {
@@ -62,6 +66,9 @@ class Talks extends Component {
     this.handleSubmitOwner = this.handleSubmitOwner.bind(this)
     this.toggleStatusEdit = this.toggleStatusEdit.bind(this)
     this.toggleOwnerEdit = this.toggleOwnerEdit.bind(this)
+    this.toggleShowMore = this.toggleShowMore.bind(this)
+    this.deleteTalk = this.deleteTalk.bind(this)
+    this.toggleTalkEdit = this.toggleTalkEdit.bind(this)
   }
 
   componentDidMount() {
@@ -70,6 +77,7 @@ class Talks extends Component {
   }
 
   handleSelectStatus(e) {
+    //if (e.target.getAttribute('data-type') === 'Status')
     const { dispatch } = this.props;
     dispatch(handleSelectStatus(e.target.name, e.target.value));
   }
@@ -94,12 +102,28 @@ class Talks extends Component {
 
   toggleStatusEdit(e) {
     const { dispatch } = this.props;
-    dispatch(toggleStatusEdit(e.target.name, e.target.value));
+    dispatch(toggleStatusEdit(e.target.getAttribute('name'), e.target.getAttribute('value')));
   }
 
   toggleOwnerEdit(e) {
     const { dispatch } = this.props;
-    dispatch(toggleOwnerEdit(e.target.name, e.target.value));
+    dispatch(toggleOwnerEdit(e.target.getAttribute('name'), e.target.getAttribute('value')));
+  }
+
+  toggleShowMore(e) {
+    const { dispatch } = this.props;
+    dispatch(toggleShowMore(e.target.getAttribute('name'), e.target.getAttribute('value')));
+  }
+
+  deleteTalk(e) {
+    const { dispatch } = this.props;
+    dispatch(deleteTalk(e.target.getAttribute('name')))
+  }
+
+  toggleTalkEdit(e) {
+    const { dispatch } = this.props;
+    console.log('toggleTalkEdit fxn', e.target.getAttribute('name'), e.target.getAttribute('value'))
+    dispatch(toggleTalkEdit(e.target.getAttribute('name'), e.target.getAttribute('value')))
   }
 
   render() {
@@ -134,45 +158,76 @@ class Talks extends Component {
                         case 'Speaker':
                           return <TableRow data={{ speaker: talk.speaker, speakerEmail: <a href={`mailto:${talk.speakerEmail}`} target="_top"><i className="far fa-envelope"></i>Send Email</a> }} />
                         case 'Talk':
-                          return <TableRow data={{ topic: talk.topic, description: talk.description }} />
+                          return <TableRow>
+                            <div className='options'>
+                              {talk.toggleShowMore ?
+                                <ShowMore
+                                  topic={talk.topic}
+                                  description={talk.description}
+                                  adminNotes={talk.adminNotes}
+                                  talkId={talk.talkId}
+                                  toggleShowMoreFunction={this.toggleShowMore}
+                                  deleteTalk={this.deleteTalk}
+                                  toggleTalkEditFunction={this.toggleTalkEdit}
+                                  toggleTalkEditProp={talk.toggleTalkEdit}
+                                />
+                                :
+                                <div>
+                                  {talk.topic}
+                                  <div>
+                                    <i className="fas fa-plus" name={talk.talkId} value={talk.toggleShowMore} onClick={this.toggleShowMore}></i>
+                                    Details
+                                </div>
+                                </div>
+                              }
+                            </div>
+                          </TableRow>
                         case 'Event':
                           return <TableRow data={{ eventName: talk.eventName, eventDate: moment(talk.eventDate).add(1, 'day').format('YYYY-MM-DD') }} />
                         case 'Status':
                           return <TableRow>
-                            <div className='status'>
+                            <div className='options'>
                               {talk.toggleStatusEdit ?
-                                <EditStatusOptions
+                                <EditOptions
                                   talkId={talk.talkId}
-                                  handleSelectStatus={this.handleSelectStatus}
-                                  handleSubmitStatus={this.handleSubmitStatus}
-                                  toggleStatusEditFunction={this.toggleStatusEdit}
-                                  toggleStatusEditProp={talk.toggleStatusEdit}
-                                />
+                                  handleSelect={this.handleSelectStatus}
+                                  handleSubmit={this.handleSubmitStatus}
+                                  toggleEditFunction={this.toggleStatusEdit}
+                                  toggleEditProp={talk.toggleStatusEdit}
+                                  name={'Status'}>
+                                  <option value='In Contact'>In Contact</option>
+                                  <option value='Approve'>Approve</option>
+                                  <option value='Deny'>Deny</option>
+                                  <option value='Disengaged'>Disengaged</option>
+                                </EditOptions>
                                 :
-                                <div className='table-flex-column-center'>
+                                <div>
                                   {talk.currentStatus}
-                                  <button className='btn' name={talk.talkId} value={talk.toggleStatusEdit} onClick={this.toggleStatusEdit}>Edit</button>
-                                  {/* <i class="far fa-edit" name={talk.talkId} onClick={this.toggleStatusEdit}></i> */}
+                                  <i className="far fa-edit" name={talk.talkId} value={talk.toggleStatusEdit} onClick={this.toggleStatusEdit}></i>
                                 </div>
                               }
                             </div>
                           </TableRow>
                         case 'Owner':
                           return <TableRow>
-                            <div className='owner'>
+                            <div className='options'>
                               {talk.toggleOwnerEdit ?
-                                <EditOwnerOptions
+                                <EditOptions
                                   talkId={talk.talkId}
-                                  handleSelectOwner={this.handleSelectOwner}
-                                  handleSubmitOwner={this.handleSubmitOwner}
-                                  toggleOwnerEditFunction={this.toggleOwnerEdit}
-                                  toggleOwnerEditProp={talk.toggleOwnerEdit}
-                                />
+                                  handleSelect={this.handleSelectOwner}
+                                  handleSubmit={this.handleSubmitOwner}
+                                  toggleEditFunction={this.toggleOwnerEdit}
+                                  toggleEditProp={talk.toggleOwnerEdit}
+                                  name={'Owner'}
+                                >
+                                  <option value='Owner 1'>Owner 1</option>
+                                  <option value='Owner 2'>Owner 2</option>
+                                  <option value='Owner 3'>Owner 3</option>
+                                </EditOptions>
                                 :
-                                <div className='table-flex-column-center'>
+                                <div>
                                   {talk.owner}
-                                  <button className='btn' name={talk.talkId} value={talk.toggleOwnerEdit} onClick={this.toggleOwnerEdit}>Edit</button>
-                                  {/* <i class="far fa-edit" name={talk.talkId} onClick={this.toggleStatusEdit}></i> */}
+                                  <i className="far fa-edit" name={talk.talkId} value={talk.toggleOwnerEdit} onClick={this.toggleOwnerEdit}></i>
                                 </div>
                               }
                             </div>

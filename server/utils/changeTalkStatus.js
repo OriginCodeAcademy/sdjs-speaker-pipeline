@@ -13,7 +13,8 @@ function changeTalkStatus(talkId, selectedStatus) {
 								"id": talk.id,
 								"speakerId": talk.speakerId,
 								"eventId": talk.eventId,
-								"owner": talk.owner
+								"owner": talk.owner,
+								"adminNotes": talk.adminNotes
 							}
 						Talk.replaceOrCreate(newTalk)
 						return resolve(newTalk)

@@ -28,6 +28,10 @@
       "type": "string",
       "required": true,
       "default": "None"
+    },
+    "adminNotes": {
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],
