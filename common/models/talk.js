@@ -125,6 +125,33 @@ module.exports = function (Talk) {
 			root: true
 		}
 	})
+	
+	Talk.changeTalkOwner = function (talkId, selectedOwner, cb) {
+		changeTalkOwner(talkId, selectedOwner)
+			.then(newTalk => cb(null, newTalk))
+			.catch(err => cb(err))
+	}
+
+	Talk.remoteMethod('changeTalkOwner', {
+		description: 'Changes the owner of a talk',
+		accepts: [{
+			arg: 'talkId',
+			type: 'string'
+		},
+		{
+			arg: 'selectedOwner',
+			type: 'string'
+		}],
+		http: {
+			path: '/changeTalkOwner',
+			verb: 'put'
+		},
+		returns: {
+			arg: 'data',
+			type: 'array',
+			root: true
+		}
+	})
 
 	Talk.changeTalkOwner = function (talkId, selectedOwner, cb) {
 		changeTalkOwner(talkId, selectedOwner)
