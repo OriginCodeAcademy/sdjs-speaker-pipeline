@@ -4,6 +4,7 @@ const { getMeetups } = require('../../server/utils/getMeetups');
 const { talkSubmit } = require('../../server/utils/talkSubmit')
 const { getTalkDetails } = require('../../server/utils/getTalkDetails');
 const { changeTalkStatus } = require('../../server/utils/changeTalkStatus');
+const { changeTalkOwner } = require('../../server/utils/changeTalkOwner');
 const { sendEmailToSpeaker } = require('../../server/utils/sendGridEmailer');
 const { formatTalkForEmail } = require('../../server/utils/formatTalkForEmail');
 const { pastTalks } = require('../../server/utils/pastTalks')
@@ -115,6 +116,33 @@ module.exports = function (Talk) {
 		}],
 		http: {
 			path: '/changeTalkStatus',
+			verb: 'put'
+		},
+		returns: {
+			arg: 'data',
+			type: 'array',
+			root: true
+		}
+	})
+	
+	Talk.changeTalkOwner = function (talkId, selectedOwner, cb) {
+		changeTalkOwner(talkId, selectedOwner)
+			.then(newTalk => cb(null, newTalk))
+			.catch(err => cb(err))
+	}
+
+	Talk.remoteMethod('changeTalkOwner', {
+		description: 'Changes the owner of a talk',
+		accepts: [{
+			arg: 'talkId',
+			type: 'string'
+		},
+		{
+			arg: 'selectedOwner',
+			type: 'string'
+		}],
+		http: {
+			path: '/changeTalkOwner',
 			verb: 'put'
 		},
 		returns: {

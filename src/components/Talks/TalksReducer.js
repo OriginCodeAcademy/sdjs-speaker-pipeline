@@ -30,13 +30,12 @@ export default function TalksReducer(state = initialstate, action) {
                 talkInfo: updatedTalkInfo
             }
         }
-        case 'CHANGE_TALK_STATUS_IN_DB_FULFILLED': {
+        case 'UPDATE_TALK_OWNER_IN_STORE': {
             const updatedTalkInfo = state.talkInfo.map((talk) => {
-                if (talk.talkId == payload.id) {
+                if (talk.talkId == payload.talkId) {
                     return {
                         ...talk,
-                        currentStatus: payload.status,
-                        confirmationMessage: `Success. The talk status is now '${payload.status}'.`
+                        selectedOwner: payload.selectedOwner
                     }
                 }
                 else {
@@ -48,7 +47,77 @@ export default function TalksReducer(state = initialstate, action) {
                 talkInfo: updatedTalkInfo
             }
         }
-        
+        case 'TOGGLE_STATUS_EDIT': {
+            const updatedTalkInfo = state.talkInfo.map((talk) => {
+                if (talk.talkId == payload.talkId) {
+                    return {
+                        ...talk,
+                        toggleStatusEdit: !payload.toggle
+                    }
+                }
+                else {
+                    return talk
+                }
+            })
+            return {
+                ...state,
+                talkInfo: updatedTalkInfo
+            }
+        }
+        case 'CHANGE_TALK_STATUS_IN_DB_FULFILLED': {
+            const updatedTalkInfo = state.talkInfo.map((talk) => {
+                if (talk.talkId == payload.data.id) {
+                    return {
+                        ...talk,
+                        currentStatus: payload.data.status,
+                        toggleStatusEdit: payload.toggle
+                    }
+                }
+                else {
+                    return talk
+                }
+            })
+            return {
+                ...state,
+                talkInfo: updatedTalkInfo
+            }
+        }
+        case 'CHANGE_TALK_OWNER_IN_DB_FULFILLED': {
+            const updatedTalkInfo = state.talkInfo.map((talk) => {
+                console.log('payload', payload)
+                if (talk.talkId == payload.data.id) {
+                    return {
+                        ...talk,
+                        owner: payload.data.owner,
+                        toggleOwnerEdit: payload.toggle
+                    }
+                }
+                else {
+                    return talk
+                }
+            })
+            return {
+                ...state,
+                talkInfo: updatedTalkInfo
+            }
+        }
+        case 'TOGGLE_OWNER_EDIT': {
+            const updatedTalkInfo = state.talkInfo.map((talk) => {
+                if (talk.talkId == payload.talkId) {
+                    return {
+                        ...talk,
+                        toggleOwnerEdit: !payload.toggle
+                    }
+                }
+                else {
+                    return talk
+                }
+            })
+            return {
+                ...state,
+                talkInfo: updatedTalkInfo
+            }
+        }
         default: {
             return state
           }

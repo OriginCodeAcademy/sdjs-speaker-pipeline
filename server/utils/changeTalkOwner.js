@@ -1,19 +1,19 @@
 const app = require('../server');
 
-function changeTalkStatus(talkId, selectedStatus) {
+function changeTalkOwner(talkId, selectedOwner) {
 	return new Promise((resolve, reject) => {
 		const { Talk } = app.models;
 				Talk.findById(talkId)
 					.then((talk) => {
 						const newTalk = {
-								"status": selectedStatus,
+								"status": talk.status,
 								"description": talk.description,
 								"reminderSent": talk.reminderSent,
 								"topic": talk.topic,
 								"id": talk.id,
 								"speakerId": talk.speakerId,
-								"eventId": talk.eventId,
-								"owner": talk.owner
+                                "eventId": talk.eventId,
+                                "owner": selectedOwner
 							}
 						Talk.replaceOrCreate(newTalk)
 						return resolve(newTalk)
@@ -24,4 +24,4 @@ function changeTalkStatus(talkId, selectedStatus) {
 
 
 
-module.exports = { changeTalkStatus };
+module.exports = { changeTalkOwner };
