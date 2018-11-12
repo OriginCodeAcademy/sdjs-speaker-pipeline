@@ -37,7 +37,7 @@
   },
   "speaker": {
     "dataSource": "sdjs",
-    "public": true
+    "public": false
   },
   "event": {
     "dataSource": "sdjs",
