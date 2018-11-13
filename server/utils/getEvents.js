@@ -28,10 +28,10 @@ function getEvents() {
 								//console.log('hello')
 								Event.find({ where: { date: `${singleEvent.date}T00:00:00.000Z` }})
 									.then(response => {
-										//console.log(response)
+										console.log('response: ', response)
 										Talk.find({ where: {eventId: response[0].id}})
 											.then(foundTalk => {
-												//console.log('foundTalk: ', foundTalk)
+												console.log('foundTalk: ', foundTalk)
 												Speaker.find({ where: {id: foundTalk[0].speakerId }})
 												.then(foundSpeaker => {
 													console.log('foundSpeaker: ', foundSpeaker)
