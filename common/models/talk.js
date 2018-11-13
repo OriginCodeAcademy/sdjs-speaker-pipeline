@@ -125,7 +125,7 @@ module.exports = function (Talk) {
 			root: true
 		}
 	})
-	
+
 	Talk.changeTalkOwner = function (talkId, selectedOwner, cb) {
 		changeTalkOwner(talkId, selectedOwner)
 			.then(newTalk => cb(null, newTalk))

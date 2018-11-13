@@ -118,6 +118,7 @@ export const toggleShowMore = (talkId, toggle) => {
 }
 
 export const toggleTalkEdit = (talkId, toggle) => {
+    console.log('in actions', talkId, toggle)
     return {
         type: 'TOGGLE_TALK_EDIT',
         payload: {
