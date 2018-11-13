@@ -179,46 +179,4 @@ export const updateTalkInfo = (talkId, newTopic, newDescription, newAdminNotes, 
     }
 }
 
-export const changeTalkOwner = (talkId, selectedOwner, toggle, accessToken) => {
-    return {
-        type: 'CHANGE_TALK_OWNER_IN_DB',
-        payload: axios({
-            method: 'put',
-            url: 'api/talks/changeTalkOwner',
-            headers: {
-                Authorization: accessToken
-            },
-            data: {
-                talkId,
-                selectedOwner
-            }
-        })
-            .then((updatedTalk) => {
-                console.log(updatedTalk)
-                return {
-                    data: updatedTalk.data,
-                    toggle: !toggle
-                }
-            })
-    }
-}
 
-export const toggleStatusEdit = (talkId, toggle) => {
-    return {
-        type: 'TOGGLE_STATUS_EDIT',
-        payload: {
-            talkId,
-            toggle: !toggle
-        }
-    }
-}
-
-export const toggleOwnerEdit = (talkId, toggle) => {
-    return {
-        type: 'TOGGLE_OWNER_EDIT',
-        payload: {
-            talkId,
-            toggle: !toggle
-        }
-    }
-}
