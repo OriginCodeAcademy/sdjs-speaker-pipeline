@@ -25,12 +25,14 @@ class PastTalks extends Component {
                             <th>Date</th>
                             <th>Event</th>
                             <th>Speaker</th>
+                            <th>Topic</th>
                         </tr>
                         {pastTalks.map(talk => (
                             <tr>
                                 <td>{talk.date}</td>
                                 <td>{talk.event}</td>
                                 <td>{talk.speaker}</td>
+                                <td>{talk.topic}</td>
                             </tr>
                         ))}
                     </table>
