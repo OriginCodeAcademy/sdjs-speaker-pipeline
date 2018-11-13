@@ -12,8 +12,6 @@ class TalksPage extends Component {
             <div className='talks-container'>
                 <h1>All Talks</h1>
                 <Talks 
-                // filter={(talk) => talk.currentStatus === 'Pending'} 
-                // include = {['Speaker', 'Talk', 'Current Status']}
                 />
                 <PastTalks />
             </div>

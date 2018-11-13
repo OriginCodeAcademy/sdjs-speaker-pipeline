@@ -5,8 +5,8 @@ function pastTalks(){
     let counter = 0;
     let mappedTalks = [];
     //let date = new Date()
-    let date = moment(new Date()).add(2, 'month').format()
-    //let date = moment(new Date('2018-12-22')).format()
+    //let date = moment(new Date()).add(2, 'month').format()
+    let date = moment(new Date('2018-12-22')).format()
     //console.log('date: ', date)
     return new Promise((resolve, reject) => {
         const { Talk, Speaker, Event } = app.models;
