@@ -17,13 +17,7 @@ class SignUp extends Component {
 	constructor(props) {
 		super(props);
 
-		this.handleSpeakerName 	= this.handleSpeakerName.bind(this);
-		this.handleEmail 		= this.handleEmail.bind(this);
-		this.handlePhone 		= this.handlePhone.bind(this);
-		this.handleDate 		= this.handleDate.bind(this);
-		this.handleTopic 		= this.handleTopic.bind(this);
-		this.handleDescription 	= this.handleDescription.bind(this);
-		this.submitSpeaker 		= this.submitSpeaker.bind(this);
+		this.handleChange 	= this.handleChange.bind(this);
 	}
 
 	componentDidMount() {

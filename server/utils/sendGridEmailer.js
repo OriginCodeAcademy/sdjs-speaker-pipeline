@@ -6,6 +6,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
             
 function sendEmailToSpeaker(adminEmail, approved, pending, speakerEmail, speakerName, meetupTitle, meetupDate) {
     console.log('this is meetupDate', meetupDate)
+    console.log('this is this is speakerEmail', speakerEmail)
 
     return new Promise((resolve, reject) => {
         if (speakerEmail == undefined) {
@@ -37,10 +38,11 @@ function sendEmailToSpeaker(adminEmail, approved, pending, speakerEmail, speaker
         }
         
         const email = {
-            to: `${speakerEmail}`,
+            to: speakerEmail,
             from: adminEmail,
             subject: 'SDJS Meetup Speaker Request',
             templateId: 'd-b593d56913f7494cb1faf97354fb475c',
+            send_at: reminderDate,
             dynamic_template_data: {
                 emailContent: emailContent,
             }
