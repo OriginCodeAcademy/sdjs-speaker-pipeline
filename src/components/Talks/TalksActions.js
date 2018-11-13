@@ -118,11 +118,12 @@ export const toggleShowMore = (talkId, toggle) => {
 }
 
 export const toggleTalkEdit = (talkId, toggle) => {
+    console.log('in actions', talkId, toggle)
     return {
         type: 'TOGGLE_TALK_EDIT',
         payload: {
             talkId,
-            toggle: !toggle
+            toggle: !toggle,
         }
     }
 }
@@ -133,6 +134,36 @@ export const deleteTalk = (talkId) => {
         type: 'DELETE_TALK',
         payload: axios.delete(`/api/talks/${talkId}`)
         .then(() => talkId)
+    }
+}
+
+export const handleTalkChange = (talkId, value, type) => {
+    return {
+        type: 'HANDLE_TALK_CHANGE',
+        payload: {
+            talkId,
+            value,
+            type
+        }
+    }
+}
+
+export const updateTalkInfo = (talkId, newTopic, newDescription, newAdminNotes, toggle) => {
+    return {
+        type: 'UPDATE_TALK_INFO',
+        payload: axios.put('api/talks/changeTalkContent', {
+            talkId,
+            newTopic,
+            newDescription,
+            newAdminNotes
+          })
+          .then((updatedTalk) => {
+              console.log(updatedTalk)
+              return {
+                data: updatedTalk.data,
+                toggle: !toggle
+              }
+          })
     }
 }
 

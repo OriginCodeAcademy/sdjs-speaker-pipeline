@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getTalkData, handleSelectStatus, handleSelectOwner, changeTalkStatus, changeTalkOwner, toggleStatusEdit, toggleOwnerEdit, toggleShowMore, deleteTalk, toggleTalkEdit } from './TalksActions';
+import { getTalkData, handleSelectStatus, handleSelectOwner, changeTalkStatus, changeTalkOwner, toggleStatusEdit, toggleOwnerEdit, toggleShowMore, deleteTalk, toggleTalkEdit, handleTalkChange, updateTalkInfo } from './TalksActions';
 import AdminNav from '../AdminNav/AdminNav';
 const moment = require('moment');
 
@@ -31,25 +31,35 @@ const EditOptions = ({ talkId, handleSelect, name, children, toggleEditProp, han
   )
 }
 
-const ShowMore = ({ topic, description, adminNotes, talkId, toggleShowMoreFunction, deleteTalk, toggleTalkEditFunction, toggleTalkEditProp }) => {
+const ShowMore = ({ topic, description, adminNotes, talkId, toggleShowMoreFunction, deleteTalk, toggleTalkEditFunction, toggleTalkEditProp, handleTalkChange, updateTalkInfo }) => {
   return (
     <div>
       {toggleTalkEditProp ?
         <div>
-          <i className="fas fa-chevron-left" name={talkId} value={toggleTalkEditProp} onClick={toggleTalkEditFunction}></i>
-          <EditTalk 
-          />
+          <i className="fas fa-chevron-left" name={talkId} onClick={toggleTalkEditFunction}></i>
+          <div className='table-editTalk'>
+            <label>Topic: </label>
+            <input defaultValue={topic} name={talkId} data-type={'Topic'} onChange={handleTalkChange} />
+            <label>Description: </label>
+            <textarea defaultValue={description} name={talkId} data-type={'Description'} onChange={handleTalkChange} />
+            <label>Admin Notes: </label>
+            <textarea defaultValue={adminNotes} name={talkId} data-type={'Admin Notes'} onChange={handleTalkChange} />
+          </div>
+          <button className='btn' name={talkId} onClick={updateTalkInfo}>Save</button>
         </div>
         :
         <div>
           <i className="fas fa-chevron-left" name={talkId} onClick={toggleShowMoreFunction}></i>
-          <div>
-            <div> Topic: {topic} </div>
-            <div> Description: {description} </div>
-            <div> Notes: {adminNotes}</div>
-            <i className="far fa-edit" name={talkId} value={toggleTalkEditProp} onClick={toggleTalkEditFunction}></i>
-            <i className="fas fa-trash-alt" name={talkId} onClick={deleteTalk}></i>
+          <div className='table-editTalk'>
+              <label> Topic: </label>
+              <div> {topic} </div>
+              <label> Description: </label>
+              <div> {description} </div>
+              <label> Admin Notes: </label>
+              <div> {adminNotes} </div>
           </div>
+          <i className="far fa-edit" name={talkId} value={toggleTalkEditProp} onClick={toggleTalkEditFunction}></i>
+          <i className="fas fa-trash-alt" name={talkId} onClick={deleteTalk}></i>
         </div>
       }
     </div>
@@ -69,6 +79,8 @@ class Talks extends Component {
     this.toggleShowMore = this.toggleShowMore.bind(this)
     this.deleteTalk = this.deleteTalk.bind(this)
     this.toggleTalkEdit = this.toggleTalkEdit.bind(this)
+    this.handleTalkChange = this.handleTalkChange.bind(this)
+    this.updateTalkInfo = this.updateTalkInfo.bind(this)
   }
 
   componentDidMount() {
@@ -122,8 +134,18 @@ class Talks extends Component {
 
   toggleTalkEdit(e) {
     const { dispatch } = this.props;
-    console.log('toggleTalkEdit fxn', e.target.getAttribute('name'), e.target.getAttribute('value'))
     dispatch(toggleTalkEdit(e.target.getAttribute('name'), e.target.getAttribute('value')))
+  }
+
+  handleTalkChange(e) {
+    const { dispatch } = this.props;
+    dispatch(handleTalkChange(e.target.name, e.target.value, e.target.getAttribute('data-type')))
+  }
+
+  updateTalkInfo(e) {
+    const { dispatch, talkInfo } = this.props;
+    const selectedTalk = talkInfo.find((talk) => talk.talkId === e.target.name);
+    dispatch(updateTalkInfo(e.target.name, selectedTalk.talkChanges.topic, selectedTalk.talkChanges.description, selectedTalk.talkChanges.adminNotes, selectedTalk.toggleTalkEdit))
   }
 
   render() {
@@ -156,7 +178,11 @@ class Talks extends Component {
                     headers.map(column => {
                       switch (column) {
                         case 'Speaker':
-                          return <TableRow data={{ speaker: talk.speaker, speakerEmail: <a href={`mailto:${talk.speakerEmail}`} target="_top"><i className="far fa-envelope"></i>Send Email</a> }} />
+                          return <TableRow data={{
+                            speaker: talk.speaker,
+                            speakerEmail: <a href={`mailto:${talk.speakerEmail}`} target="_top"><i className="far fa-envelope"></i>Send Email</a>,
+                            speakerPhone: <div><i className="fas fa-phone"></i>{talk.speakerPhone}</div>
+                          }} />
                         case 'Talk':
                           return <TableRow>
                             <div className='options'>
@@ -170,11 +196,13 @@ class Talks extends Component {
                                   deleteTalk={this.deleteTalk}
                                   toggleTalkEditFunction={this.toggleTalkEdit}
                                   toggleTalkEditProp={talk.toggleTalkEdit}
+                                  handleTalkChange={this.handleTalkChange}
+                                  updateTalkInfo={this.updateTalkInfo}
                                 />
                                 :
                                 <div>
                                   {talk.topic}
-                                  <div>
+                                  <div className='table-eventDate'>
                                     <i className="fas fa-plus" name={talk.talkId} value={talk.toggleShowMore} onClick={this.toggleShowMore}></i>
                                     Details
                                 </div>

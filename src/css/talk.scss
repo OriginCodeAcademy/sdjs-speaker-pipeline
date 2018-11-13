@@ -23,13 +23,6 @@
         height: 100px;
     }
 
-    td:last-child {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
     select {
         height: 50px;
         width: 120px;
@@ -51,7 +44,11 @@
 
     .table-speakerEmail {
         font-size: 15px;
-        margin: 10px 0;
+        margin-top: 10px;
+    }
+
+    .table-speakerPhone {
+        font-size: 15px;
     }
 
     a {
@@ -70,7 +67,7 @@
 
     .table-eventDate {
         font-size: 15px;
-        margin-top: 5px;
+        margin-top: 10px;
     }
 
     .table-tableAction {
@@ -102,6 +99,28 @@
     .options {
         i {
             margin-left: 10px;
+        }
+    }
+
+    .table-editTalk {
+        margin: 20px 0;
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        input {
+            height: 20px;
+            border: 1px solid lightgray;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        textarea {
+            height: 50px;
+            border: 1px solid lightgray;
+            margin-bottom: 10px;
+            width: 100%;
         }
     }
 }
