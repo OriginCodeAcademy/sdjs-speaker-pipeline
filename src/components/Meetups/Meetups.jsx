@@ -33,8 +33,8 @@ class Meetups extends Component {
                                     </div>
                                         <div>
                                             <Talks
-                                                filter={(talk) => talk.meetupId === meetup.meetupId}
-                                            // include = {['Speaker', 'Talk', 'Current Status']}
+                                             filter={(talk) => talk.meetupId === meetup.meetupId}
+                                             include = {['Speaker', 'Talk', 'Status', 'Owner']}
                                             />
                                         </div>
                                 </div>
