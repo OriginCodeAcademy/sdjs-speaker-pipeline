@@ -128,8 +128,8 @@ class Talks extends Component {
   }
 
   deleteTalk(e) {
-    const { dispatch } = this.props;
-    dispatch(deleteTalk(e.target.getAttribute('name')))
+    const { dispatch, accessToken } = this.props;
+    dispatch(deleteTalk(e.target.getAttribute('name'), accessToken))
   }
 
   toggleTalkEdit(e) {
@@ -143,9 +143,9 @@ class Talks extends Component {
   }
 
   updateTalkInfo(e) {
-    const { dispatch, talkInfo } = this.props;
+    const { dispatch, talkInfo, accessToken } = this.props;
     const selectedTalk = talkInfo.find((talk) => talk.talkId === e.target.name);
-    dispatch(updateTalkInfo(e.target.name, selectedTalk.talkChanges.topic, selectedTalk.talkChanges.description, selectedTalk.talkChanges.adminNotes, selectedTalk.toggleTalkEdit))
+    dispatch(updateTalkInfo(e.target.name, selectedTalk.talkChanges.topic, selectedTalk.talkChanges.description, selectedTalk.talkChanges.adminNotes, selectedTalk.toggleTalkEdit, accessToken))
   }
 
   render() {
