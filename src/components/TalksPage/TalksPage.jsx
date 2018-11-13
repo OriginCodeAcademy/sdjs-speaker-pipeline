@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Talks from '../Talks';
+import PastTalks from '../PastTalks'
 
 class TalksPage extends Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class TalksPage extends Component {
                 // filter={(talk) => talk.currentStatus === 'Pending'} 
                 // include = {['Speaker', 'Talk', 'Current Status']}
                 />
+                <PastTalks />
             </div>
         )
     }
