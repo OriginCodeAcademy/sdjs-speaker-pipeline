@@ -7,8 +7,8 @@ class PastTalks extends Component {
     }
 
     componentDidMount(){
-        const { dispatch } = this.props;
-        dispatch(getPastTalks());
+        const { dispatch, accessToken } = this.props;
+        dispatch(getPastTalks(accessToken));
     }
 
     render(){
