@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { updateUsername, updatePassword, postLogin } from './AdminLoginActions';
-import AdminNav from '../AdminNav/AdminNav';
+import Navbar from '../Navbar/Navbar';
 
 class AdminLogin extends Component {
 	constructor(props) {
@@ -33,7 +33,7 @@ class AdminLogin extends Component {
 		if (token) return <Redirect push to= '/Admin/Meetups' />
 		return (
 			<div>
-				<AdminNav />
+				<Navbar />
 				<div className='signUp-container'>
 					<div className='form-container login'>
 						<form onSubmit={this.submitLogin}>
