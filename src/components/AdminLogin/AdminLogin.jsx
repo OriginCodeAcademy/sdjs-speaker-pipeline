@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { updateUsername, updatePassword, postLogin } from './AdminLoginActions';
-import Navbar from '../Navbar/Navbar';
+import AdminNav from '../AdminNav/AdminNav';
 
 class AdminLogin extends Component {
 	constructor(props) {
