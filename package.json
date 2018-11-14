@@ -25,6 +25,7 @@
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
     "nightmare": "^3.0.1",
+    "ontime": "0.0.6",
     "react": "^16.5.2",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",

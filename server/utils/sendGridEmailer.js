@@ -1,5 +1,7 @@
 const sgMail = require('@sendgrid/mail');
 const moment = require('moment');
+const ontime = require('ontime');
+const { getTalkDetails } = require('./getTalkDetails');
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -143,4 +145,80 @@ function sendEmailToNewAdmin(newAdminEmail, adminEmail, newAdminPhone, adminTemp
 
     })
 }
+
+
+// ontime({
+//     cycle: '12:00:00'
+// }, function (ot) {
+//     console.log('lunch time!')
+//     ot.done()
+//     return
+// })
+
+
+ontime({
+    cycle: '11:38:00'
+}, function (ot) {
+
+getTalkDetails()
+.then(res => {
+    let threeDaysFromNow = new Date();
+    threeDaysFromNow.setDate(threeDaysFromNow.getDate() + 1);
+    console.log('this is the date of three days from now: ', threeDaysFromNow)
+    console.log('this is the origional res', res)
+    approvedSpeakers = res.filter(talk => talk.currentStatus === 'Approve' && talk.eventDate === threeDaysFromNow)
+    console.log('this is the approvedSpeakers 3 days from now', approvedSpeakers)
+
+if (approvedSpeakers.length !== 0) {
+    sendReminder
+    console.log('this is meetupDate', approvedSpeakers.meetupDate)
+    console.log('this is this is speakerEmail', approvedSpeakers.speakerEmail)
+
+    return new Promise((resolve, reject) => {
+        console.log(144)
+        if (approvedSpeakers.speakerEmail == undefined) {
+            console.log(244)
+            resolve('Bad Speaker Email in reminder email');
+            return false;
+        } 
+        
+        if(approvedSpeakers.meetupTitle == undefined) {
+            console.log(344)
+            resolve('Bad Meetup Title in reminder email');
+            return false;
+        }
+
+        if(approvedSpeakers.meetupDate == undefined) {
+        console.log(444)
+            resolve('Bad Meetup Date in reminder email');
+            return false;
+        }
+       
+        var emailContent = `SDJS would like to remind you that you have been approved to speeak at ${meetupTitle} on ${meetupDate}. Please click this button to visit out site to confirm or cancel your talk. `
+        
+        const reminder = {
+            to: speakerEmail,
+            from: adminEmail,
+            subject: 'SDJS Meetup Speaker Reminder',
+            templateId: 'd-b593d56913f7494cb1faf97354fb475c', //need to create a new template
+            dynamic_template_data: {
+                emailContent: `${emailContent}`,
+            }
+        }
+        console.log(844, reminder)
+
+            sgMail.send(reminder);
+            console.log(944)
+
+            resolve({ reminder });
+            console.log(1044)
+    })
+    }
+})
+
+ot.done()
+return
+})
+
+
 module.exports = { sendEmailToSpeaker, sendEmailToAdmin, sendEmailToNewAdmin } 
