@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { updateUsername, updatePassword, postLogin } from './AdminLoginActions';
-import Navbar from '../Navbar/Navbar';
+import AdminNav from '../AdminNav/AdminNav';
 
 class AdminLogin extends Component {
 	constructor(props) {
@@ -39,9 +39,9 @@ class AdminLogin extends Component {
 						<form onSubmit={this.submitLogin}>
 							<h3>SDJS Admin Login</h3>
 							<div className="container">
-								<label for="username"><b>Username</b></label>
+								<label htmlFor="username"><b>Username</b></label>
 								<input type="text" placeholder="Username" name="username" value={username} onChange={this.handleUsername} required/>
-								<label for="password"><b>Password</b></label>
+								<label htmlFor="password"><b>Password</b></label>
 								<input type="password" placeholder="Password" name="password" value={password} onChange={this.handlePassword} required/>
 								<button type="submit" className='btn'>Login</button>
 								<label id='remember'>
