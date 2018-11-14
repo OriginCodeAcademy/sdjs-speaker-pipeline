@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Field } from 'react-redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
 import {
 	talkSubmit,
 	getDates,
@@ -76,7 +75,7 @@ class SignUp extends Component {
 	}
 
 	render() {
-		const { events, phone, submitted } = this.props;
+		const { events, phone, submitted, speakerName, speakerEmail } = this.props;
 		if (submitted == true) {
 			return <Redirect push to='/Thankyou' />
 		  }
