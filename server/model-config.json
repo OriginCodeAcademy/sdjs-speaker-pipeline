@@ -47,5 +47,9 @@
   "organizer": {
     "dataSource": "sdjs",
     "public": true
+  },
+  "accessToken": {
+    "dataSource": "sdjs",
+    "public": false
   }
 }
