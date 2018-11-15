@@ -41,7 +41,7 @@ function pastTalks(){
                         .catch(err => console.log(err))
                 })
             })
-            .catch =(err => console.log(err))
+            .catch(err => console.log(err))
     })
 }
 

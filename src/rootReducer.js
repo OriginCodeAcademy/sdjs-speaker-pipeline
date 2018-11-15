@@ -13,8 +13,6 @@ const rootReducer = combineReducers({
     SignUp           : SignUpReducer,
     Talks            : TalksReducer, 
     PastTalks        : PastTalksReducer, 
-
-            
 });
 
 export default rootReducer; 

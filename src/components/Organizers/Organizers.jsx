@@ -56,7 +56,7 @@ class Organizers extends Component {
     }
 
     render() {
-        const { adminList, newAdminPhone, newAdminEmail, newAdminName } = this.props;
+        const { adminList, newAdminPhone, newAdminEmail, newAdminPassword, newAdminName } = this.props;
         return (
 
             <div>
@@ -75,6 +75,10 @@ class Organizers extends Component {
                         <Field model='user.admin-phone'>
                             <label htmlFor='admin-phone'>Phone Number: </label>
                             <input type="tel" name="newAdminPhone" placeholder='123-456-7890'  required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={newAdminPhone.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, '$1-$2-$3')} format="### ### ####" onChange={this.handleChange} />
+                        </Field>
+                        <Field model='user.admin-password'>
+                            <label htmlFor='admin-password'>Password: </label>
+                            <input type="password" name="newAdminPassword" placeholder='********'  required value={newAdminPassword} onChange={this.handleChange} />
                         </Field>
                         <div>
                             <button className='btn'>Submit!</button>

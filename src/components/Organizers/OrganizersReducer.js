@@ -1,8 +1,10 @@
+
 const initialstate = {
 	adminList       : [], 
     newAdminEmail   : '',
     newAdminName    : '',
-    newAdminPhone   : '',
+	newAdminPhone   : '',
+	newAdminPassword: '',
 }
 export default function OrganizersReducer(state = initialstate, action) {
 	const { payload, type } = action;
