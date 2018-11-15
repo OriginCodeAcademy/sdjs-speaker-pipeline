@@ -18,19 +18,17 @@ function talkSubmit(speakerInfo, talkInfo, date) {
 						Event.findOrCreate({date, name, details, meetupId})
 							.then(response3 => {
 								let eventId = response3[0].id
-								let ids = { speakerId, eventId };
 								Talk.create( { ...talkInfo, speakerId, eventId})
 									.then(response4 => {
 										return resolve(response4)
 									})
-									.catch(err => console.log(err))
+									.catch(err => reject(err))
 							})
-							.catch(err => console.log(err))
+							.catch(err => reject(err))
 					})
-					.catch(err => console.log(err))
+					.catch(err => reject(err))
 			})
-			.catch(err => console.log(err))
-
+			.catch(err => reject(err))
 	})
 }
 

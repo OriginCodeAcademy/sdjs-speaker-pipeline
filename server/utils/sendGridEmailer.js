@@ -1,4 +1,3 @@
-const app = require('../server');
 const sgMail = require('@sendgrid/mail');
 const moment = require('moment');
 
@@ -9,63 +8,44 @@ function sendEmailToSpeaker(adminEmail, approved, pending, speakerEmail, speaker
 
     return new Promise((resolve, reject) => {
         if (speakerEmail == undefined) {
-            resolve('Bad Speaker Email1');
+            reject({message: 'Bad Speaker Email'});
             return false;
         } 
         
         if(meetupTitle == undefined) {
-            resolve('Bad Meetup Title1');
+            reject({message: 'Bad Meetup Title'});
             return false;
         }
 
         if(meetupDate == undefined) {
-            resolve('Bad Meetup Date1');
+            reject({message: 'Bad Meetup Date'});
             return false;
         }
-
+        let emailContent;
         if (approved && !pending) {
-            var emailContent = `Congratulations! Your request to speak at ${meetupTitle} on ${meetupDate} has been approved.`
+            emailContent = `Congratulations! Your request to speak at ${meetupTitle} on ${meetupDate} has been approved.`
         }
 
         if (!approved && !pending) {
-
-            var emailContent = `We're sorry your request to speak at ${meetupTitle} on ${meetupDate} has been denied.`
+            emailContent = `We're sorry your request to speak at ${meetupTitle} on ${meetupDate} has been denied.`
         }
 
         if (pending) {
-
-            var emailContent = `Thank you for signing up to speak ${meetupTitle} on ${meetupDate}. You will be notified as soon as a SDJS admin reviews your request.`
+            emailContent = `Thank you for signing up to speak ${meetupTitle} on ${meetupDate}. You will be notified as soon as a SDJS admin reviews your request.`
             sendEmailToAdmin(adminEmail, meetupDate, meetupTitle, speakerEmail, speakerName);
         }
-        let reminderDate = moment(meetupDate, '').add(17, 'hours').add(7, 'minutes').unix();
         
         const email = {
             to: speakerEmail,
             from: adminEmail,
             subject: 'SDJS Meetup Speaker Request',
             templateId: 'd-b593d56913f7494cb1faf97354fb475c',
-            send_at: reminderDate,
             dynamic_template_data: {
-                emailContent: `${emailContent}`,
+                emailContent: emailContent,
             }
         }
-        const emailReminder = {
-            "to": [
-                speakerEmail
-            ],
-            "from": adminEmail,
-            "subject": 'SDJS Meetup Speaker Request',
-            "send_at": reminderDate,
-            "templateId": 'd-b593d56913f7494cb1faf97354fb475c',
-            "dynamic_template_data": {
-                "meetupTitle": `${meetupTitle}`,
-                "meetupDate": `${meetupDate}`,
-            }
-        }
-
-            sgMail.send(emailReminder);
-
-            resolve({ email, emailReminder });
+      
+            .then(() => resolve({ email }));
     })
 }
 

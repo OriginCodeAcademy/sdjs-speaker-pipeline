@@ -1,11 +1,11 @@
 const initialstate = {
-	speakerName: '',
-	speakerEmail: '',
 	date: '',
-	topic: '',
 	description: '',
-	submitted: 'false',
 	phone: '',
+	speakerEmail: '',
+	speakerName: '',
+	submitted: false,
+	talkTopic: '',
 }
 export default function SignUpReducer(state = initialstate, action) {
 	const { payload, type } = action;

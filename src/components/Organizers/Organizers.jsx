@@ -3,7 +3,6 @@ import AdminNav from '../AdminNav/AdminNav';
 import { Field } from 'react-redux-form';
 import {
     addAdmin,
-    adminChangeInput,
     adminUpdate,
     deleteAdmin,
     editAdmin,
@@ -13,7 +12,6 @@ import {
     toggleEdit,
     updateAdminList,
     updateAdminInfo,
-    resetState
 } from './OrganizersActions';
 import OrganizersEdit from '../OrganizersEdit/OrganizersEdit';
 
@@ -25,26 +23,13 @@ class Organizers extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
-        this.handleMapChane = this.handleMapChange.bind(this);
-        this.handleMapDelete = this.handleMapDelete.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
-        this.toggleEdit = this.toggleEdit.bind(this);
-        this.handleAdminChange = this.handleAdminChange.bind(this);
-        this.handleAdminUpdate = this.handleAdminUpdate.bind(this);
-
     }
 
     addAdmin(e) {
         e.preventDefault();
-        var length = 8,
-            charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-            adminTempPw = "";
-        for (var i = 0, n = charset.length; i < length; ++i) {
-            adminTempPw += charset.charAt(Math.floor(Math.random() * n));
-        }
-        let realm = 'string'
         const { newAdminName, newAdminEmail, newAdminPhone, dispatch, accessToken } = this.props;
-        dispatch(addAdmin(realm, newAdminName, newAdminEmail, newAdminPhone, adminTempPw, accessToken));
+        dispatch(addAdmin(newAdminName, newAdminEmail, newAdminPhone, adminTempPw, accessToken));
     }
     componentDidMount() {
         const { dispatch, accessToken } = this.props;
@@ -58,10 +43,6 @@ class Organizers extends Component {
         })
         dispatch(adminUpdate(index));
     }
-    handleAdminUpdate(e) {
-        const { dispatch } = this.props;
-        dispatch(adminChangeInput(e.target.name, e.target.id, e.target.value))
-    }
 
     handleChange(e) {
         const { dispatch } = this.props;
@@ -73,36 +54,10 @@ class Organizers extends Component {
         const { dispatch, accessToken } = this.props;
         dispatch(deleteAdmin(e.target.name, accessToken))
     }
-
-    handleEdit(e) {
-        const { dispatch, accessToken } = this.props;
-        dispatch(editAdmin(e.target.name, accessToken));
-        this.toggleEdit()
-    }
-
-    handleMapChange({ index, name, email, phone, password }) {
-        const { adminList, dispatch } = this.props;
-        adminList = [...adminList];
-        adminList[index] = { index, name, email, phone, password };
-        dispatch(updateAdminList(newAdmins))
-    }
-
-    handleMapDelete({ index }) {
-        const { adminList, dispatch } = this.props;
-        adminList = [...adminList];
-        adminList.splice(index, 1);
-        dispatch(updateAdminList(newAdmins))
-    }
-
     handleUpdate(id, index, obj) {
         const { dispatch, accessToken } = this.props;
 
         dispatch(patchAdmin(id, index, obj, accessToken))
-    }
-
-    handleSubmit(e) {
-        const { adminName, adminEmail, adminPhone, dispatch } = this.props;
-        dispatch(updateAdminInfo(adminName, adminEmail, adminPhone));
     }
     toggleEdit(e) {
         const { adminList, dispatch } = this.props;

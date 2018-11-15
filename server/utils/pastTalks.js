@@ -11,19 +11,17 @@ function pastTalks(){
             .then(talks => {
                 const approvedTalks = talks
                 approvedTalks.map(approvedTalk => {
-                    Event.find({where: {id: approvedTalk.eventId}})
+                    Event.findOne({where: {id: approvedTalk.eventId}})
                         .then(event => {
-                            approvedTalk.__data.date = event[0].date
-                            approvedTalk.__data.event = event[0].name
-                            Speaker.find({ where: {id: approvedTalk.speakerId}})
+                            approvedTalk.__data.date = event.date
+                            approvedTalk.__data.event = event.name
+                            Speaker.findOne({ where: {id: approvedTalk.speakerId}})
                                 .then(speaker => {
-                                    approvedTalk.__data.speaker = speaker[0].speakerName
-                                    let now = date;
+                                    approvedTalk.__data.speaker = speaker.speakerName
                                     let talkDate = moment(new Date(approvedTalk.__data.date)).format()
-                                    if(now > talkDate){
+                                    if(date > talkDate){
                                         mappedTalks.push(approvedTalk)
                                     }
-                                    else{console.log('date is not in the past')}
                                     Event.find({ where: {date: {lt: date}}})
                                         .then(response => {
                                             counter ++
