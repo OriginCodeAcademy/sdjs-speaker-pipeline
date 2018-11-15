@@ -18,7 +18,6 @@ class Organizers extends Component {
         this.addAdmin = this.addAdmin.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
-        this.handleEdit = this.handleEdit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
     }
 
