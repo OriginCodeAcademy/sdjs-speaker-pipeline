@@ -4,6 +4,8 @@ var loopback = require('loopback');
 var boot = require('loopback-boot');
 require('dotenv').config()
 
+var app = (module.exports = loopback());
+
 app.use(loopback.static('public'));
 
 app.start = function() {

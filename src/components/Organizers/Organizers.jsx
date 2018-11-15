@@ -3,15 +3,11 @@ import AdminNav from '../AdminNav/AdminNav';
 import { Field } from 'react-redux-form';
 import {
     addAdmin,
-    adminUpdate,
     deleteAdmin,
-    editAdmin,
     getAdmins,
     onChange,
     patchAdmin,
     toggleEdit,
-    updateAdminList,
-    updateAdminInfo,
 } from './OrganizersActions';
 import OrganizersEdit from '../OrganizersEdit/OrganizersEdit';
 
@@ -34,14 +30,6 @@ class Organizers extends Component {
     componentDidMount() {
         const { dispatch, accessToken } = this.props;
         dispatch(getAdmins(accessToken));
-    }
-
-    handleAdminChange(e) {
-        const { adminList, dispatch } = this.props;
-        const index = adminList.findIndex(admin => {
-            return admin.id == e.target.name
-        })
-        dispatch(adminUpdate(index));
     }
 
     handleChange(e) {
