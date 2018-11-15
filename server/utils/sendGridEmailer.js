@@ -42,7 +42,6 @@ function sendEmailToSpeaker(adminEmail, approved, pending, speakerEmail, speaker
             from: adminEmail,
             subject: 'SDJS Meetup Speaker Request',
             templateId: 'd-b593d56913f7494cb1faf97354fb475c',
-            send_at: reminderDate,
             dynamic_template_data: {
                 emailContent: emailContent,
             }
@@ -126,14 +125,13 @@ function sendEmailToNewAdmin(username, email) {
 }
 
 ontime({
-    cycle: '8:00:00' //to test the reminder change this time to 1-2 minutes from current time. then go to organizers page and create new admin.
+    cycle: '8:00:00'
 }, function (ot) {
 
     getTalkDetails()
         .then(res => {
             let date = new Date();
-            //let threeDaysFromNow = moment(date).add(2, 'day').format('YYYY-MM-DD');     this line of code will be for production. will check to see if there are confirm speakers for 3 days in advance
-            let threeDaysFromNow = moment(date).format('YYYY-MM-DD');  // this line is for testing only.
+            let threeDaysFromNow = moment(date).add(2, 'day').format('YYYY-MM-DD');
             res = res.filter(talk => talk.currentStatus === 'Approve' && moment(talk.eventDate).format('YYYY-MM-DD') === threeDaysFromNow)
 
             if (
