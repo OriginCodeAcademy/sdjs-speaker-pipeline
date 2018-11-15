@@ -301,11 +301,11 @@ label {
   font-size: 15px;
   border: 1px solid #efefef;
   text-transform: capitalize;
-  background-color: white;
+  background-color: #fbfbfb;
 }
 .table td {
   padding: 20px;
-  background-color: white;
+  background-color: #fbfbfb;
 }
 .table select {
   height: 50px;
@@ -369,11 +369,6 @@ label {
 .table .options i {
   margin-left: 10px;
 }
-.table .table-header-meetups-page {
-  font-size: 15px;
-  margin: 0;
-  border-bottom: 1px solid black;
-}
 .table .table-editTalk {
   margin: 20px 0;
 }
@@ -432,11 +427,11 @@ label {
   text-align: center;
   width: 100%;
 }
-.meetups h1 {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: normal;
-  letter-spacing: 1px;
+.meetups .table .table-header-meetups-page {
+  font-size: 15px;
+  margin: 0;
+  border-bottom: 1px solid #313131;
+  height: 50px;
 }
 
 .meetups-child {
@@ -454,7 +449,7 @@ label {
 
 .single-meetup {
   margin: 50px 0;
-  border: 1px solid black;
+  border: 1px solid #313131;
 }
 
 .talks-page-container {
@@ -491,35 +486,79 @@ label {
   margin-bottom: 50px;
 }
 
-.trash-icon {
-  height: 25px;
+.organizer-container {
+  width: 100%;
 }
-
-.edit-icon {
-  height: 25px;
-}
-
-.add-admin-title {
+.organizer-container h3 {
   text-align: center;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin: 0;
 }
 
-.admin-map-content {
-  background: #1884c3;
-  color: white;
-  width: 90vw;
+#organizer-form {
+  border: 1px solid #313131;
+  background-color: #fbfbfb;
+  margin: 50px auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  width: 50%;
+  padding: 50px;
+}
+#organizer-form div {
+  width: 100%;
+}
+#organizer-form label {
+  font-weight: normal;
+  margin: 5px 0;
+}
+#organizer-form input {
+  width: 100%;
+  height: 25px;
+  font-size: 15px;
+  margin: 5px 0px;
+}
+#organizer-form button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.organizer-display-container {
+  border: 1px solid #313131;
+  width: 70%;
+  margin: 50px auto;
+  background-color: #fbfbfb;
+  padding: 20px;
+}
+.organizer-display-container .organizer-display-section {
+  display: flex;
   justify-content: space-between;
-  height: 50px;
-  font-size: 15pt;
-  padding-top: 15px;
-  padding-right: 35px;
-  padding-bottom: 15px;
-  padding-left: 35px;
-  margin-top: 1px;
-  margin-right: auto;
-  margin-bottom: 1px;
-  margin-left: auto;
+}
+.organizer-display-container .organizer-display-section i {
+  margin: 0px 10px;
+}
+
+.organizer-edit-section #organizer-edit-form {
+  display: flex;
+  justify-content: space-between;
+}
+.organizer-edit-section #organizer-edit-form div {
+  margin: 0 10px;
+}
+.organizer-edit-section #organizer-edit-form label {
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+.organizer-edit-section #organizer-edit-form input {
+  font-size: 15px;
+  width: 80%;
+}
+
+.fa-times {
+  font-size: 20px;
+  margin: auto 5px;
+  color: #4b4b4b;
 }
 
 html {
@@ -557,6 +596,12 @@ body {
   padding: 120px 0;
   display: flex;
   justify-content: center;
+}
+.top-div h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 1px;
 }
 
 /*# sourceMappingURL=style.css.map */
