@@ -28,6 +28,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "accessToken": {
+      "type": "hasMany",
+      "model": "accessToken",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [

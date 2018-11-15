@@ -8,10 +8,15 @@
   "properties": {},
   "validations": [],
   "relations": {
-    "player": {
+    "organizer": {
       "type": "belongsTo",
       "model": "organizer",
       "foreignKey": "organizerId"
+    },
+    "speaker": {
+      "type": "belongsTo",
+      "model": "speaker",
+      "foreignKey": "speakerId"
     }
   },
   "acls": [
