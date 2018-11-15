@@ -4,7 +4,7 @@ const moment = require('moment');
 function pastTalks(){
     let counter = 0;
     let mappedTalks = [];
-    let date = new Date()
+    let date = moment().format()
     return new Promise((resolve, reject) => {
         const { Talk, Speaker, Event } = app.models;
         Talk.find({where: {status: 'Approve'}})
@@ -18,7 +18,7 @@ function pastTalks(){
                             Speaker.findOne({ where: {id: approvedTalk.speakerId}})
                                 .then(speaker => {
                                     approvedTalk.__data.speaker = speaker.speakerName
-                                    let talkDate = moment(new Date(approvedTalk.__data.date)).format()
+                                    let talkDate = moment(approvedTalk.__data.date).format()
                                     if(date > talkDate){
                                         mappedTalks.push(approvedTalk)
                                     }
@@ -27,8 +27,8 @@ function pastTalks(){
                                             counter ++
                                             if(mappedTalks.length == counter){
                                                 mappedTalks.sort(function(a, b) {
-                                                    a = new Date(a.__data.date);
-                                                    b = new Date(b.__data.date);
+                                                    a = moment(a.__data.date).format();
+                                                    b = moment(b.__data.date).format();
                                                     return a>b ? -1 : a<b ? 1 : 0;
                                                 })
                                                 resolve(mappedTalks);

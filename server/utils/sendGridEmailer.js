@@ -166,7 +166,7 @@ ontime({
                             subject: 'SDJS Meetup Speaker Reminder',
                             templateId: 'd-b593d56913f7494cb1faf97354fb475c',
                             dynamic_template_data: {
-                                emailContent: `${emailContent}`,
+                                emailContent: emailContent,
                             }
                         }
 
