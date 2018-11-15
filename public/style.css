@@ -485,6 +485,9 @@ label {
 .talks-page-container .talks-allTalks {
   margin-bottom: 50px;
 }
+.talks-page-container .talks-owner-filter {
+  text-align: right;
+}
 
 .organizer-container {
   width: 100%;
