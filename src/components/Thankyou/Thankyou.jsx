@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
 
-Thankyou = () => {
+const Thankyou = () => {
 	return (
 		<div>
 			<Navbar />

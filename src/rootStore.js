@@ -1,8 +1,8 @@
-import { persistStore, persistReducer } from 'redux-persist'
-import rootReducer from './rootReducer';
-import storage from 'redux-persist/lib/storage';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage';
 import promiseMiddleware from 'redux-promise-middleware';
+import rootReducer from './rootReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -15,17 +15,14 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 /* eslint-disable no-underscore-dangle */
-export default () => {
-  let rootStore = createStore(
+  export const store = createStore(
     persistedReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     composeEnhancers(
       applyMiddleware(
         promiseMiddleware()
       )
     )
   );
-  let persistor = persistStore(store)
-  return { rootStore, persistor }
-}
+  export const persistor = persistStore(store)
+  export default { store, persistor }
 /* eslint-enable */

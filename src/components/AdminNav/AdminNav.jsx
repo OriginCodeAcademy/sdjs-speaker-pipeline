@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 
-AdminNavbar = () => {
-        const { location } = this.props;
+const AdminNavbar = props => {
+        const { location } = props;
             <div className='navbar'>
                     <img className='logo' src='https://uploads-ssl.webflow.com/5717c4de40b3bdeb02777ff4/598129e0c2a8fb000172a22e_Full%20Color.png' />
                 <div className='nav-items' >

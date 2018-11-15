@@ -3,7 +3,7 @@ import Talks from '../Talks';
 import PastTalks from '../PastTalks';
 import AdminNav from '../AdminNav/AdminNav';
 
-TalksPage = () => {
+const TalksPage = () => {
     return (
         <div className='top-div'>
             <AdminNav />

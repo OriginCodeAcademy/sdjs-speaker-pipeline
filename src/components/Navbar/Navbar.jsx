@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 
-Navbar = () => {
-    const { location } = this.props;
+const Navbar = props => {
+    const { location } = props;
     return (
         <div className='home-nav'>
             <div className='navbar'>
@@ -17,19 +17,19 @@ Navbar = () => {
                     <Link to='/SignUp' className={location.pathname === '/SignUp' ? 'nav-item w--current' : 'nav-item'}>
                         SIGN UP
                     </Link>
-                    <Link to='/Connect' onClick={this.getActive} className={location.pathname === '/Connect' ? 'nav-item w--current' : 'nav-item'}>
+                    <Link to='/Connect' className={location.pathname === '/Connect' ? 'nav-item w--current' : 'nav-item'}>
                         CONNECT
                     </Link>
-                    <Link to='/Shirts' onClick={this.getActive} className={location.pathname === '/Shirts' ? 'nav-item w--current' : 'nav-item'}>
+                    <Link to='/Shirts' className={location.pathname === '/Shirts' ? 'nav-item w--current' : 'nav-item'}>
                         SHIRTS
                     </Link>
-                    <Link to='/Learn' onClick={this.getActive} className={location.pathname === '/Learn' ? 'nav-item w--current' : 'nav-item'}>
+                    <Link to='/Learn' className={location.pathname === '/Learn' ? 'nav-item w--current' : 'nav-item'}>
                         LEARN
                     </Link>
-                    <Link to='/Jobs' onClick={this.getActive} className={location.pathname === '/Jobs' ? 'nav-item w--current' : 'nav-item'}>
+                    <Link to='/Jobs' className={location.pathname === '/Jobs' ? 'nav-item w--current' : 'nav-item'}>
                         JOBS
                     </Link>
-                    <Link to='/AdminLogin' onClick={this.getActive} className={location.pathname === '/AdminLogin' ? 'nav-item w--current' : 'nav-item'}>
+                    <Link to='/AdminLogin' className={location.pathname === '/AdminLogin' ? 'nav-item w--current' : 'nav-item'}>
                         ADMIN
                     </Link>
                 </div>
