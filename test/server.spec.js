@@ -5,10 +5,16 @@ const chaiHttp = require('chai-http');
 const server = require('../server/server');
 const Nightmare = require('nightmare');
 const expect = require('chai').expect;
+const Enzyme = require('enzyme');
+const shallow = require('enzyme').shallow; 
+const Adapter = require('enzyme-adapter-react-16');
+const Navbar = require('../src/components/Navbar/Navbar');
+const React = require('react');
 
 chai.use(chaiHttp);
 let nightmare;
 
+Enzyme.configure({ adapter: new Adapter() });
 server.listen(4444);
 
 describe('server/server.js', function() {
@@ -18,7 +24,7 @@ describe('server/server.js', function() {
     
   });
 
-  it('should respond to /', done => {
+  it('should respond to /SignUp', done => {
     chai
       .request(server)
       .get('/')
@@ -90,6 +96,6 @@ describe('server/server.js', function() {
   });
 
   it('should shallow render', () => {
-    expect(shallow(<Navbar />).contains(<a>SPEAK</a>)).to.equal(true);
+    expect(shallow(<Navbar />).contains(<a className='nav-item' >SPEAK</a>)).to.equal(true);
   });
 });
