@@ -50,7 +50,14 @@ export default function SignUpReducer(state = initialstate, action) {
 		case 'TALK_SUBMIT_FULFILLED': {
 			return {
 				...state,
-				submitted: true
+				submitted: true,
+				speakerName: '',
+				speakerEmail: '',
+				description: '',
+				phone: '',
+				talkTopic: '',
+				date:'',
+
 			}
 		}
 		case 'GET_DATES_FULFILLED': {
@@ -63,6 +70,10 @@ export default function SignUpReducer(state = initialstate, action) {
 			return {
 				...state,
 				submitted: true,
+		case 'RESET_SUBMITTED': {
+			return{
+				...state,
+				submitted: false
 			}
 		}
 		default: {
