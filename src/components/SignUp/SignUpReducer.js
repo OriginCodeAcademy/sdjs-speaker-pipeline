@@ -66,10 +66,6 @@ export default function SignUpReducer(state = initialstate, action) {
 				events: payload
 			}
 		}
-		case 'TALK_SUBMIT_FULFILLED': {
-			return {
-				...state,
-				submitted: true,
 		case 'RESET_SUBMITTED': {
 			return{
 				...state,
