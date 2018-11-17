@@ -101,9 +101,9 @@ class Organizers extends Component {
                                     <div key={admin.id}>
                                         <div >
                                             <div className='organizer-display-section'>
-                                                <div> {admin.username}</div>
-                                                <div> {admin.email}</div>
-                                                <div> {admin.phone.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, '$1-$2-$3')}</div>
+                                                <div className='organizer-display-div' id='name'> {admin.username}</div>
+                                                <div className='organizer-display-div'> {admin.email}</div>
+                                                <div className='organizer-display-div'> {admin.phone.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, '$1-$2-$3')}</div>
                                                 <div >
                                                     <i className="far fa-edit"
                                                         name={admin.id}

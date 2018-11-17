@@ -488,6 +488,13 @@ label {
 .talks-page-container .talks-owner-filter {
   text-align: right;
 }
+.talks-page-container .talks-owner-filter select {
+  height: 30px;
+  margin-left: 5px;
+  border: 0px;
+  background-color: transparent;
+  font-size: 15px;
+}
 
 .organizer-container {
   width: 100%;
@@ -537,11 +544,18 @@ label {
 .organizer-display-container .organizer-display-section {
   display: flex;
   justify-content: space-between;
+  margin: 10px 0;
 }
 .organizer-display-container .organizer-display-section i {
   margin: 0px 10px;
 }
+.organizer-display-container .organizer-display-section .organizer-display-div {
+  width: 30%;
+}
 
+.organizer-edit-section {
+  margin: 50px 0;
+}
 .organizer-edit-section #organizer-edit-form {
   display: flex;
   justify-content: space-between;
@@ -562,6 +576,10 @@ label {
   font-size: 20px;
   margin: auto 5px;
   color: #4b4b4b;
+}
+
+#name {
+  text-transform: capitalize;
 }
 
 html {

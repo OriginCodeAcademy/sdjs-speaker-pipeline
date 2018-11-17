@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { handleOwnerFilter } from './TalksPageActions';
+import { getAdmins } from '../Organizers/OrganizersActions'
 import Talks from '../Talks';
 import PastTalks from '../PastTalks';
 import AdminNav from '../AdminNav/AdminNav';
@@ -10,13 +11,18 @@ class TalksPage extends Component {
         this.handleOwnerFilter = this.handleOwnerFilter.bind(this)
     }
 
+    componentDidMount() {
+        const { dispatch, accessToken } = this.props;
+        dispatch(getAdmins(accessToken))
+    }
+
     handleOwnerFilter(e) {
         const { dispatch } = this.props;
         dispatch(handleOwnerFilter(e.target.value));
     }
 
     render() {
-        const { selectedOwner } = this.props;
+        const { selectedOwner, adminList } = this.props;
         let filterProp = (talk) => talk
         if (selectedOwner !== '') {
             filterProp = (talk) => talk.owner == selectedOwner
@@ -29,12 +35,12 @@ class TalksPage extends Component {
                     <div className='talks-allTalks'>
                         <h1>All Talks</h1>
                         <div className='talks-owner-filter'>
-                            Filter by owner
                             <select onChange={this.handleOwnerFilter}>
-                                <option value=''>All Owners</option>
-                                <option value='Owner 1'>Owner 1</option>
-                                <option value='Owner 2'>Owner 2</option>
-                                <option value='Owner 3'>Owner 3</option>
+                                <option value=''>Filter By Owner</option>
+                                <option value=''>All</option>
+                                {adminList &&
+                                    adminList.map((admin, i) => <option key={i} value={admin.username}>{admin.username}</option>)}
+                                <option value='None'>None</option>
                             </select>
                         </div>
                         <div className='talk-component-container'>
@@ -44,13 +50,13 @@ class TalksPage extends Component {
                             />
                         </div>
                     </div>
-                </div>
-                <div className='talks-pastTalks'>
-                    <h1>Past Talks</h1>
-                    <div className='talk-component-container'>
-                        <PastTalks
-                            styling='talk-component-on-talks-page'
-                        />
+                    <div className='talks-pastTalks'>
+                        <h1>Past Talks</h1>
+                        <div className='talk-component-container'>
+                            <PastTalks
+                                styling='talk-component-on-talks-page'
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

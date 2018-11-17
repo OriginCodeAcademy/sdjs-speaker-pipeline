@@ -53,14 +53,21 @@
     .organizer-display-section {
       display: flex;
       justify-content: space-between;
+      margin: 10px 0;
 
       i {
         margin: 0px 10px;
+      }
+
+      .organizer-display-div {
+        width: 30%
       }
     }
   }
 
   .organizer-edit-section {
+    margin: 50px 0;
+
     #organizer-edit-form {
       display: flex;
       justify-content: space-between;
@@ -87,4 +94,8 @@
     font-size: 20px;
     margin: auto 5px;
     color: lighten( $dark-gray, 10% );
+  }
+
+  #name {
+    text-transform: capitalize;
   }
