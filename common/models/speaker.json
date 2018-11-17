@@ -32,7 +32,7 @@
     "accessToken": {
       "type": "hasMany",
       "model": "accessToken",
-      "foreignKey": "",
+      "foreignKey": "userId",
       "options": {
         "nestRemoting": true
       }

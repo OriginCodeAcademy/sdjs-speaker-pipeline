@@ -13,6 +13,10 @@
       "./mixins"
     ]
   },
+  "User": {
+    "dataSource": "sdjs",
+    "public": false
+  },
   "AccessToken": {
     "dataSource": "sdjs",
     "public": false
@@ -50,6 +54,13 @@
   },
   "accessToken": {
     "dataSource": "sdjs",
-    "public": false
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "organizer",
+        "foreignKey": "organizerId"
+      }
+    }
   }
 }

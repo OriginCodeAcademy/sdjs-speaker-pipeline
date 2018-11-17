@@ -1,7 +1,7 @@
 {
   "name": "accessToken",
   "base": "AccessToken",
-  "idInjection": true,
+  "idInjection": false,
   "options": {
     "validateUpsert": true
   },
@@ -11,12 +11,12 @@
     "organizer": {
       "type": "belongsTo",
       "model": "organizer",
-      "foreignKey": "organizerId"
+      "foreignKey": "userId"
     },
     "speaker": {
       "type": "belongsTo",
       "model": "speaker",
-      "foreignKey": "speakerId"
+      "foreignKey": "userId"
     }
   },
   "acls": [
