@@ -183,7 +183,7 @@ it('getTalkDetails should reject with Bad Talk Id"', function () {
 
 it('pastTalks should reject with Bad Talk Id"', function () {
   return expect(pastTalks('this should pass with any params')).to.be.fulfilled;
-}
+});
 
 
 it('sendEmailToSpeaker should reject with Bad Talk Id"', function () {
