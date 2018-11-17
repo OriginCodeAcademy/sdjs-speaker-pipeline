@@ -155,41 +155,33 @@ it('changeTalkContent should reject with "bad index"', function () {
   return expect(changeTalkContent('this', 'test', 'should', 'fail')).to.be.rejectedWith('bad index');
 });
 
-
 it('changeTalkOwner should reject with Bad Talk Id"', function () {
   return expect(changeTalkOwner(undefined, undefined)).to.be.rejectedWith('Bad Talk Id');
 });
-
 
 it('changeTalkStatus should reject with Bad Talk Id"', function () {
   return expect(changeTalkStatus('Could not find talk')).to.be.rejectedWith('No Status Selected');
 });
 
-
 it('formatTalkForEmail should reject with Bad Talk Id"', function () {
   return expect(formatTalkForEmail('Bad Speaker Id')).to.be.rejectedWith('Bad Event Id');
 });
-
 
 it('getMeetups should reject with Bad Talk Id"', function () {
   return expect(getMeetups('this should pass with any params')).to.be.fulfilled;
 });
 
-
 it('getTalkDetails should reject with Bad Talk Id"', function () {
   return expect(getTalkDetails('this should pass with any params')).to.be.fulfilled;
 });
-
 
 it('pastTalks should reject with Bad Talk Id"', function () {
   return expect(pastTalks('this should pass with any params')).to.be.fulfilled;
 });
 
-
 it('sendEmailToSpeaker should reject with Bad Talk Id"', function () {
   return expect(sendEmailToSpeaker('Could not find talk')).to.be.rejectedWith('Bad Speaker Email');
 });
-
 
 it('sendEmailToSpeaker should reject with Bad Talk Id"', function () {
   return expect(sendEmailToSpeaker('Could not find talk')).to.be.rejectedWith('Bad Speaker Email');
