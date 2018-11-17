@@ -10,6 +10,7 @@ function getTalkDetails() {
             .then(speaker => {
               return Event.findById(talk.eventId)
                 .then(selectedEvent => {
+                  //if date after today....
                   return {
                     speaker: speaker.speakerName,
                     speakerEmail: speaker.speakerEmail,
@@ -40,6 +41,7 @@ function getTalkDetails() {
             .catch(err => reject({ error: 'could not find speaker', err }))
         })
         Promise.all(talkInformation)
+        //sort by date try this one first 
           .then(results => resolve(results))
           .catch(err => reject({ error: 'could not return results', err }))
       })
