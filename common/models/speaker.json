@@ -29,12 +29,12 @@
         "nestRemoting": true
       }
     },
-    "accessToken": {
+    "accessTokens": {
       "type": "hasMany",
       "model": "accessToken",
       "foreignKey": "userId",
       "options": {
-        "nestRemoting": true
+        "disableInclude": true
       }
     }
   },
