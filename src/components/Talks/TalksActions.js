@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment'
 
 export const getTalkData = accessToken => {
     return {
@@ -26,6 +27,18 @@ export const getTalkData = accessToken => {
                         }
                     })
                     .catch(err => reject({ error: 'could not get organizers', err}))
+                const talkIds = talkInfo.data.map(talk => talk.talkId)
+                const date = moment('2018-12-01').format();
+                const filtered = talkInfo.data.filter(talk => moment(talk.eventDate).format() > date)
+                filtered.sort(function(a, b) {
+                    a = moment(a.eventDate).format();
+                    b = moment(b.eventDate).format();
+                    return a<b ? -1 : a>b ? 1 : 0;
+                })
+                return {
+                    talkInfo: filtered,
+                    talkIds: talkIds
+                }
             })
             .catch(err => reject({ error: 'could not get talkInfo', err}))
     }
