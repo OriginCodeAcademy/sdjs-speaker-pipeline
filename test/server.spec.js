@@ -151,8 +151,8 @@ describe('server/server.js', function () {
       .catch(err => console.log(err))
   })
 
-it('changeTalkContent should reject with "bad index"', function () {
-  return expect(changeTalkContent('this', 'test', 'should', 'fail')).to.be.rejectedWith('bad index');
+it('changeTalkContent should reject with "Bad talk Id"', function () {
+  return expect(changeTalkContent('this', 'test', 'should', 'fail')).to.be.rejectedWith('Bad talk Id');
 });
 
 it('changeTalkOwner should reject with Bad Talk Id"', function () {

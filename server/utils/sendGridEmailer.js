@@ -2,7 +2,7 @@ const sgMail = require('@sendgrid/mail');
 const moment = require('moment');
 const ontime = require('ontime');
 const { getTalkDetails } = require('./getTalkDetails');
-const { access } = require('fs');
+const axios = require('axios');
 require('dotenv').config()
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -152,14 +152,14 @@ function sendEmailToNewAdmin(username, email) {
 }
 
 ontime({
-    cycle: '13:35:00'
+    cycle: '13:55:00'
 }, function (ot) {
 
     getTalkDetails()
         .then(res => {
             let date = new Date();
             // let threeDaysFromNow = moment(date).add(2, 'day').format('YYYY-MM-DD');
-            let threeDaysFromNow = moment(date).add(9, 'day').format('YYYY-MM-DD');
+            let threeDaysFromNow = moment(date).add(22, 'day').format('YYYY-MM-DD');
             console.log('this is 3 days from now: ', threeDaysFromNow)
             console.log('this is res before filter: ',res)
             console.log('this is eventDate: ', moment(res[0].eventDate).add(1, 'day').format('YYYY-MM-DD'))

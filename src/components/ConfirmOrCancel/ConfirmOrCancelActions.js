@@ -11,7 +11,18 @@ export const changeTalkStatus = (talkId, selectedStatus, speakerToken) => {
                 talkId,
                 selectedStatus
             }
+        }).then(
+            axios({
+            method: 'delete',
+            url: 'api/accessToken',
+            headers: {
+                Authorization: speakerToken
+            },
+            data: {
+                speakerToken
+            }
         })
+        )
     }
 }
 
