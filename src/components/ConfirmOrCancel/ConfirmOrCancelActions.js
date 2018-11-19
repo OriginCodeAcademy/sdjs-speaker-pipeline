@@ -1,24 +1,11 @@
-export const handleQuery = (query) => {
-	return {
-		type: 'HANDLE_QUERY',
-		payload: query
-	}
-}
-export const handleCancel = (query) => {
-	return {
-		type: 'HANDLE_CANCEL',
-		payload: query
-	}
-}
-
-export const handleConfirm = (talkId, selectedStatus, accessToken) => {
+export const changeTalkStatus = (talkId, selectedStatus, speakerToken) => {
     return {
-        type: 'STATUS_CONFIRMED',
+        type: 'SUBMIT_STATUS',
         payload: axios({
             method: 'put',
             url: 'api/talks/changeTalkStatus',
             headers: {
-                Authorization: accessToken
+                Authorization: speakerToken
             },
             data: {
                 talkId,
@@ -26,4 +13,18 @@ export const handleConfirm = (talkId, selectedStatus, accessToken) => {
             }
         })
     }
+}
+
+export const handleSpeakerToken = (t) => {
+	return {
+		type: 'HANDLE_SPEAKER_TOKEN',
+		payload: t
+	}
+}
+
+export const handleTalkId = (id) => {
+	return {
+		type: 'HANDLE_TALK_ID',
+		payload: id
+	}
 }

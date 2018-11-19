@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../Navbar/Navbar';
-import { handleQuery, handleConfrim, handlCancel } from '../ConfirmOrCancel/ConfirmOrCancelActions'
+import { handleSpeakerToken, handleTalkId, changeTalkStatus } from '../ConfirmOrCancel/ConfirmOrCancelActions'
 
 class ConfirmOrCancel extends Component {
     constructor(props) {
@@ -9,20 +9,18 @@ class ConfirmOrCancel extends Component {
 
     componentDidMount() {
         const { dispatch } = this.props;
-        const query = this.props.location.search;
-        const urlParams = new URLSearchParams(window.location.search);
-        console.log('this is query: ',query);
-        console.log('this is urlParams: ',urlParams);
-
-        console.log('this is t: ',urlParams.get('t'));
-        console.log('this is id: ',urlParams.get('id'));
-        dispatch(handleQuery(query))
+        const urlParams = new URLSearchParams(this.props.location.search);
+        const t = urlParams.get('t');
+        const id = urlParams.get('id');
+        console.log('this is t: ',t)
+        console.log('this is id: ',id)
+        dispatch(handleSpeakerToken(t));
+        dispatch(handleTalkId(id));
     }
 
     handleSubmitStatus(e) {
-        const { dispatch, talkInfo, accessToken } = this.props;
-        const selectedTalk = talkInfo.find((talk) => talk.talkId === e.target.name);
-        dispatch(changeTalkStatus(e.target.name, selectedTalk.selectedStatus, accessToken));
+        const { dispatch, speakerToken } = this.props;
+        dispatch(changeTalkStatus(id, e.target.name, speakerToken));
     }
 
     render() {
@@ -36,10 +34,10 @@ class ConfirmOrCancel extends Component {
                     please click the cancel button.
                     </p>
                     <div className='buttons'>
-                        <button className='btn'name='confirmed' value='status' onClick={this.confirm}>
+                        <button className='btn' name='Confirmed' onClick={this.handleSubmitStatus}>
                             Confirm
                         </button>
-                        <button className='btn' name='disengaged' value='status' onClick={this.cancel}>
+                        <button className='btn' name='Disengaged' onClick={this.handleSubmitStatus}>
                             Cancel
                         </button>
                     </div>
