@@ -5,7 +5,7 @@ function getMeetups() {
 	return new Promise((resolve, reject) => {
 		let currentDate = new Date();
 		currentDate.setMonth(currentDate.getMonth() + 3);
-		axios.get(`https://api.meetup.com/sandiegojs/events?=${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDay()}`)
+		axios.get(`https://api.meetup.com/sandiegojs/events?no_later_than=${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDay()}`)
 			.then(response => {
 				resolve(response.data.map(event => ({
 					meetupId: event.id,
