@@ -1,8 +1,9 @@
 const initialstate = {
 	username: '',
 	password: '',
-	token: '',
-	userId: '',
+	accessToken: '',
+	authorized: false,
+	remember: false
 }
 
 export default function AdminLoginReducer(state = initialstate, action) {
@@ -13,7 +14,8 @@ export default function AdminLoginReducer(state = initialstate, action) {
 		case 'UPDATE_USERNAME': {
 			return {
 				...state,
-				username: payload
+				username: payload,
+				accessToken: ''
 			}
 		}
 		case 'UPDATE_PASSWORD': {
@@ -30,16 +32,58 @@ export default function AdminLoginReducer(state = initialstate, action) {
 				password: '',
 			}
 		}
-
 		case 'POST_LOGIN_FULFILLED': {
+			if (payload.login.id) return {
+				...state,
+				username: '',
+				password: '',
+				accessToken: payload.login.id,
+				authorized: true,
+			};
+			else {
+				alert('Login failed');
+				return {
+					...state,
+					username: '',
+					password: '',
+				}
+			}
+		}
+		case 'POST_LOGIN_PERSIST_REJECTED': {
+			alert('Login failed');
 			return {
 				...state,
-				token: payload.id,
-				userId: payload.userId
+				username: '',
+				password: '',
+			}
+		}
+		case 'POST_LOGIN_PERSIST_FULFILLED': {
+			console.log(payload);
+            return {
+                ...state,
+                username: payload.userData.username,
+                password: payload.userData.password,
+                accessToken: payload.login.id,
+            }
+        }
+		case 'CHECK_TOKEN_FULFILLED': {
+			if (payload.id) return {
+				...state,
+				authorized: true,
+			};
+			else return {
+				...state,
+				authorized: false,
+			}
+		}
+		case 'CHECK_TOKEN_REJECTED': {
+			return {
+				...state,
+				authorized: false,
 			}
 		}
 		default: {
-			return state
+			return state;
 		}
 	}
 }

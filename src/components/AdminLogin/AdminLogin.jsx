@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import { updateUsername, updatePassword, postLogin } from './AdminLoginActions';
+import { updateUsername, updatePassword, postLogin, checkToken, postLoginPersist } from './AdminLoginActions';
 import Navbar from '../Navbar/Navbar';
 
 class AdminLogin extends Component {
@@ -10,6 +10,16 @@ class AdminLogin extends Component {
 		this.handleUsername = this.handleUsername.bind(this);
 		this.handlePassword = this.handlePassword.bind(this);
 		this.submitLogin    = this.submitLogin.bind(this);
+	}
+
+	componentDidMount() {
+		const { dispatch, accessToken } = this.props;
+		dispatch(checkToken(accessToken));
+	}
+
+	componentDidUpdate() {
+		const { dispatch, accessToken } = this.props;
+		dispatch(checkToken(accessToken));
 	}
 
 	handleUsername(e) {
@@ -24,13 +34,14 @@ class AdminLogin extends Component {
 
   submitLogin(e) {
     e.preventDefault();
-    const { dispatch, username, password } = this.props;
-    dispatch(postLogin({ username, password, ttl: 60 * 60 * 24 }));
+	const { dispatch, remember, username, password } = this.props;
+	if (remember) dispatch(postLoginPersist({ username, password, ttl: 60 * 60 }));
+    else dispatch(postLogin({ username, password, ttl: 60 * 60 }));
   }
 
 	render() {
-		const { username, password, token} = this.props;
-		//if (token) return <Redirect push to= '/Admin/Meetups' />
+		const { username, password, authorized } = this.props;
+		if (authorized) return <Redirect push to= '/Admin/Meetups' />
 		return (
 			<div>
 				<Navbar />
