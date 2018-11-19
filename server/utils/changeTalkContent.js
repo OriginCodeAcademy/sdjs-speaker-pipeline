@@ -23,10 +23,10 @@ function changeTalkContent(talkId, newTopic, newDescription, newAdminNotes) {
 		const { Talk } = app.models;
 		Talk.findById(talkId)
 			.then((talk) => {
-				if (TypeError) {
-					reject({ message: 'bad index' });
-					return false;
-				}
+				// if (TypeError) {
+				// 	reject({ message: 'bad index' });
+				// 	return false;
+				// }
 				const newTalk = {
 					"status": talk.status,
 					"description": newDescription,
@@ -36,8 +36,10 @@ function changeTalkContent(talkId, newTopic, newDescription, newAdminNotes) {
 					"speakerId": talk.speakerId,
 					"eventId": talk.eventId,
 					"owner": talk.owner,
+					"organizerId": talk.organizerId,
 					"adminNotes": newAdminNotes
 				}
+				console.log('new talk in changetalkcontent', newTalk)
 				Talk.replaceOrCreate(newTalk)
 					.then(() => resolve(newTalk))
 					.catch(err => reject(err));
