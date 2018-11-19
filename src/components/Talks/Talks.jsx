@@ -21,6 +21,7 @@ const EditOptions = ({ talkId, handleSelect, name, children, toggleEditProp, han
         <select data-type={name} name={talkId} onChange={handleSelect}>
           <option value=''>Change {name}</option>
           {children}
+          <option value='None'>None</option>
         </select>
         <div className='side-by-side-btns'>
           <button className='btn' name={talkId} value={toggleEditProp} onClick={handleSubmit}>Save</button>

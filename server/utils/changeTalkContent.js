@@ -23,10 +23,6 @@ function changeTalkContent(talkId, newTopic, newDescription, newAdminNotes) {
 		const { Talk } = app.models;
 		Talk.findById(talkId)
 			.then((talk) => {
-				// if (TypeError) {
-				// 	reject({ message: 'bad index' });
-				// 	return false;
-				// }
 				const newTalk = {
 					"status": talk.status,
 					"description": newDescription,

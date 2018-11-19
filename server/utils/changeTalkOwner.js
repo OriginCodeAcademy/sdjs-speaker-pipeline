@@ -14,10 +14,9 @@ function changeTalkOwner(talkId, selectedOwner) {
 		const { Talk, Organizer } = app.models;
 		Talk.findById(talkId)
 			.then((talk) => {
-				Organizer.find({ where: {username: selectedOwner}})
-				.then((organizer) => {
-					console.log(organizer)
-					const newTalk = {
+				let newTalk;
+				if (selectedOwner == 'None') {
+					newTalk = {
 						"status": talk.status,
 						"description": talk.description,
 						"reminderSent": talk.reminderSent,
@@ -26,14 +25,31 @@ function changeTalkOwner(talkId, selectedOwner) {
 						"speakerId": talk.speakerId,
 						"eventId": talk.eventId,
 						"owner": selectedOwner,
-						"adminNotes": talk.adminNotes,
-						"organizerId": organizer[0].id
+						"adminNotes": talk.adminNotes
 					}
-					Talk.replaceOrCreate(newTalk)
-						.then(() => resolve(newTalk))
-						.catch(err => reject(err));
-				})
-				.catch(err => reject({ error: 'Could not find organizer', err }))
+				}
+				else {
+					Organizer.find({ where: {username: selectedOwner}})
+					.then((organizer) => {
+						console.log(organizer)
+						newTalk = {
+							"status": talk.status,
+							"description": talk.description,
+							"reminderSent": talk.reminderSent,
+							"topic": talk.topic,
+							"id": talk.id,
+							"speakerId": talk.speakerId,
+							"eventId": talk.eventId,
+							"owner": selectedOwner,
+							"adminNotes": talk.adminNotes,
+							"organizerId": organizer[0].id
+						}
+					})
+					.catch(err => reject({ error: 'Could not find organizer', err }))
+				}
+				Talk.replaceOrCreate(newTalk)
+					.then(() => resolve(newTalk))
+					.catch(err => reject(err));
 			})
 			.catch(err => reject({ error: 'Could not find talk', err }))
 	})
