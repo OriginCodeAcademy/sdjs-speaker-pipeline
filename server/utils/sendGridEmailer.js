@@ -137,13 +137,13 @@ function sendEmailToNewAdmin(username, email) {
 }
 
 ontime({
-    cycle: '8:00:00'
+    cycle: '15:44:00'
 }, function (ot) {
 
     getTalkDetails()
         .then(res => {
             let date = new Date();
-            let threeDaysFromNow = moment(date).add(2, 'day').format('YYYY-MM-DD');
+            let threeDaysFromNow = moment(date).add(21, 'day').format('YYYY-MM-DD');
             res = res.filter(talk => talk.currentStatus === 'Approve' && moment(talk.eventDate).format('YYYY-MM-DD') === threeDaysFromNow)
 
             if (
