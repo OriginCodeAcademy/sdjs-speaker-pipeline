@@ -24,20 +24,28 @@ export default function AdminLoginReducer(state = initialstate, action) {
 				password: payload
 			}
 		}
+		case 'REMEMBER_ME': {
+			return {
+				...state,
+				remember: payload,
+			}
+		}
 		case 'POST_LOGIN_REJECTED': {
 			alert('Login failed')
 			return {
 				...state,
 				username: '',
 				password: '',
+				accessToken: '',
+				authorized: false
 			}
 		}
 		case 'POST_LOGIN_FULFILLED': {
-			if (payload.login.id) return {
+			if (payload.id) return {
 				...state,
 				username: '',
 				password: '',
-				accessToken: payload.login.id,
+				accessToken: payload.id,
 				authorized: true,
 			};
 			else {
@@ -46,6 +54,7 @@ export default function AdminLoginReducer(state = initialstate, action) {
 					...state,
 					username: '',
 					password: '',
+					authorized: false
 				}
 			}
 		}
@@ -55,16 +64,24 @@ export default function AdminLoginReducer(state = initialstate, action) {
 				...state,
 				username: '',
 				password: '',
+				authorized: false
 			}
 		}
 		case 'POST_LOGIN_PERSIST_FULFILLED': {
-			console.log(payload);
-            return {
-                ...state,
-                username: payload.userData.username,
-                password: payload.userData.password,
-                accessToken: payload.login.id,
-            }
+			if (payload.id) return {
+				...state,
+				accessToken: payload.id,
+				authorized: true,
+			};
+			else {
+				alert('Login failed');
+				return {
+					...state,
+					username: '',
+					password: '',
+					authorized: false,
+				}
+			}
         }
 		case 'CHECK_TOKEN_FULFILLED': {
 			if (payload.id) return {

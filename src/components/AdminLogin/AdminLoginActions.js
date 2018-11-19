@@ -10,51 +10,29 @@ export const updatePassword = (value) => ({
     payload: value,
 })
 
+export const rememberMe = (value) => ({
+    type: 'REMEMBER_ME',
+    payload: value,
+})
+
 export const postLogin = (userData) => {
     return {
         type: 'POST_LOGIN',
-        payload: {
-            login: axios.post('api/organizers/login', userData)
-                .then(response => {
-                    return response.data
-                }),
-            authorized: axios({
-                method: 'get',
-                url: `api/accessTokens/${accessToken}`,
-                headers: {
-                    Authorization: accessToken
-                }
+        payload: axios.post('api/organizers/login', userData)
+            .then(response => {
+                return response.data
             })
-                .then(response => {
-                    return response.data
-                })
-        }
     }
 }
-
 export const postLoginPersist = (userData) => {
     return {
-        type: 'POST_LOGIN',
-        payload: {
-            login: axios.post('api/organizers/login', userData)
-                .then(response => {
-                    return response.data
-                }),
-            authorized: axios({
-                method: 'get',
-                url: `api/accessTokens/${accessToken}`,
-                headers: {
-                    Authorization: accessToken
-                }
+        type: 'POST_LOGIN_PERSIST',
+        payload: axios.post('api/organizers/login', userData)
+            .then(response => {
+                return response.data
             })
-                .then(response => {
-                    return response.data
-                }),
-            userData
-        }
     }
 }
-
 export const checkToken = (accessToken) => {
     return {
         type: 'CHECK_TOKEN',
