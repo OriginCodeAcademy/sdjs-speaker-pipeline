@@ -7,8 +7,8 @@ const TableRow = ({ data, children, mapKey }) => {
   return <td key={mapKey}>
     {children
       ? children
-      : Object.keys(data).map((key, i) =>
-        <div key={i} className={`table-${key}`}>{data[key]}</div>
+      : Object.keys(data).map((objKey, i) =>
+        <div key={i} className={`table-${objKey}`}>{data[objKey]}</div>
       )
     }
   </td>
