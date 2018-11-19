@@ -1,6 +1,5 @@
 const initialState = {
     talkInfo: [],
-    eventInfo: [],
     organizers: []
 }
 
