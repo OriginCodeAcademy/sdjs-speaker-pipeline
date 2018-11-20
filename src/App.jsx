@@ -7,7 +7,7 @@ import Home            from './components/Home/Home';
 import Meetups         from './components/Meetups';
 import AdminLogin      from './components/AdminLogin';
 import ConfirmOrCancel from './components/ConfirmOrCancel';
-import TalksPage       from './components/TalksPage/TalksPage';
+import TalksPage       from './components/TalksPage';
 import Organizers      from './components/Organizers';
 import SignUp          from './components/SignUp';
 import Thankyou        from './components/Thankyou'

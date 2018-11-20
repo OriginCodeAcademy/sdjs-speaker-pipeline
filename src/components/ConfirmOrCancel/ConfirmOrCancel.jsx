@@ -14,9 +14,6 @@ class ConfirmOrCancel extends Component {
         const urlParams = new URLSearchParams(this.props.location.search);
         const t = urlParams.get('t');
         const eventId = urlParams.get('eventId');
-        console.log('this is url:', this.props.location.search)
-        console.log('this is t: ',t)
-        console.log('this is id: ',eventId)
         dispatch(handleSpeakerToken(t));
         dispatch(handleTalkId(eventId));
     }
@@ -52,4 +49,5 @@ class ConfirmOrCancel extends Component {
         )
     }
 }
+
 export default ConfirmOrCancel;

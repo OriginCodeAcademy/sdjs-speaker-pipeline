@@ -11,7 +11,7 @@ class Home extends Component {
 	componentDidMount() {
 		const { dispatch, submitted } = this.props;
 		if (submitted) {
-			dispatch(resetSubmitted())
+			dispatch(resetSubmitted());
 		}
 	}
 

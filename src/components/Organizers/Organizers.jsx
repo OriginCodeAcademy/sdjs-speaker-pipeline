@@ -28,6 +28,7 @@ class Organizers extends Component {
         const { newAdminName, newAdminEmail, newAdminPhone, newAdminPassword, dispatch, accessToken } = this.props;
         dispatch(addAdmin(newAdminName, newAdminEmail, newAdminPhone, newAdminPassword, accessToken));
     }
+
     componentDidMount() {
         const { dispatch, accessToken } = this.props;
         dispatch(getAdmins(accessToken));
@@ -38,20 +39,20 @@ class Organizers extends Component {
         dispatch(onChange(e.target.name, e.target.value))
     }
 
-
     handleDelete(e) {
         const { dispatch, accessToken } = this.props;
-        dispatch(deleteAdmin(e.target.getAttribute('name'), accessToken))
+        dispatch(deleteAdmin(e.target.getAttribute('name'), accessToken));
     }
+
     handleUpdate(id, index, obj) {
         const { dispatch, accessToken } = this.props;
-
-        dispatch(patchAdmin(id, index, obj, accessToken))
+        dispatch(patchAdmin(id, index, obj, accessToken));
     }
+
     toggleEdit(e) {
         const { adminList, dispatch } = this.props;
         const index = adminList.findIndex(admin => {
-            return admin.id == e.target.getAttribute('name')
+            return admin.id == e.target.getAttribute('name');
         })
         dispatch(toggleEdit(index));
     }
@@ -89,8 +90,6 @@ class Organizers extends Component {
                             </div>
                         </form>
                     </div>
-
-
 
                     <div className='organizer-edit-admins'>
                     <h3>Current Organizers</h3>

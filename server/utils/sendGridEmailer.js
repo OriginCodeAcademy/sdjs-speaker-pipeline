@@ -110,9 +110,7 @@ function sendEmailToAdmin(adminEmail, meetupDate, meetupTitle, speakerEmail, spe
     })
 }
 function sendConfirmCancelToAdmin(confirm, meetupDate, meetupTitle, speakerName) {
-    console.log('333');
     return new Promise((resolve, reject) => {
-        console.log('444');
         if (confirm == undefined) {
             reject({ message: 'message is not confirmed or engaged' });
             return false;
@@ -132,23 +130,17 @@ function sendConfirmCancelToAdmin(confirm, meetupDate, meetupTitle, speakerName)
             reject({ message: 'Bad Meetup Date' });
             return false;
         }
-        console.log('555');
 
         let emailContent;
         let verb;
         if (confirm) {
             emailContent = `${speakerName} has confirmed thier talk on ${meetupDate} for ${meetupTitle}`
             verb = 'confirmed.'
-            console.log('666');
-
         }
         if (!confirm) {
             emailContent = `${speakerName} has canceled thier talk on ${meetupDate} for ${meetupTitle}`
             verb = 'canceled.'
-            console.log('777');
-
         }
-        console.log('888');
 
         const email = {
             to: process.env.MAIN_ADMIN_EMAIL,
@@ -161,14 +153,11 @@ function sendConfirmCancelToAdmin(confirm, meetupDate, meetupTitle, speakerName)
                 title: `SDJS Meetup Speaker ${verb}`
             }
         }
-        console.log('999');
 
         sgMail.send(email)
             .then(() => {
-                console.log('000')
                 return resolve({ email })
             })
-
             .catch(err => {
                 console.log(err);
                 reject(err);
@@ -177,11 +166,7 @@ function sendConfirmCancelToAdmin(confirm, meetupDate, meetupTitle, speakerName)
 }
 
 function sendEmailToNewAdmin(username, email) {
-   
-
     return new Promise((resolve, reject) => {
-       
-
         if (username == undefined) {
             reject({ message: 'Bad New Admin username' });
             return false;
@@ -225,61 +210,40 @@ ontime({
         .then(res => {
             let date = new Date();
             let threeDaysFromNow = moment(date).add(3, 'day').format('YYYY-MM-DD');
-            console.log('this is 3 days from now: ', threeDaysFromNow)
-            console.log('this is res before filter: ', res)
-            console.log('this is eventDate: ', moment(res[0].eventDate).add(1, 'day').format('YYYY-MM-DD'))
             res = res.filter(talk => talk.currentStatus === 'Approve' && moment(talk.eventDate).add(1, 'day').format('YYYY-MM-DD') === threeDaysFromNow)
-            console.log('this is res after filter: ', res)
             if (
                 res.length !== 0) {
-                console.log('res.length is greater than one')
-
                 axios.post('http://localhost:3000/api/organizers/login', { username: process.env.ADMIN_USERNAME, password: process.env.ADMIN_PASSWORD, ttl: 60 * 5 })
                     .then(response => {
-                        console.log('inside the .then of api/organizers/login')
                         return response.data.id
                     }).then(accessToken => {
-                        console.log('this is accesstoken: ', accessToken)
                         res.forEach(speaker => {
-                            console.log('this is speaker: ', speaker)
-                            console.log('inside the second .then')
                             return new Promise((resolve, reject) => {
-                                console.log('inside the new promise')
-                                if (
-                                    accessToken == undefined) {
+                                if (accessToken == undefined) {
                                     reject({ message: 'Bad accessToken in reminder email' });
                                     return false;
                                 }
 
-                                if (
-                                    speaker.speakerEmail == undefined) {
-                                    console.log('this is speaker.speakerEmail: ', speaker.speakerEmail)
+                                if ( speaker.speakerEmail == undefined) {
                                     reject({ message: 'Bad Speaker Email in reminder email' });
                                     return false;
                                 }
 
-                                if (
-                                    speaker.eventName == undefined) {
-                                    console.log('this is speaker.eventName: ', speaker.eventName)
+                                if ( speaker.eventName == undefined) {
                                     reject({ message: 'Bad event name in reminder email' });
                                     return false;
                                 }
 
-                                if (
-                                    speaker.eventDate == undefined) {
-                                    console.log('this is speaker.eventDate: ', speaker.eventDate)
+                                if ( speaker.eventDate == undefined) {
                                     reject({ message: 'Bad Meetup Date in reminder email' });
                                     return false;
                                 }
 
-                                if (
-                                    speaker.talkId == undefined) {
-                                    console.log('this is speaker.eventId: ', speaker.talkId)
+                                if (speaker.talkId == undefined) {
                                     reject({ message: 'Bad talkId in reminder email' });
                                     return false;
                                 }
                                     
-                                console.log('made it here')
                                 axios({
                                     method: 'post',
                                     url: `http://localhost:3000/api/accessTokens`,
@@ -291,17 +255,13 @@ ontime({
                                         ttl: 60 * 60 * 24 * 3
                                     }
                                 }).then(response => {
-                                    console.log('inside the .second axios: ',response.data.id)
                                     return response.data.id
                                 }).then(speakerToken => {
-                                    console.log('this is speakerToken: ',speakerToken)
-                                    console.log('im here now')
                                     let emailContent = `SDJS would like to remind you that you have 
-                        been approved to speeak at ${speaker.eventName} on ${speaker.eventDate.toDateString()}. 
-                        Please click this button to visit out site to confirm or cancel your talk. `
+                                                        been approved to speeak at ${speaker.eventName} on ${speaker.eventDate.toDateString()}. 
+                                                        Please click this button to visit out site to confirm or cancel your talk. `
 
                                     const url = 'http://localhost:3000/#/ConfirmOrCancel/?t=';
-console.log('this is url: ',(url + speakerToken + '&eventId=' + speaker.talkId))
                                     const reminder = {
                                         to: speaker.speakerEmail,
                                         from: process.env.MAIN_ADMIN_EMAIL,
@@ -314,10 +274,8 @@ console.log('this is url: ',(url + speakerToken + '&eventId=' + speaker.talkId))
                                             title: 'SDJS Meetup Speaker Reminder'
                                         }
                                     }
-                                    console.log('ok made it this far')
                                     sgMail.send(reminder)
                                         .then(() => {
-                                            console.log('inside the sgmail .then')
                                             resolve({ reminder })
                                         })
                                         .catch(err => {

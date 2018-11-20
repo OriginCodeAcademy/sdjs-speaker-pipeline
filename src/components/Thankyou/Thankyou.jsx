@@ -9,9 +9,8 @@ class Thankyou extends Component{
 
 	componentDidMount(){
 		const { dispatch } = this.props;
-		dispatch(resetSubmitted())
+		dispatch(resetSubmitted());
 	}
-
 
 	render(){
 		return (
@@ -22,11 +21,12 @@ class Thankyou extends Component{
 						Thank you! Your submission has been received and we will be in contact shortly.
 					</div>
 					<div>
-						<i className="far fa-check-circle" style={{fontSize: '125pt', color: 'green'}}></i>
+						<i className="far fa-check-circle" style={{fontSize: '125pt', color: 'green', marginTop: '40px'}}></i>
 					</div>
 				</div>
 			</div>
 		)
 	}
 }
+
 export default Thankyou;
