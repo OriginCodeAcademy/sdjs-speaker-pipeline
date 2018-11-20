@@ -3,6 +3,7 @@ const moment = require('moment');
 const ontime = require('ontime');
 const { getTalkDetails } = require('./getTalkDetails');
 const axios = require('axios');
+require('dotenv').config()
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
