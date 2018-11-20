@@ -188,6 +188,7 @@
   width: 40%;
   display: flex;
   justify-content: space-evenly;
+  margin-right: 30px;
 }
 
 .nav-item {

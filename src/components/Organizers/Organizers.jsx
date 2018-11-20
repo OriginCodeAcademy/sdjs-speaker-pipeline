@@ -16,10 +16,11 @@ class Organizers extends Component {
     constructor(props) {
         super(props);
 
-        this.addAdmin = this.addAdmin.bind(this);
+        this.addAdmin     = this.addAdmin.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
+        this.toggleEdit   = this.toggleEdit.bind(this);
     }
 
     addAdmin(e) {

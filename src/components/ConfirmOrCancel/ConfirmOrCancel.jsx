@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
-import Navbar from '../Navbar/Navbar';
+import { Redirect }         from 'react-router';
+import Navbar               from '../Navbar/Navbar';
 import { handleSpeakerToken, handleTalkId, changeTalkStatus } from '../ConfirmOrCancel/ConfirmOrCancelActions'
 
 class ConfirmOrCancel extends Component {
     constructor(props) {
         super(props)
+        this.handleSubmitStatus = this.handleSubmitStatus.bind(this)
     }
 
     componentDidMount() {
         const { dispatch } = this.props;
         const urlParams = new URLSearchParams(this.props.location.search);
         const t = urlParams.get('t');
-        const id = urlParams.get('id');
+        const eventId = urlParams.get('eventId');
+        console.log('this is url:', this.props.location.search)
         console.log('this is t: ',t)
-        console.log('this is id: ',id)
+        console.log('this is id: ',eventId)
         dispatch(handleSpeakerToken(t));
-        dispatch(handleTalkId(id));
+        dispatch(handleTalkId(eventId));
     }
 
     handleSubmitStatus(e) {
-        const { dispatch, speakerToken } = this.props;
-        dispatch(changeTalkStatus(id, e.target.name, speakerToken));
+        const { dispatch, speakerToken, eventId } = this.props;
+        dispatch(changeTalkStatus(eventId, e.target.name, speakerToken));
     }
 
-    render() {
+    render() { 
+        if (this.props.confirmed == true) {
+        return <Redirect push to="/" />;
+      }
         return (
             <div>
                 <Navbar />

@@ -3,10 +3,11 @@ import ConfirmOrCancel from './ConfirmOrCancel';
 
 function mapStoreToProps(store){
     return {
-        accessToken : store.AdminLogin.accessToken,
-        talkInfo    : store.Talks.talkInfo,
+        accessToken : store.AdminLogin     .accessToken,
+        confirmed   : store.ConfirmOrCancel.confirmed,
+        eventId     : store.ConfirmOrCancel.eventId,
         speakerToken: store.ConfirmOrCancel.speakerToken,
-        id          : store.ConfirmOrCancel.id
+        talkInfo    : store.Talks          .talkInfo,
     };
 }
 

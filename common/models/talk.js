@@ -6,7 +6,7 @@ const { getTalkDetails } = require('../../server/utils/getTalkDetails');
 const { changeTalkStatus } = require('../../server/utils/changeTalkStatus');
 const { changeTalkOwner } = require('../../server/utils/changeTalkOwner');
 const { changeTalkContent } = require('../../server/utils/changeTalkContent');
-const { sendEmailToSpeaker } = require('../../server/utils/sendGridEmailer');
+const { sendEmailToSpeaker, sendConfirmCancelToAdmin } = require('../../server/utils/sendGridEmailer');
 const { formatTalkForEmail } = require('../../server/utils/formatTalkForEmail');
 const { pastTalks } = require('../../server/utils/pastTalks')
 
@@ -294,10 +294,8 @@ module.exports = function (Talk) {
 			const speakerId = ctx.result.speakerId;
 			const eventId = ctx.result.eventId;
 			const pending = false;
-			console.log('speakerId, eventId', speakerId, eventId)
 			formatTalkForEmail(speakerId, eventId, next)
 				.then((response) => {
-					console.log('formatEmail res', response)
 					const speakerName = response.speakerName;
 					const speakerEmail = response.speakerEmail;
 					const meetupTitle = response.meetupTitle;
@@ -307,6 +305,28 @@ module.exports = function (Talk) {
 						.catch(err => next(new Error(err.message)))
 				})
 				.catch(err => next(new Error(err)));
+		}
+		if ( ctx.result.status == 'Confirmed' || ctx.result.status == 'Disengaged') {
+			let confirm;
+			if (ctx.result.status == 'Confirmed') {
+				confirm = true
+			} 
+			if (ctx.result.status == 'Disengaged') {
+				confirm = false
+			}
+			const speakerId = ctx.result.speakerId;
+			const eventId = ctx.result.eventId;
+			formatTalkForEmail(speakerId, eventId, next)
+				.then((response) => {
+					const speakerName = response.speakerName;
+					const meetupTitle = response.meetupTitle;
+					const meetupDate = response.meetupDate;
+					sendConfirmCancelToAdmin(confirm, meetupDate, meetupTitle, speakerName)
+						.then(() => next())
+						.catch(err => next(new Error(err.message)))
+				})
+				.catch(err => next(new Error(err))); 
+
 		}
 		else {
 			next();

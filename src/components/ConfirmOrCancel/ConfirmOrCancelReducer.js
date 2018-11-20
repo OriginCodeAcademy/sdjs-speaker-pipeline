@@ -1,7 +1,9 @@
 const initialstate = {
-    id          : '',
-    speakerToken: ''
+    eventId     : '',
+    speakerToken: '',
+    confirmed   : false
 }
+
 export default function OrganizersReducer(state = initialstate, action) {
 	const { payload, type } = action;
 
@@ -15,24 +17,13 @@ export default function OrganizersReducer(state = initialstate, action) {
         case 'HANDLE_TALK_ID': {
 			return {
 				...state,
-				id: payload
+				eventId: payload
 			}
         }
-        case 'SUBMIT_STATUS': {
-            const updatedTalkInfo = state.talkInfo.map((talk) => {
-                if (talk.talkId == payload.talkId) {
-                    return {
-                        ...talk,
-                        selectedStatus: payload.selectedStatus
-                    }
-                }
-                else {
-                    return talk
-                }
-            })
+        case 'SUBMIT_STATUS_FULFILLED': {
             return {
                 ...state,
-                talkInfo: updatedTalkInfo
+                confirmed: true
             }
         }
 		default: {

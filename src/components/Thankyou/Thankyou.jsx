@@ -17,11 +17,11 @@ class Thankyou extends Component{
 		return (
 			<div>
 				<Navbar />
-				<div>
-					<div id='thanks' style={{ marginTop: '200px', textAlign: 'center' }}>
+				<div id='confirmation'>
+					<div >
 						Thank you! Your submission has been received and we will be in contact shortly.
 					</div>
-					<div style={{textAlign: 'center', marginTop: '100px'}}>
+					<div>
 						<i className="far fa-check-circle" style={{fontSize: '125pt', color: 'green'}}></i>
 					</div>
 				</div>
