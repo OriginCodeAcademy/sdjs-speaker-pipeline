@@ -1,14 +1,10 @@
-'use strict';
-
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import server from '../server/server';
 import Nightmare from 'nightmare';
-import { expect } from 'chai';
-import chaiAsPromised from "chai-as-promised";
-chai.use(chaiAsPromised);
+import chaiAsPromised from 'chai-as-promised';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import server from '../server/server';
 import { changeTalkContent } from '../server/utils/changeTalkContent';
 import { changeTalkOwner } from '../server/utils/changeTalkOwner';
 import { changeTalkStatus } from '../server/utils/changeTalkStatus';
@@ -20,9 +16,10 @@ import { sendEmailToSpeaker } from '../server/utils/sendGridEmailer';
 import { sendEmailToAdmin } from '../server/utils/sendGridEmailer';
 import { sendEmailToNewAdmin } from '../server/utils/sendGridEmailer';
 import { talkSubmit } from '../server/utils/talkSubmit';
-chai.use(chaiHttp);
-let nightmare;
 
+chai.use(chaiHttp);
+chai.use(chaiAsPromised);
+let nightmare;
 Enzyme.configure({ adapter: new Adapter() });
 server.listen(4444);
 
