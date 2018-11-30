@@ -18,9 +18,8 @@ export default function OrganizersReducer(state = initialstate, action) {
     }
     case 'DELETE_ADMIN_FULFILLED': {
       const newAdminList = [...state.adminList];
-      const admin = newAdminList.findIndex((admin) => {
-        return admin.id === payload;
-      });
+      const admin = newAdminList.findIndex(() => (admin.id === payload
+      ));
 
       newAdminList.splice(admin, 1);
       return {

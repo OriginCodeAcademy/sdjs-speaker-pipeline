@@ -18,8 +18,8 @@ export default class OrganizersEdit extends Component {
 
   handleUpdate(e) {
     e.preventDefault();
-    let jsonObject = {};
-    for (let property in this.state) {
+    const jsonObject = {};
+    for (const property in this.state) {
       if (this.state[property] && property !== 'id') {
         jsonObject[property] = this.state[property];
       }
@@ -41,49 +41,57 @@ export default class OrganizersEdit extends Component {
         <form id="organizer-edit-form" onSubmit={this.handleUpdate}>
           <i className="fas fa-times" name={admin.id} onClick={toggleEdit} />
           <Field model="user.name">
-            <label htmlFor="username">Name: </label>
-            <input
-              id="username"
-              type="text"
-              value={admin.username}
-              onChange={this.handleAdminUpdate}
-            />
+            <label htmlFor="username">
+              Name:
+              <input
+                id="username"
+                type="text"
+                value={admin.username}
+                onChange={this.handleAdminUpdate}
+              />
+            </label>
           </Field>
           <Field model="user.admin-email">
-            <label htmlFor="email">Email: </label>
-            <input
-              type="email"
-              id="email"
-              value={admin.email}
-              onChange={this.handleAdminUpdate}
-            />
+            <label htmlFor="email">
+              Email:
+              <input
+                type="email"
+                id="email"
+                value={admin.email}
+                onChange={this.handleAdminUpdate}
+              />
+            </label>
           </Field>
           <Field model="user.admin-phone">
-            <label htmlFor="phone">Phone: </label>
-            <input
-              type="tel"
-              id="phone"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              placeholder={admin.phone.replace(
-                /(\d{3})\-?(\d{3})\-?(\d{4})/,
-                '$1-$2-$3',
-              )}
-              value={this.state.phone.replace(
-                /(\d{3})\-?(\d{3})\-?(\d{4})/,
-                '$1-$2-$3',
-              )}
-              format="### ### ####"
-              onChange={this.handleAdminUpdate}
-            />
+            <label htmlFor="phone">
+              Phone:
+              <input
+                type="tel"
+                id="phone"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                placeholder={admin.phone.replace(
+                  /(\d{3})-?(\d{3})-?(\d{4})/,
+                  '$1-$2-$3',
+                )}
+                value={this.state.phone.replace(
+                  /(\d{3})-?(\d{3})-?(\d{4})/,
+                  '$1-$2-$3',
+                )}
+                format="### ### ####"
+                onChange={this.handleAdminUpdate}
+              />
+            </label>
           </Field>
           <Field model="user.admin-password">
-            <label htmlFor="password">Password: </label>
-            <input
-              type="password"
-              id="password"
-              placeholder="********"
-              onChange={this.handleAdminUpdate}
-            />
+            <label htmlFor="password">
+              Password:
+              <input
+                type="password"
+                id="password"
+                placeholder="********"
+                onChange={this.handleAdminUpdate}
+              />
+            </label>
           </Field>
           <button className="btn" type="button" id="admin-submit">
             Save

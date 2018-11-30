@@ -42,16 +42,22 @@ class AdminLogin extends Component {
   handleRemember(e) {
     const { dispatch } = this.props;
     let checked;
-    e.target.checked ? (checked = true) : (checked = false);
+    if (e.target.checked) { checked = true; } checked = false;
     dispatch(rememberMe(checked));
   }
 
   submitLogin(e) {
     e.preventDefault();
-    const { dispatch, remember, username, password } = this.props;
-    if (remember)
+    const {
+      dispatch,
+      remember,
+      username,
+      password,
+    } = this.props;
+    if (remember) {
       dispatch(postLoginPersist({ username, password, ttl: 60 * 60 }));
-    else dispatch(postLogin({ username, password, ttl: 60 * 60 }));
+    }
+    dispatch(postLogin({ username, password, ttl: 60 * 60 }));
   }
 
   render() {
@@ -67,33 +73,34 @@ class AdminLogin extends Component {
               <div className="container">
                 <label htmlFor="username">
                   <b>Username</b>
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    id="username"
+                    name="username"
+                    value={username}
+                    onChange={this.handleUsername}
+                    required
+                  />
                 </label>
-                <input
-                  type="text"
-                  placeholder="Username"
-                  id="username"
-                  name="username"
-                  value={username}
-                  onChange={this.handleUsername}
-                  required
-                />
                 <label htmlFor="password">
-                  <b>Password</b>
+                  <b>Password </b>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    id="password"
+                    name="password"
+                    value={password}
+                    onChange={this.handlePassword}
+                    required
+                  />
                 </label>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  id="password"
-                  name="password"
-                  value={password}
-                  onChange={this.handlePassword}
-                  required
-                />
                 <button type="submit" id="submit" className="btn">
                   Login
                 </button>
-                <label id="remember">
+                <label htmlFor="remember" id="remember">
                   <input
+                    id="remember"
                     type="checkbox"
                     name="remember"
                     onChange={this.handleRemember}

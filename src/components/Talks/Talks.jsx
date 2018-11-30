@@ -16,19 +16,15 @@ import {
   updateTalkInfo,
 } from './TalksActions';
 
-const TableRow = ({ data, children }) => {
-  return (
-    <td>
-      {children
-        ? children
-        : Object.keys(data).map((objKey, i) => (
-          <div key={i} className={`table-${objKey}`}>
-            {data[objKey]}
-          </div>
-        ))}
-    </td>
-  );
-};
+const TableRow = ({ data, children }) => (
+  <td>
+    {children || Object.keys(data).map((objKey, i) => (
+      <div key={i} className={`table-${objKey}`}>
+        {data[objKey]}
+      </div>
+    ))}
+  </td>
+);
 
 const EditOptions = ({
   talkId,
@@ -38,36 +34,34 @@ const EditOptions = ({
   toggleEditProp,
   handleSubmit,
   toggleEditFunction,
-}) => {
-  return (
-    <div className="table-tableAction">
-      <div className="table-tableStatus">
-        <select data-type={name} name={talkId} onChange={handleSelect}>
-          <option value="">
-            Change
-            {name}
-          </option>
-          {children}
-          <option value="None">None</option>
-        </select>
-        <div className="side-by-side-btns">
-          <button
-            className="btn"
-            type="button"
-            name={talkId}
-            value={toggleEditProp}
-            onClick={handleSubmit}
-          >
+}) => (
+  <div className="table-tableAction">
+    <div className="table-tableStatus">
+      <select data-type={name} name={talkId} onChange={handleSelect}>
+        <option value="">
+          Change
+          {name}
+        </option>
+        {children}
+        <option value="None">None</option>
+      </select>
+      <div className="side-by-side-btns">
+        <button
+          className="btn"
+          type="button"
+          name={talkId}
+          value={toggleEditProp}
+          onClick={handleSubmit}
+        >
             Save
-          </button>
-          <button className="btn" type="button" name={talkId} onClick={toggleEditFunction}>
+        </button>
+        <button className="btn" type="button" name={talkId} onClick={toggleEditFunction}>
             Cancel
-          </button>
-        </div>
+        </button>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 const ShowMore = ({
   topic,
@@ -80,75 +74,82 @@ const ShowMore = ({
   toggleTalkEditProp,
   handleTalkChange,
   updateTalkInfo,
-}) => {
-  return (
-    <div>
-      {toggleTalkEditProp ? (
-        <div>
-          <div className="table-eventDate">
-            <i
-              className="fas fa-chevron-up"
-              name={talkId}
-              onClick={toggleTalkEditFunction}
-            />
-          </div>
-          <div className="table-editTalk">
-            <label>Topic: </label>
+}) => (
+  <div>
+    {toggleTalkEditProp ? (
+      <div>
+        <div className="table-eventDate">
+          <i
+            className="fas fa-chevron-up"
+            name={talkId}
+            onClick={toggleTalkEditFunction}
+            role="presentation"
+          />
+        </div>
+        <div className="table-editTalk">
+          <label htmlFor="Topic">
+            Topic:
             <input
               defaultValue={topic}
               name={talkId}
               data-type="Topic"
               onChange={handleTalkChange}
             />
-            <label>Description: </label>
+          </label>
+          <label htmlFor="Description">
+            Description:
             <textarea
               defaultValue={description}
               name={talkId}
               data-type="Description"
               onChange={handleTalkChange}
             />
-            <label>Admin Notes: </label>
+          </label>
+          <label htmlFor="Admin Notes">
+            Admin Notes:
             <textarea
               defaultValue={adminNotes}
               name={talkId}
               data-type="Admin Notes"
               onChange={handleTalkChange}
             />
-          </div>
-          {/* data-types in above div had curly braces around them */}
-          <button className="btn" type="button" name={talkId} onClick={updateTalkInfo}>
+          </label>
+        </div>
+        <button className="btn" type="button" name={talkId} onClick={updateTalkInfo}>
             Save
-          </button>
-        </div>
-      ) : (
-        <div>
-          <div className="table-eventDate">
-            <i
-              className="fas fa-chevron-up"
-              name={talkId}
-              onClick={toggleShowMoreFunction}
-            />
-          </div>
-          <div className="table-editTalk">
-            <label> Topic: </label>
-            <div>{topic}</div>
-            <label> Description: </label>
-            <div>{description}</div>
-            <label> Admin Notes: </label>
-            <div>{adminNotes}</div>
-          </div>
+        </button>
+      </div>
+    ) : (
+      <div>
+        <div className="table-eventDate">
           <i
-            className="far fa-edit"
+            className="fas fa-chevron-up"
             name={talkId}
-            value={toggleTalkEditProp}
-            onClick={toggleTalkEditFunction}
+            onClick={toggleShowMoreFunction}
+            role="presentation"
           />
-          <i className="fas fa-trash-alt" name={talkId} onClick={deleteTalk} />
         </div>
-      )}
-    </div>
-  );
-};
+        <div className="table-editTalk">
+          <label> Topic: </label>
+          <div>{topic}</div>
+          <label> Description: </label>
+          <div>{description}</div>
+          <label> Admin Notes: </label>
+          <div>{adminNotes}</div>
+        </div>
+        <i
+          className="far fa-edit"
+          name={talkId}
+          value={toggleTalkEditProp}
+          onClick={toggleTalkEditFunction}
+          role="presentation"
+        />
+        <i className="fas fa-trash-alt" name={talkId} onClick={deleteTalk} role="presentation" />
+      </div>
+    )}
+  </div>
+);
+
 
 class Talks extends Component {
   constructor(props) {
@@ -370,6 +371,7 @@ class Talks extends Component {
                                       name={talk.talkId}
                                       value={talk.toggleShowMore}
                                       onClick={this.toggleShowMore}
+                                      role="presentation"
                                     />
                                   </div>
                                 </div>
@@ -415,6 +417,7 @@ class Talks extends Component {
                                     name={talk.talkId}
                                     value={talk.toggleStatusEdit}
                                     onClick={this.toggleStatusEdit}
+                                    role="presentation"
                                   />
                                 </div>
                               )}
@@ -434,7 +437,7 @@ class Talks extends Component {
                                   toggleEditProp={talk.toggleOwnerEdit}
                                   name="Owner"
                                 >
-                                  {organizers.map((organizer, i) => (
+                                  {organizers.map(organizer => (
                                     <option key={i} value={organizer.username}>
                                       {organizer.username}
                                     </option>
@@ -448,6 +451,7 @@ class Talks extends Component {
                                     name={talk.talkId}
                                     value={talk.toggleOwnerEdit}
                                     onClick={this.toggleOwnerEdit}
+                                    role="presentation"
                                   />
                                 </div>
                               )}
@@ -464,24 +468,23 @@ class Talks extends Component {
           </table>
         </div>
       );
-    } else {
-      return (
-        <table className="table">
-          <thead>
-            <tr className={styling}>
-              {headers.map((header, i) => (
-                <th key={i}>{header}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colSpan={headers.length}>There are no speakers.</td>
-            </tr>
-          </tbody>
-        </table>
-      );
     }
+    return (
+      <table className="table">
+        <thead>
+          <tr className={styling}>
+            {headers.map((header, i) => (
+              <th key={i}>{header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colSpan={headers.length}>There are no speakers.</td>
+          </tr>
+        </tbody>
+      </table>
+    );
   }
 }
 

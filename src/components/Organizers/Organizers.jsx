@@ -66,9 +66,9 @@ class Organizers extends Component {
 
   toggleEdit(e) {
     const { adminList, dispatch } = this.props;
-    const index = adminList.findIndex((admin) => {
-      return admin.id === e.target.getAttribute('name');
-    });
+    const index = adminList.findIndex(admin => (
+      admin.id === e.target.getAttribute('name')
+    ));
     dispatch(toggleEdit(index));
   }
 
@@ -91,49 +91,60 @@ class Organizers extends Component {
             <h3 className="add-admin-title">Add Other Admins Contact Info</h3>
             <form id="organizer-form" onSubmit={this.addAdmin}>
               <Field model="user.name">
-                <label htmlFor="admin-name">Name: </label>
-                <input
-                  name="newAdminName"
-                  type="text"
-                  value={newAdminName}
-                  onChange={this.handleChange}
-                  required
-                />
+                <label htmlFor="admin-name">
+                  Name:
+                  <input
+                    name="newAdminName"
+                    type="text"
+                    value={newAdminName}
+                    onChange={this.handleChange}
+                    required
+                  />
+
+                </label>
               </Field>
               <Field model="user.admin-email">
-                <label htmlFor="admin-email">Email: </label>
-                <input
-                  type="email"
-                  name="newAdminEmail"
-                  value={newAdminEmail}
-                  required
-                  onChange={this.handleChange}
-                />
+                <label htmlFor="admin-email">
+                  Email:
+                  <input
+                    type="email"
+                    name="newAdminEmail"
+                    value={newAdminEmail}
+                    required
+                    onChange={this.handleChange}
+                  />
+
+                </label>
               </Field>
               <Field model="user.admin-phone">
-                <label htmlFor="admin-phone">Phone Number: </label>
-                <input
-                  type="tel"
-                  name="newAdminPhone"
-                  required
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                  value={newAdminPhone.replace(
-                    /(\d{3})\-?(\d{3})\-?(\d{4})/,
-                    '$1-$2-$3',
-                  )}
-                  format="### ### ####"
-                  onChange={this.handleChange}
-                />
+                <label htmlFor="admin-phone">
+                  Phone Number:
+                  <input
+                    type="tel"
+                    name="newAdminPhone"
+                    required
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    value={newAdminPhone.replace(
+                      /(\d{3})-?(\d{3})-?(\d{4})/,
+                      '$1-$2-$3',
+                    )}
+                    format="### ### ####"
+                    onChange={this.handleChange}
+                  />
+                </label>
               </Field>
               <Field model="user.admin-password">
-                <label htmlFor="admin-password">Password: </label>
-                <input
-                  type="password"
-                  name="newAdminPassword"
-                  value={newAdminPassword}
-                  required
-                  onChange={this.handleChange}
-                />
+                <label htmlFor="admin-password">
+                  Password:
+                  <input
+                    type="password"
+                    name="newAdminPassword"
+                    value={newAdminPassword}
+                    required
+                    onChange={this.handleChange}
+                  />
+
+                </label>
               </Field>
               <div>
                 <button className="btn" type="button">Submit!</button>
@@ -172,7 +183,7 @@ class Organizers extends Component {
                         <div className="organizer-display-div">
                           {' '}
                           {admin.phone.replace(
-                            /(\d{3})\-?(\d{3})\-?(\d{4})/,
+                            /(\d{3})-?(\d{3})-?(\d{4})/,
                             '$1-$2-$3',
                           )}
                         </div>

@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-alert */
 const initialstate = {
   username: '',
   password: '',
   accessToken: '',
   authorized: false,
-  remember: false
+  remember: false,
 };
 
 export default function AdminLoginReducer(state = initialstate, action) {
@@ -40,7 +42,7 @@ export default function AdminLoginReducer(state = initialstate, action) {
       };
     }
     case 'POST_LOGIN_FULFILLED': {
-      if (payload.id)
+      if (payload.id) {
         return {
           ...state,
           username: '',
@@ -48,15 +50,14 @@ export default function AdminLoginReducer(state = initialstate, action) {
           accessToken: payload.id,
           authorized: true,
         };
-      else {
-        alert('Login failed');
-        return {
-          ...state,
-          username: '',
-          password: '',
-          authorized: false,
-        };
       }
+      alert('Login failed');
+      return {
+        ...state,
+        username: '',
+        password: '',
+        authorized: false,
+      };
     }
     case 'POST_LOGIN_PERSIST_REJECTED': {
       alert('Login failed');
@@ -68,22 +69,22 @@ export default function AdminLoginReducer(state = initialstate, action) {
       };
     }
     case 'POST_LOGIN_PERSIST_FULFILLED': {
-      if (payload.id)
+      if (payload.id) {
         return {
           ...state,
           accessToken: payload.id,
           authorized: true,
         };
-      else {
-        alert('Login failed');
-        return {
-          ...state,
-          username: '',
-          password: '',
-          authorized: false,
-        };
       }
+      alert('Login failed');
+      return {
+        ...state,
+        username: '',
+        password: '',
+        authorized: false,
+      };
     }
+
     case 'POST_LOGOUT_FULFILLED': {
       return {
         ...state,
@@ -92,16 +93,16 @@ export default function AdminLoginReducer(state = initialstate, action) {
       };
     }
     case 'CHECK_TOKEN_FULFILLED': {
-      if (payload.id)
+      if (payload.id) {
         return {
           ...state,
           authorized: true,
         };
-      else
-        return {
-          ...state,
-          authorized: false,
-        };
+      }
+      return {
+        ...state,
+        authorized: false,
+      };
     }
     case 'CHECK_TOKEN_REJECTED': {
       return {

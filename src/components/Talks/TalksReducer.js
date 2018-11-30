@@ -21,9 +21,8 @@ export default function TalksReducer(state = initialState, action) {
             ...talk,
             selectedStatus: payload.selectedStatus,
           };
-        } else {
-          return talk;
         }
+        return talk;
       });
       return {
         ...state,
@@ -37,9 +36,8 @@ export default function TalksReducer(state = initialState, action) {
             ...talk,
             selectedOwner: payload.selectedOwner,
           };
-        } else {
-          return talk;
         }
+        return talk;
       });
       return {
         ...state,
@@ -53,9 +51,8 @@ export default function TalksReducer(state = initialState, action) {
             ...talk,
             toggleStatusEdit: !payload.toggle,
           };
-        } else {
-          return talk;
         }
+        return talk;
       });
       return {
         ...state,
@@ -70,9 +67,8 @@ export default function TalksReducer(state = initialState, action) {
             currentStatus: payload.data.status,
             toggleStatusEdit: payload.toggle,
           };
-        } else {
-          return talk;
         }
+        return talk;
       });
       return {
         ...state,
@@ -87,9 +83,8 @@ export default function TalksReducer(state = initialState, action) {
             owner: payload.data.owner,
             toggleOwnerEdit: payload.toggle,
           };
-        } else {
-          return talk;
         }
+        return talk;
       });
       return {
         ...state,
@@ -103,9 +98,8 @@ export default function TalksReducer(state = initialState, action) {
             ...talk,
             toggleOwnerEdit: !payload.toggle,
           };
-        } else {
-          return talk;
         }
+        return talk;
       });
       return {
         ...state,
@@ -119,9 +113,8 @@ export default function TalksReducer(state = initialState, action) {
             ...talk,
             toggleShowMore: !payload.toggle,
           };
-        } else {
-          return talk;
         }
+        return talk;
       });
       return {
         ...state,
@@ -135,9 +128,8 @@ export default function TalksReducer(state = initialState, action) {
             ...talk,
             toggleTalkEdit: !payload.toggle,
           };
-        } else {
-          return talk;
         }
+        return talk;
       });
       return {
         ...state,
@@ -158,7 +150,7 @@ export default function TalksReducer(state = initialState, action) {
     case 'HANDLE_TALK_CHANGE': {
       const updatedTalkInfo = state.talkInfo.map((talk) => {
         if (talk.talkId === payload.talkId) {
-          let talkChanges = talk.talkChanges;
+          let { talkChanges } = talk;
           if (payload.type === 'Description') {
             talkChanges = {
               ...talkChanges,
@@ -181,9 +173,8 @@ export default function TalksReducer(state = initialState, action) {
             ...talk,
             talkChanges,
           };
-        } else {
-          return talk;
         }
+        return talk;
       });
       return {
         ...state,
@@ -200,9 +191,8 @@ export default function TalksReducer(state = initialState, action) {
             adminNotes: payload.data.adminNotes,
             toggleTalkEdit: payload.toggle,
           };
-        } else {
-          return talk;
         }
+        return talk;
       });
       return {
         ...state,

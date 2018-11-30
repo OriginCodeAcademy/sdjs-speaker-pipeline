@@ -1,45 +1,42 @@
 import axios from 'axios';
 
-export const changeTalkStatus = (talkId, selectedStatus, speakerToken) => {
-  return {
-    type: 'SUBMIT_STATUS',
-    payload: axios.get('api/robotLogin').then((accessToken) => {
+export const changeTalkStatus = (talkId, selectedStatus, speakerToken) => ({
+  type: 'SUBMIT_STATUS',
+  payload: axios.get('api/robotLogin').then((accessToken) => {
+    axios({
+      method: 'put',
+      url: 'api/talks/changeTalkStatus',
+      headers: {
+        Authorization: accessToken.data.id,
+      },
+      data: {
+        talkId,
+        selectedStatus,
+      },
+    }).then(() => {
       axios({
-        method: 'put',
-        url: 'api/talks/changeTalkStatus',
+        method: 'delete',
+        url: `api/accessTokens/${speakerToken}`,
         headers: {
           Authorization: accessToken.data.id,
         },
         data: {
-          talkId,
-          selectedStatus,
+          speakerToken,
         },
-      }).then((response) => {
-        axios({
-          method: 'delete',
-          url: `api/accessTokens/${speakerToken}`,
-          headers: {
-            Authorization: accessToken.data.id,
-          },
-          data: {
-            speakerToken,
-          },
-        });
       });
-    }),
-  };
-};
+    });
+  }),
+});
 
-export const handleSpeakerToken = (t) => {
-  return {
-    type: 'HANDLE_SPEAKER_TOKEN',
-    payload: t,
-  };
-};
 
-export const handleTalkId = (id) => {
-  return {
-    type: 'HANDLE_TALK_ID',
-    payload: id,
-  };
-};
+export const handleSpeakerToken = t => ({
+  type: 'HANDLE_SPEAKER_TOKEN',
+  payload: t,
+});
+
+export const handleTalkId = id => ({
+
+  type: 'HANDLE_TALK_ID',
+  payload: id,
+
+});
