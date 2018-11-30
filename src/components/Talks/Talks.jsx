@@ -48,14 +48,14 @@ const EditOptions = ({
       <div className="side-by-side-btns">
         <button
           className="btn"
-          type="button"
+          type="submit"
           name={talkId}
           value={toggleEditProp}
           onClick={handleSubmit}
         >
             Save
         </button>
-        <button className="btn" type="button" name={talkId} onClick={toggleEditFunction}>
+        <button className="btn" type="submit" name={talkId} onClick={toggleEditFunction}>
             Cancel
         </button>
       </div>
@@ -115,7 +115,7 @@ const ShowMore = ({
             />
           </label>
         </div>
-        <button className="btn" type="button" name={talkId} onClick={updateTalkInfo}>
+        <button className="btn" type="submit" name={talkId} onClick={updateTalkInfo}>
             Save
         </button>
       </div>

@@ -147,7 +147,7 @@ class Organizers extends Component {
                 </label>
               </Field>
               <div>
-                <button className="btn" type="button">Submit!</button>
+                <button className="btn" type="submit">Submit!</button>
               </div>
             </form>
           </div>

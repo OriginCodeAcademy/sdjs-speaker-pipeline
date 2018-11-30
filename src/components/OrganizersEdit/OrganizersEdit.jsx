@@ -93,7 +93,7 @@ export default class OrganizersEdit extends Component {
               />
             </label>
           </Field>
-          <button className="btn" type="button" id="admin-submit">
+          <button className="btn" type="submity" id="admin-submit">
             Save
           </button>
         </form>

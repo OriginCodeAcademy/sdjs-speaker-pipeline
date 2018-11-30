@@ -183,7 +183,7 @@ class SignUp extends Component {
                 />
               </Field>
               <div>
-                <button className="btn" type="button" id="speaker-submit">
+                <button className="btn" type="submit" id="speaker-submit">
                   Submit!
                 </button>
               </div>

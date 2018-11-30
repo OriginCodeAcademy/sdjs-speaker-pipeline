@@ -40,7 +40,7 @@ class ConfirmOrCancel extends Component {
           </p>
           <div className="buttons">
             <button
-              type="button"
+              type="submit"
               className="btn"
               name="Confirmed"
               onClick={this.handleSubmitStatus}
@@ -48,7 +48,7 @@ class ConfirmOrCancel extends Component {
               Confirm
             </button>
             <button
-              type="button"
+              type="submit"
               className="btn"
               name="Disengaged"
               onClick={this.handleSubmitStatus}
