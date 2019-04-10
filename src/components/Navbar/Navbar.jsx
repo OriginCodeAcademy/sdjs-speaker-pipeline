@@ -7,9 +7,7 @@ const Navbar = props => {
     return (
         <div className='home-nav'>
             <div className='navbar'>
-
-                <img className='logo' src='https://uploads-ssl.webflow.com/5717c4de40b3bdeb02777ff4/598129e0c2a8fb000172a22e_Full%20Color.png' />
-
+                <a href='www.sandiegojs.org'><img className='logo' src='https://uploads-ssl.webflow.com/5717c4de40b3bdeb02777ff4/598129e0c2a8fb000172a22e_Full%20Color.png' /></a>
                 <div className='nav-items' >
                     <Link to='/' className={location.pathname === '/' ? 'nav-item w--current' : 'nav-item'}>
                         SPEAK
