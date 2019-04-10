@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const talkSubmit = (speakerInfo, talkInfo, date) => ({
+
 	type: 'TALK_SUBMIT',
 	payload: axios.post('api/talks/talkSubmit', {speakerInfo: speakerInfo, talkInfo: talkInfo, date: date})
 })
