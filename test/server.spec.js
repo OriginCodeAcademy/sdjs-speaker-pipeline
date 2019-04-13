@@ -1,36 +1,35 @@
 'use strict';
 
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import server from '../server/server';
-import Nightmare from 'nightmare';
-import { expect } from 'chai';
-import chaiAsPromised from "chai-as-promised";
+const {chai} = require('chai');
+const {chaiHttp} = require('chai-http');
+const {server} = require('../server/server');
+const Nightmare = require('nightmare');
+const {expect} = require('chai');
+const {chaiAsPromised} = require('chai-as-promised');
 chai.use(chaiAsPromised);
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { changeTalkContent } from '../server/utils/changeTalkContent';
-import { changeTalkOwner } from '../server/utils/changeTalkOwner';
-import { changeTalkStatus } from '../server/utils/changeTalkStatus';
-import { formatTalkForEmail } from '../server/utils/formatTalkForEmail';
-import { getMeetups } from '../server/utils/getMeetups';
-//import { pastTalks } from '../server/utils/pastTalks';
-import { getTalkDetails } from '../server/utils/getTalkDetails';
-import { sendEmailToSpeaker } from '../server/utils/sendGridEmailer';
-import { sendEmailToAdmin } from '../server/utils/sendGridEmailer';
-import { sendEmailToNewAdmin } from '../server/utils/sendGridEmailer';
-import { talkSubmit } from '../server/utils/talkSubmit';
+const Enzyme = require('enzyme');
+const Adapter = require('enzyme-adapter-react-16');
+const {changeTalkContent} = require('../server/utils/changeTalkContent');
+const {changeTalkOwner} = require('../server/utils/changeTalkOwner');
+const {changeTalkStatus} = require('../server/utils/changeTalkStatus');
+const {formatTalkForEmail} = require('../server/utils/formatTalkForEmail');
+const {getMeetups} = require('../server/utils/getMeetups');
+// const {pastTalks} = require('../server/utils/pastTalks');
+const {getTalkDetails} = require('../server/utils/getTalkDetails');
+const {sendEmailToSpeaker} = require('../server/utils/sendGridEmailer');
+const {sendEmailToAdmin} = require('../server/utils/sendGridEmailer');
+const {sendEmailToNewAdmin} = require('../server/utils/sendGridEmailer');
+const {talkSubmit} = require('../server/utils/talkSubmit');
 chai.use(chaiHttp);
 let nightmare;
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({adapter: new Adapter()});
 server.listen(4444);
 
-describe('server/server.js', function () {
+describe('server/server.js', function() {
   this.timeout(50000);
   beforeEach(() => {
-    nightmare = new Nightmare({ show: true });
-
+    nightmare = new Nightmare({show: true});
   });
 
   // TODO: Nightmare tests were not working correctly
@@ -152,8 +151,6 @@ describe('server/server.js', function () {
   //     .catch(err => console.log(err))
   // })
 
-
-
 // TODO: many of these tests are broken. They need to be fixed.
 // They should be separated from end to end tests and not live in the same file.
 
@@ -173,13 +170,15 @@ describe('server/server.js', function () {
 //   return expect(formatTalkForEmail('Bad Speaker Id')).to.be.rejectedWith('Bad Event Id');
 // });
 
-it('getMeetups should reject with Bad Talk Id"', function () {
-  return expect(getMeetups('this should pass with any params')).to.be.fulfilled;
-});
+  it('getMeetups should reject with Bad Talk Id"', function() {
+    return expect(getMeetups('this should pass with any params'))
+    .to.be.fulfilled;
+  });
 
-it('getTalkDetails should reject with Bad Talk Id"', function () {
-  return expect(getTalkDetails('this should pass with any params')).to.be.fulfilled;
-});
+  it('getTalkDetails should reject with Bad Talk Id"', function() {
+    return expect(getTalkDetails('this should pass with any params'))
+    .to.be.fulfilled;
+  });
 
 // it('pastTalks should reject with Bad Talk Id"', function () {
 //   return expect(pastTalks('this should pass with any params')).to.be.fulfilled;
@@ -204,5 +203,4 @@ it('getTalkDetails should reject with Bad Talk Id"', function () {
 // it('talkSubmit should reject with Bad Talk Id"', function () {
 //   return expect(talkSubmit('Could not find talk')).to.be.rejected;
 // });
-
 });
