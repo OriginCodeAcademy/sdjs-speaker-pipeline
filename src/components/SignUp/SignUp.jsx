@@ -56,7 +56,6 @@ class SignUp extends Component {
 	}
 
 	submitSpeaker(e) {
-		console.log('hello')
 		e.preventDefault();
 		const { dispatch, speakerName, speakerEmail, date, topic, phone, description } = this.props;
 		dispatch(talkSubmit({ speakerName, speakerEmail, phone, speakerEmail },

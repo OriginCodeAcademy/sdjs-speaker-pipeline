@@ -255,8 +255,8 @@ module.exports = function (Talk) {
 				const speakerEmail = response.speakerEmail;
 				const meetupTitle = response.meetupTitle;
 				const meetupDate = response.meetupDate;
-				sendEmailToSpeaker(process.env.MAIN_ADMIN_EMAIL, approved, pending, speakerEmail, speakerName, meetupTitle, meetupDate)
-					.then(() => next())
+				sendEmailToSpeaker(process.env.ADMIN_EMAIL, approved, pending, speakerEmail, speakerName, meetupTitle, meetupDate)
+				.then(() => next())
 					.catch(err => next(err));
 			})
 			.catch(err => next(err));
@@ -280,7 +280,7 @@ module.exports = function (Talk) {
 					const speakerEmail = response.speakerEmail;
 					const meetupTitle = response.meetupTitle;
 					const meetupDate = response.meetupDate;
-					sendEmailToSpeaker(process.env.MAIN_ADMIN_EMAIL, approved, pending, speakerEmail, speakerName, meetupTitle, meetupDate)
+					sendEmailToSpeaker(process.env.ADMIN_EMAIL, approved, pending, speakerEmail, speakerName, meetupTitle, meetupDate)
 						.then(() => next())
 						.catch(err => next(err));
 				})
@@ -314,3 +314,6 @@ module.exports = function (Talk) {
 
 	});
 };
+
+
+
