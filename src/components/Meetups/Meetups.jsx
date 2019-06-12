@@ -10,6 +10,7 @@ class Meetups extends Component {
     }
 
     componentDidMount() {
+        console.log('hello')
         const { dispatch, accessToken } = this.props;
         dispatch(getEvents(accessToken));
     }

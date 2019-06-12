@@ -13,16 +13,6 @@ class AdminLogin extends Component {
 		this.submitLogin = this.submitLogin.bind(this);
 	}
 
-	componentDidMount() {
-		const { dispatch, accessToken } = this.props;
-		dispatch(checkToken(accessToken));
-	}
-
-	componentDidUpdate() {
-		const { dispatch, accessToken } = this.props;
-		dispatch(checkToken(accessToken));
-	}
-
 	handleUsername(e) {
 		const { dispatch } = this.props;
 		dispatch(updateUsername(e.target.value));
@@ -41,6 +31,7 @@ class AdminLogin extends Component {
 	}
 
 	submitLogin(e) {
+		console.log('inside submit login')
 		e.preventDefault();
 		const { dispatch, remember, username, password } = this.props;
 		if (remember) dispatch(postLoginPersist({ username, password, ttl: 60 * 60 }));

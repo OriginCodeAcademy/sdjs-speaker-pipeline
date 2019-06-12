@@ -44,6 +44,9 @@ body {
     transition-timing-function: ease, ease, ease;
     transition-delay: 0s, 0s, 0s;
 }
+.btn:hover {
+    cursor: pointer;
+}
 
 .top-div {
     background-color: $background-color;

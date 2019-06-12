@@ -16,6 +16,7 @@ class Home extends Component {
 	}
 
 	render() {
+		{console.log('hi')}
 		return (
 			<div>
 				<Navbar />

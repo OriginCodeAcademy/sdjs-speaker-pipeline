@@ -14,8 +14,7 @@ export default function AdminLoginReducer(state = initialstate, action) {
 		case 'UPDATE_USERNAME': {
 			return {
 				...state,
-				username: payload,
-				accessToken: ''
+				username: payload
 			}
 		}
 		case 'UPDATE_PASSWORD': {

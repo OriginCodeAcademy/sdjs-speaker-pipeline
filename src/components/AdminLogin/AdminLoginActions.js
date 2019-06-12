@@ -16,13 +16,10 @@ export const rememberMe = (value) => ({
 })
 
 export const postLogin = (userData) => {
-    return {
-        type: 'POST_LOGIN',
-        payload: axios.post('api/organizers/login', userData)
-            .then(response => {
-                return response.data
-            })
-    }
+    axios.post('api/organizers/login', userData)
+    .then(response => {
+        return {type: 'POST_LOGIN', payload: response.data}
+    })
 }
 
 export const postLoginPersist = (userData) => {
