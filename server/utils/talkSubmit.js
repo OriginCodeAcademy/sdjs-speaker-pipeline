@@ -2,6 +2,9 @@ const app = require('../server');
 const { getMeetups } = require('./getMeetups');
 
 function talkSubmit(speakerInfo, talkInfo, date) {
+    console.log('speakerInfo: ',speakerInfo)
+    console.log('talkInfo: ',talkInfo)
+    console.log('date: ',date)
     const { Talk, Speaker, Event } = app.models;
     return getMeetups()
         .then(meetups => {

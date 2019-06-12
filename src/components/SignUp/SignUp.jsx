@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'react-redux-form';
 import { Redirect } from 'react-router';
+import Footer from '../Footer/Footer';
 import {
 	talkSubmit,
 	getDates,
@@ -84,11 +85,11 @@ class SignUp extends Component {
 								</Field >
 								<Field model='speakerEmail'>
 									<label htmlFor='speaker-email'>Email: </label>
-									<input type="email" id="speakerEmail" name="speakerEmail" value={speakerEmail} required onChange={this.handleEmail} />
+									<input type="email" placeholder='john@email.com' id="speakerEmail" name="speakerEmail" value={speakerEmail} required onChange={this.handleEmail} />
 								</Field>
 								<Field model='phone'>
 									<label htmlFor='speaker-phone'>Phone Number: </label>
-									<input type="tel" name="phone" id='speakerPhone' required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={phone.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/,'$1-$2-$3')}format="### ### ####" onChange={this.handlePhone} />
+									<input type="tel" name="phone" placeholder='0000000000' id='speakerPhone' required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={phone.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/,'$1-$2-$3')}format="### ### ####" onChange={this.handlePhone} />
 								</Field>
 								<div>
 									<label htmlFor='event-date'>Date Requested: </label>
@@ -113,6 +114,7 @@ class SignUp extends Component {
 							</form>
 						</div>
 					</div>
+					<Footer/>
 				</div>
 
 			)
