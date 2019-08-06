@@ -1,7 +1,8 @@
 'use strict';
 module.exports = {
     "sdjs": {
-      "url": process.env.MONGODB_URI,
+      "url": MONGODB_ATLAS_URI,
+      // "url": process.env.MONGODB_URI,
       "connector": "mongodb"
     }
   }

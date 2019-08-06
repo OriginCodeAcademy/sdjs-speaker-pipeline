@@ -4,9 +4,9 @@ function getMeetups() {
 	return new Promise((resolve, reject) => {
 		let currentDate = new Date();
 		currentDate.setMonth(currentDate.getMonth() + 3);
-		axios.get(`https://api.meetup.com/sandiegojs/events?no_later_than=${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDay()}`)
-			.then(response => {
-				resolve(response.data.map(event => ({
+		const date = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDay()}`;
+		axios.get(`https://api.meetup.com/sandiegojs/events?no_later_than=${date}`)
+			.then( response => resolve(response.data.map(event => ({
 					meetupId: event.id,
 					name: event.name,
 					date: event.local_date,
@@ -14,10 +14,9 @@ function getMeetups() {
 					venue: event.venue,
 					link: event.link,
 					description: event.description,
-				})));
+				}))))
 			})
 			.catch(err => reject(new Error('getMeetups failed to get SDJS meetups')))
-	})
 }
 
 module.exports = { getMeetups };
