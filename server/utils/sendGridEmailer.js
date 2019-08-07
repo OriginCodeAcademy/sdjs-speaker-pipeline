@@ -9,6 +9,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 function sendEmailToSpeaker(adminEmail, approved, pending, speakerEmail, speakerName, meetupTitle, meetupDate) {
     return new Promise((resolve, reject) => {
+        console.log('hello in sendEmailToSpeaker')
         if (speakerEmail == undefined) {
             return reject(new Error('speakerEmail is undefined'));
          }
@@ -38,7 +39,7 @@ function sendEmailToSpeaker(adminEmail, approved, pending, speakerEmail, speaker
             to: speakerEmail,
             from: adminEmail,
             subject: 'SDJS Meetup Speaker Request',
-            templateId: process.env.EMAIL_TEMPLATE,
+            templateId: process.env.ADMIN_SPEAKER_EMAIL_TEMPLATE,
             dynamic_template_data: {
                 emailContent: emailContent,
                 sdjsBtn: false,
@@ -82,7 +83,7 @@ function sendEmailToAdmin(adminEmail, meetupDate, meetupTitle, speakerEmail, spe
             to: adminEmail,
             from: adminEmail,
             subject: 'SDJS Meetup Speaker Request',
-            templateId: process.env.EMAIL_TEMPLATE,
+            templateId: process.env.ADMIN_SPEAKER_EMAIL_TEMPLATE,
             dynamic_template_data: {
                 emailContent: emailContent,
                 sdjsBtn: false,
@@ -126,10 +127,10 @@ function sendConfirmCancelToAdmin(confirm, meetupDate, meetupTitle, speakerName)
         }
 
         const email = {
-            to: process.env.MAIN_ADMIN_EMAIL,
-            from: process.env.MAIN_ADMIN_EMAIL,
+            to: process.env.ADMIN_EMAIL,
+            from: process.env.ADMIN_EMAIL,
             subject: 'SDJS Meetup Speaker Request',
-            templateId: process.env.EMAIL_TEMPLATE,
+            templateId: process.env.ADMIN_SPEAKER_EMAIL_TEMPLATE,
             dynamic_template_data: {
                 emailContent: emailContent,
                 sdjsBtn: false,
@@ -164,9 +165,9 @@ function sendEmailToNewAdmin(username, email) {
                 password go to the Organizers tab and click on the edit button.`;
         const newAdminEmail = {
             to: email,
-            from: process.env.MAIN_ADMIN_EMAIL,
+            from: process.env.ADMIN_EMAIL,
             subject: 'SDJS Meetup Admin Appointment',
-            templateId: process.env.EMAIL_TEMPLATE,
+            templateId: process.env.ADMIN_SPEAKER_EMAIL_TEMPLATE,
             dynamic_template_data: {
                 emailContent: emailContent,
                 sdjsBtn: false,
@@ -244,9 +245,9 @@ function sendEmailToNewAdmin(username, email) {
 //                                     const url = 'http://localhost:3000/#/ConfirmOrCancel/?t=';
 //                                     const reminder = {
 //                                         to: speaker.speakerEmail,
-//                                         from: process.env.MAIN_ADMIN_EMAIL,
+//                                         from: process.env.ADMIN_EMAIL,
 //                                         subject: 'SDJS Meetup Speaker Reminder',
-//                                         templateId: 'd-227d9b43edf14c92964db9bd00fdf002',
+//                                         templateId: process.env.SPEAKER_REMINDER_EMAIL_TEMPLATE,
 //                                         dynamic_template_data: {
 //                                             emailContent: emailContent,
 //                                             sdjsBtn: true,
