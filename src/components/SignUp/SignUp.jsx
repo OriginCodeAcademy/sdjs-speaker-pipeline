@@ -114,6 +114,7 @@ class SignUp extends Component {
 							</form>
 						</div>
 					</div>
+					<Footer/>
 				</div>
 
 			)

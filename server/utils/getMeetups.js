@@ -11,6 +11,7 @@ function getMeetups() {
 			name: event.name,
 			date: event.local_date,
 			time: event.local_time,
+			venue: event.venue,
 			link: event.link,
 			description: event.description,
 		}))))
