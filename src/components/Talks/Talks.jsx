@@ -106,13 +106,13 @@ class Talks extends Component {
 
   handleSubmitOwner(e) {
     const { dispatch, talkInfo, accessToken } = this.props;
-    const selectedTalk = talkInfo.find((talk) => talk.talkId === e.target.name);
+    const selectedTalk = talkInfo.find((talk) => talk.talkId.toString() === e.target.name);
     dispatch(changeTalkOwner(e.target.name, selectedTalk.selectedOwner, e.target.value, accessToken));
   }
 
   handleSubmitStatus(e) {
     const { dispatch, talkInfo, accessToken } = this.props;
-    const selectedTalk = talkInfo.find((talk) => talk.talkId === e.target.name);
+    const selectedTalk = talkInfo.find((talk) => talk.talkId.toString() === e.target.name);
     dispatch(changeTalkStatus(e.target.name, selectedTalk.selectedStatus, e.target.value, accessToken));
   }
 
@@ -148,7 +148,8 @@ class Talks extends Component {
 
   updateTalkInfo(e) {
     const { dispatch, talkInfo, accessToken } = this.props;
-    const selectedTalk = talkInfo.find((talk) => talk.talkId === e.target.name);
+    const selectedTalk = talkInfo.find((talk) => talk.talkId.toString() === e.target.name);
+    console.log('find::  ', selectedTalk);
     dispatch(updateTalkInfo(e.target.name, selectedTalk.talkChanges.topic, selectedTalk.talkChanges.description, selectedTalk.talkChanges.adminNotes, selectedTalk.toggleTalkEdit, accessToken));
   }
 

@@ -45,6 +45,9 @@ body {
     transition-delay: 0s, 0s, 0s;
 }
 
+button .btn h1:hover {
+    cursor: pointer
+}
 .top-div {
     background-color: $background-color;
     padding: 120px 0;
