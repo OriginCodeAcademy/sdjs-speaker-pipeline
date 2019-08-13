@@ -8,7 +8,8 @@ const Navbar = props => {
         <div className='home-nav'>
             <div className='navbar'>
 
-                <img className='logo' src='https://uploads-ssl.webflow.com/5717c4de40b3bdeb02777ff4/598129e0c2a8fb000172a22e_Full%20Color.png' />
+                <a href= "https://www.sandiegojs.org/">
+                    <img className='logo' src='https://uploads-ssl.webflow.com/5717c4de40b3bdeb02777ff4/598129e0c2a8fb000172a22e_Full%20Color.png'/></a>
 
                 <div className='nav-items' >
                     <Link to='/' className={location.pathname === '/' ? 'nav-item w--current' : 'nav-item'}>
@@ -20,15 +21,15 @@ const Navbar = props => {
                     <a href='https://www.sandiegojs.org/connect' className={location.pathname === '/Connect' ? 'nav-item w--current' : 'nav-item'}>
                         CONNECT
                     </a>
-                    <Link to='/Shirts' className={location.pathname === '/Shirts' ? 'nav-item w--current' : 'nav-item'}>
+                    <a href='https://www.sandiegojs.org/shirts' className={location.pathname === '/Shirts' ? 'nav-item w--current' : 'nav-item'}>
                         SHIRTS
-                    </Link>
-                    <Link to='/Learn' className={location.pathname === '/Learn' ? 'nav-item w--current' : 'nav-item'}>
+                    </a>
+                    <a href='https://www.sandiegojs.org/learn' className={location.pathname === '/Learn' ? 'nav-item w--current' : 'nav-item'}>
                         LEARN
-                    </Link>
-                    <Link to='/Jobs' className={location.pathname === '/Jobs' ? 'nav-item w--current' : 'nav-item'}>
+                    </a>
+                    <a href='https://www.sandiegojs.org/jobs' className={location.pathname === '/Jobs' ? 'nav-item w--current' : 'nav-item'}>
                         JOBS
-                    </Link>
+                    </a>
                     <Link to='/Admin/Login' className={location.pathname === '/Admin/Login' ? 'nav-item w--current' : 'nav-item'}>
                         ADMIN
                     </Link>

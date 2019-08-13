@@ -41,7 +41,9 @@ class Organizers extends Component {
 
     handleDelete(e) {
         const { dispatch, accessToken } = this.props;
-        dispatch(deleteAdmin(e.target.getAttribute('name'), accessToken));
+        if (window.confirm('Please confirm you wish to delete this organizer.')) {
+            dispatch(deleteAdmin(e.target.getAttribute('name'), accessToken));
+        }
     }
 
     handleUpdate(id, index, obj) {
@@ -67,10 +69,10 @@ class Organizers extends Component {
                 <div className='organizer-container'>
                     <div className='organizer-container-child'>
                         <h1>Organizers</h1>
-                        <h3 className='add-admin-title'>Add Other Admins Contact Info</h3>
+                        <h3 className='add-admin-title'>Create New Admin Account</h3>
                         <form id='organizer-form' onSubmit={this.addAdmin}>
                             <Field model='user.name'>
-                                <label htmlFor='admin-name'>Name: </label>
+                                <label htmlFor='admin-name'>Username: </label>
                                 <input name='newAdminName' type='text' value={newAdminName} onChange={this.handleChange} required />
                             </Field >
                             <Field model='user.admin-email'>

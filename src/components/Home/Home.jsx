@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import { resetSubmitted } from '../SignUp/SignUpActions';
+import Footer from '../Footer/Footer';
 
 class Home extends Component {
     constructor(props) {
@@ -46,8 +47,8 @@ class Home extends Component {
 					</p>
 					<h3>Want to do an extended talk?</h3>
 					<p>
-						We do accept extended talks but prefer presentors to have done a
-						lightning talk before. If you're unsure&nbsp;
+						We do accept extended talks, but prefer presenters to have done a
+						lightning talk before. If you're unsure,&nbsp;
 						<a
 							href="mailto:sandiegojs-organizers@googlegroups.com?subject=Extended%20talk%20request"
 							className='inline-link'>
@@ -71,7 +72,7 @@ class Home extends Component {
 					<div className='dos-and-donts'>
 
 						<div className='dos'>
-							<h5>Do</h5>
+							<h5>DO</h5>
 							<ul>
 								<li>Use a large legible font</li>
 								<li>Use white slides with black text</li>
@@ -79,10 +80,10 @@ class Home extends Component {
 							</ul>
 						</div>
 						<div className='donts'>
-							<h5>Do not</h5>
+							<h5>DO NOT</h5>
 							<ul>
 								<li>Use more than a few slides. 
-									<strong>We recommend less than 10 slides.</strong>
+									<strong>{" "}We recommend less than 10 slides.</strong>
 								</li>
 								<li>Live code/demo for your first talk. It's really hard for a lightning talk.</li>
 								<li>Forget to practice</li>
@@ -90,6 +91,7 @@ class Home extends Component {
 						</div>
 					</div>
 				</div>
+				<Footer/>
 			</div>
 		)
 	}
