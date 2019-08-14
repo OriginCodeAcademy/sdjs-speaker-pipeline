@@ -198,7 +198,19 @@ class Talks extends Component {
                               data={{
                                 speaker: talk.speaker,
                                 speakerEmail: <a href={`mailto:${talk.speakerEmail}`} target="_top"><i className="far fa-envelope"></i>Send Email</a>,
-                                speakerPhone: <div><i className="fas fa-phone"></i>{talk.speakerPhone}</div>
+                                speakerPhone: <div><i className="fas fa-phone"></i>{talk.speakerPhone}</div>,
+                                speakerEdit: <div><br/><br/>
+                                                <div><i className="far fa-edit" name={talk.talkId} value={talk.toggleTalkEdit} onClick={this.toggleTalkEdit}><label for='edit'> Edit </label></i></div>
+                                                <div><i className="fas fa-trash-alt" name={talk.talkId} onClick={this.deleteTalk}></i>Delete</div>
+                                                <input type="checkbox" id='edit'/>
+                                                <div className='side-by-side-btns'>
+                                                <button className='btn' name={talk.talkId} onClick={this.updateTalkInfo}>Save all</button>
+                                                <button className='btn' name={talk.talkId} onClick={this.toggleTalkEdit}>Cancel</button>
+                                                </div>
+                                            </div>
+                                          <i className='far fa-edit'><label for='edit'> Edit </label> </i>
+                                          <input type='checkbox' id='edit' />
+
                               }} />
                           case 'Talk':
                             return <TableRow key={i}>
