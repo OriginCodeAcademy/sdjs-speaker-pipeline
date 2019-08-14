@@ -94,6 +94,8 @@
             margin-left: 10px;
         }
     }
+    .table input { display: none }
+    .table input:checked + div{ display: none }
 
     .table-editTalk {
         margin: 20px 0;
