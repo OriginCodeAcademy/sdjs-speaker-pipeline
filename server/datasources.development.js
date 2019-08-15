@@ -3,6 +3,10 @@ module.exports = {
   "sdjs": {
     "name": "sdjs",
     "connector": "memory",
-    "file": "data.json"
+  },
+  "MongoDB": {
+    "url": "mongodb://localhost:27017",
+    "name": "MongoDB",
+    "connector": "mongodb"
   }
 }
