@@ -123,8 +123,6 @@ class Talks extends Component {
   updateTalkInfo(e) {
     const { dispatch, talkInfo, accessToken } = this.props;
     const selectedTalk = talkInfo.find((talk) => talk.talkId.toString() === e.target.name);
-    dispatch(changeTalkOwner(e.target.name, selectedTalk.selectedOwner, e.target.value, accessToken));
-    dispatch(changeTalkStatus(e.target.name, selectedTalk.selectedStatus, e.target.value, accessToken));
     dispatch(updateTalkInfo(e.target.name, selectedTalk.talkChanges.topic, selectedTalk.talkChanges.description, selectedTalk.talkChanges.adminNotes, selectedTalk.toggleTalkEdit, accessToken));
     dispatch(changeTalkStatus(e.target.name, selectedTalk.selectedStatus, e.target.value, accessToken));
     dispatch(changeTalkOwner(e.target.name, selectedTalk.selectedOwner, e.target.value, accessToken));
