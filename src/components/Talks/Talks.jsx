@@ -18,15 +18,12 @@ const EditOptions = ({ talkId, handleSelect, name, children, toggleEditProp, han
   return (
     <div className='table-tableAction'>
       <div className='table-tableStatus'>
-        <select data-type={name} name={talkId} onChange={handleSelect}>
+        <select data-type={name} name={talkId} onChange={handleSelect} >
           <option value=''>Change {name}</option>
           {children}
           <option value='None'>None</option>
         </select>
-        <div className='side-by-side-btns'>
-          <button className='btn' name={talkId} value={toggleEditProp} onClick={handleSubmit}>Save</button>
-          <button className='btn' name={talkId} onClick={toggleEditFunction}>Cancel</button>
-        </div>
+        
       </div>
     </div>
   )
@@ -42,13 +39,12 @@ const ShowMore = ({ topic, description, adminNotes, talkId, toggleShowMoreFuncti
           </div>
           <div className='table-editTalk'>
             <label>Topic: </label>
-            <input defaultValue={topic} name={talkId} data-type={'Topic'} onChange={handleTalkChange} />
+            <textarea defaultValue={topic} name={talkId} data-type={'Topic'} onChange={handleTalkChange} />
             <label>Description: </label>
             <textarea defaultValue={description} name={talkId} data-type={'Description'} onChange={handleTalkChange} />
             <label>Admin Notes: </label>
             <textarea defaultValue={adminNotes} name={talkId} data-type={'Admin Notes'} onChange={handleTalkChange} />
           </div>
-          <button className='btn' name={talkId} onClick={updateTalkInfo}>Save</button>
         </div>
         :
         <div>
@@ -129,6 +125,7 @@ class Talks extends Component {
   toggleShowMore(e) {
     const { dispatch } = this.props;
     dispatch(toggleShowMore(e.target.getAttribute('name'), e.target.getAttribute('value')));
+    
   }
 
   deleteTalk(e) {
@@ -138,7 +135,11 @@ class Talks extends Component {
 
   toggleTalkEdit(e) {
     const { dispatch } = this.props;
+    dispatch(toggleShowMore(e.target.getAttribute('name'), e.target.getAttribute('value')));
     dispatch(toggleTalkEdit(e.target.getAttribute('name'), e.target.getAttribute('value')));
+    dispatch(toggleStatusEdit(e.target.getAttribute('name'), e.target.getAttribute('value')));
+    dispatch(toggleOwnerEdit(e.target.getAttribute('name'), e.target.getAttribute('value')));
+    dispatch(updateTalkInfo(e.target.name, selectedTalk.talkChanges.topic, selectedTalk.talkChanges.description, selectedTalk.talkChanges.adminNotes, selectedTalk.toggleTalkEdit, accessToken));
   }
 
   handleTalkChange(e) {
@@ -149,7 +150,8 @@ class Talks extends Component {
   updateTalkInfo(e) {
     const { dispatch, talkInfo, accessToken } = this.props;
     const selectedTalk = talkInfo.find((talk) => talk.talkId.toString() === e.target.name);
-    console.log('find::  ', selectedTalk);
+    dispatch(changeTalkOwner(e.target.name, selectedTalk.selectedOwner, e.target.value, accessToken));
+    dispatch(changeTalkStatus(e.target.name, selectedTalk.selectedStatus, e.target.value, accessToken));
     dispatch(updateTalkInfo(e.target.name, selectedTalk.talkChanges.topic, selectedTalk.talkChanges.description, selectedTalk.talkChanges.adminNotes, selectedTalk.toggleTalkEdit, accessToken));
   }
 
@@ -200,7 +202,7 @@ class Talks extends Component {
                                 speakerEmail: <a href={`mailto:${talk.speakerEmail}`} target="_top"><i className="far fa-envelope"></i>Send Email</a>,
                                 speakerPhone: <div><i className="fas fa-phone"></i>{talk.speakerPhone}</div>,
                                 speakerEdit: <div><br/><br/>
-                                                <div><i className="far fa-edit" name={talk.talkId} value={talk.toggleTalkEdit} onClick={this.toggleTalkEdit}><label for='edit'> Edit </label></i></div>
+                                                <div ><i className="far fa-edit" name={talk.talkId} value={talk.toggleTalkEdit} onClick={this.toggleTalkEdit}></i>Edit</div>
                                                 <div><i className="fas fa-trash-alt" name={talk.talkId} onClick={this.deleteTalk}></i>Delete</div>
                                                 <input type="checkbox" id='edit'/>
                                                 <div className='side-by-side-btns'>
@@ -208,10 +210,7 @@ class Talks extends Component {
                                                 <button className='btn' name={talk.talkId} onClick={this.toggleTalkEdit}>Cancel</button>
                                                 </div>
                                             </div>
-                                          <i className='far fa-edit'><label for='edit'> Edit </label> </i>
-                                          <input type='checkbox' id='edit' />
-
-                              }} />
+                                    }} />
                           case 'Talk':
                             return <TableRow key={i}>
                               <div className='options'>
