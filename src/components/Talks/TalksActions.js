@@ -71,7 +71,6 @@ export const changeTalkStatus = (talkId, selectedStatus, toggle, accessToken) =>
             }
         })
             .then((updatedTalk) => {
-               console.log('this is updated talk data: ', updatedTalk );
                 return {
                     data: updatedTalk.data,
                     toggle: !toggle
