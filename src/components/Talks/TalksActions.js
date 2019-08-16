@@ -123,16 +123,6 @@ export const toggleTalkEdit = (talkId, toggle) => {
     }
 };
 
-export const toggleSaveAll = (talkId, toggle) => {
-    return {
-        type: 'TOGGLE_SAVE_ALL',
-        payload: {
-            talkId,
-            toggle: !toggle,
-        }
-    }
-};
-
 export const deleteTalk = (talkId, accessToken) => {
     return {
         type: 'DELETE_TALK',
