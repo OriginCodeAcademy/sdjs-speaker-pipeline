@@ -110,10 +110,7 @@ class Talks extends Component {
     const { dispatch } = this.props;
     dispatch(toggleShowMore(e.target.getAttribute('name'), e.target.getAttribute('value')));
     dispatch(toggleTalkEdit(e.target.getAttribute('name'), e.target.getAttribute('value')));
-    dispatch(toggleStatusEdit(e.target.getAttribute('name'), e.target.getAttribute('value')));
-    dispatch(toggleOwnerEdit(e.target.getAttribute('name'), e.target.getAttribute('value')));
-    dispatch(updateTalkInfo(e.target.name, selectedTalk.talkChanges.topic, selectedTalk.talkChanges.description, selectedTalk.talkChanges.adminNotes, selectedTalk.toggleTalkEdit, accessToken));
-  }
+   }
 
   handleTalkChange(e) {
     const { dispatch } = this.props;
@@ -178,9 +175,10 @@ class Talks extends Component {
                                                 <div ><i className="far fa-edit" name={talk.talkId} value={talk.toggleTalkEdit} onClick={this.toggleTalkEdit}></i>Edit</div>
                                                 <div><i className="fas fa-trash-alt" name={talk.talkId} onClick={this.deleteTalk}></i>Delete</div>
                                                 <input type="checkbox" id='edit'/>
-                                                <div className='side-by-side-btns'>
-                                                <button className='btn' name={talk.talkId} onClick={this.updateTalkInfo}>Save all</button>
-                                                <button className='btn' name={talk.talkId} onClick={this.toggleTalkEdit}>Cancel</button>
+                                                <div className='side-by-side-btns'>{ talk.toggleTalkEdit ? [
+                                                <button className='btn' name={talk.talkId} onClick={this.updateTalkInfo}>Save all</button>,
+                                                <button className='btn' name={talk.talkId} onClick={this.toggleTalkEdit}>Cancel</button> 
+                                                ] : null} 
                                                 </div>
                                             </div>
                                     }} />
@@ -224,7 +222,7 @@ class Talks extends Component {
                                     handleSubmit={this.handleSubmitStatus}
                                     toggleEditFunction={this.toggleStatusEdit}
                                     toggleEditProp={talk.toggleStatusEdit}
-                                    name={'Status'}>
+                                    name={talk.currentStatus}>
                                     <option value='In Contact'>In Contact</option>
                                     <option value='Approve'>Approve</option>
                                     <option value='Deny'>Deny</option>
@@ -247,7 +245,7 @@ class Talks extends Component {
                                     handleSubmit={this.handleSubmitOwner}
                                     toggleEditFunction={this.toggleOwnerEdit}
                                     toggleEditProp={talk.toggleOwnerEdit}
-                                    name={'Owner'}
+                                    name={talk.owner}
                                   >
                                     {organizers.map((organizer, i) => <option key={i} value={organizer.username}>{organizer.username}</option>)}
                                   </EditOptions>

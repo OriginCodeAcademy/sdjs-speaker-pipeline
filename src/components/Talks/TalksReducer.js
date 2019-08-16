@@ -152,6 +152,24 @@ export default function TalksReducer(state = initialState, action) {
                 talkInfo: updatedTalkInfo
             }
         }
+
+        case 'TOGGLE_SAVE_ALL': {
+            const updatedTalkInfo = state.talkInfo.map((talk) => {
+                if (talk.talkId == payload.talkId) {
+                    return {
+                        ...talk,
+                        toggleTalkEdit: !payload.toggle
+                    }
+                }
+                else {
+                    return talk
+                }
+            })
+            return {
+                ...state,
+                talkInfo: updatedTalkInfo
+            }
+        }
         case 'DELETE_TALK_FULFILLED': {
             const deleteIndex = state.talkInfo.findIndex((talk) => talk.talkId == payload)
             const updatedTalkInfo = [...state.talkInfo]
