@@ -172,9 +172,11 @@ class Talks extends Component {
                                 speakerEmail: <a href={`mailto:${talk.speakerEmail}`} target="_top"><i className="far fa-envelope"></i>Send Email</a>,
                                 speakerPhone: <div><i className="fas fa-phone"></i>{talk.speakerPhone}</div>,
                                 speakerEdit: <div><br/><br/>
-                                                <div ><i className="far fa-edit" name={talk.talkId} value={talk.toggleTalkEdit} onClick={this.toggleTalkEdit}></i>Edit</div>
+                                                <div> { talk.toggleTalkEdit ? null: [
+                                                <div ><i className="far fa-edit" name={talk.talkId} value={talk.toggleTalkEdit} onClick={this.toggleTalkEdit}></i>Edit</div>,
                                                 <div><i className="fas fa-trash-alt" name={talk.talkId} onClick={this.deleteTalk}></i>Delete</div>
-                                                <input type="checkbox" id='edit'/>
+                                                ] }
+                                                </div>
                                                 <div className='side-by-side-btns'>{ talk.toggleTalkEdit ? [
                                                 <button className='btn' name={talk.talkId} onClick={this.updateTalkInfo}>Save all</button>,
                                                 <button className='btn' name={talk.talkId} onClick={this.toggleTalkEdit}>Cancel</button> 
