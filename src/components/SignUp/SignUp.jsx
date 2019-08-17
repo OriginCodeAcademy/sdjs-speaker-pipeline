@@ -89,7 +89,7 @@ class SignUp extends Component {
 								</Field>
 								<Field model='phone'>
 									<label htmlFor='speaker-phone'>Phone Number: </label>
-									<input type="tel" name="phone" id='speakerPhone' required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={phone.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/,'$1-$2-$3')}format="### ### ####" onChange={this.handlePhone} />
+									<input type="tel" name="phone" id='speakerPhone' placeholder="000-000-0000" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={phone.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/,'$1-$2-$3')}format="### ### ####" onChange={this.handlePhone} />
 								</Field>
 								<div>
 									<label htmlFor='event-date'>Date Requested: </label>
