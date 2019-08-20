@@ -22,7 +22,7 @@ class Home extends Component {
 				<Navbar />
 				<div className='banner'>
 					<h1>sandiego.js</h1>
-					<h2>Speaker Pipeline</h2>
+					<br></br><h2>Speaker Pipeline</h2>
 					<p>Share your perspective with the San Diego JavaScript community</p>
 					<Link to='/SignUp'>
 						<button className="btn">Get Started</button>

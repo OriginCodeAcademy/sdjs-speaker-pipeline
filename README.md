@@ -18,13 +18,13 @@
 5. Create a `.env` file in the main directory and replace variables as needed. At a minimum you will need the following to be set:
 
 ```sh
-ADMIN_USERNAME=admin
-ADMIN_EMAIL=your@email.com	
-ADMIN_PASSWORD=test	
-ADMIN_PHONE=6193331234	
-NODE_ENV=development	
-EMAIL_TEMPLATE='d-e3b133a99ff54546bc7354c214579d41'	
-SENDGRID_API_KEY=XXXXXXX	
+ADMIN_USERNAME=sdjs
+ADMIN_PASSWORD=test
+ADMIN_PHONE=(619)368-1234
+ADMIN_EMAIL=mike@sdcs.io
+NODE_ENV=development
+ADMIN_SPEAKER_EMAIL_TEMPLATE='d-e3b133a99ff54546bc7354c214579d41'
+SENDGRID_API_KEY='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'  	
 ```
 
 6. Run `npm install` to install the project dependencies
