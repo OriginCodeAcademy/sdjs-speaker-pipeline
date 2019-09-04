@@ -58,8 +58,6 @@ const ShowMore = ({ topic, description, adminNotes, talkId, toggleShowMoreFuncti
             <label> Admin Notes: </label>
             <div> {adminNotes} </div>
           </div>
-          <i className="far fa-edit" name={talkId} value={toggleTalkEditProp} onClick={toggleTalkEditFunction}></i>
-          <i className="fas fa-trash-alt" name={talkId} onClick={deleteTalk}></i>
         </div>
       }
     </div>
@@ -98,7 +96,7 @@ class Talks extends Component {
   toggleShowMore(e) {
     const { dispatch } = this.props;
     dispatch(toggleShowMore(e.target.getAttribute('name'), e.target.getAttribute('value')));
-    
+
   }
 
   deleteTalk(e) {
@@ -110,7 +108,7 @@ class Talks extends Component {
     const { dispatch } = this.props;
     dispatch(toggleShowMore(e.target.getAttribute('name'), e.target.getAttribute('value')));
     dispatch(toggleTalkEdit(e.target.getAttribute('name'), e.target.getAttribute('value')));
-   }
+    }
 
   handleTalkChange(e) {
     const { dispatch } = this.props;
@@ -183,7 +181,7 @@ class Talks extends Component {
                                                 ] : null} 
                                                 </div>
                                             </div>
-                                    }} />
+                              }} />
                           case 'Talk':
                             return <TableRow key={i}>
                               <div className='options'>
